@@ -1,0 +1,1 @@
+Logos e imagenes que se vayan a usar en la herramienta
