@@ -1,0 +1,227 @@
+Programación - Primeros programas
+1. Diseñar un programa en C que Solicite al usuario tres valores enteros por teclado A, B y C. Escribir las instrucciones necesarias para intercambiar entre sí sus valores del siguiente modo:
+B toma el valor de A
+C toma el valor de B
+A toma el valor de C
+2. Diseñar un programa en C que solicite al usuario 4 valores y muestre su producto, su suma y su meda aritmética.
+3. Diseñe un programa en C que solicite 3 valores enteros al usuario y escriba cual es el central.
+4. Diseñe un programa en C que solicite r un número por teclado y decir si es igual a 35 o diferente.
+5. Diseñe un programa en C que solicite 3 valores enteros al usuario y escriba el número de valores que son diferentes.
+6. Diseñe un programa en C que solicite 3 valores al usuario (A, B,C) y coloque en A el menor, en B el intermedio y en C el mayor.
+7. Escribir un programa que lea 5 números y determine el número de ellos que son positivos y negativos. 8. Escriba un programa que lea un número comprendido entre 1 y 7 y muestre un mensaje indicando el día de la semana al que corresponde.
+8. Diseñar un programa en C que realice la división mediante restas sucesivas.
+9. Diseñar un programa en C que calcule el factorial de un número solicitado al usuario.
+10. Diseñar un programa en C que calcular la suma de número pares e impares comprendidos entre dos valores proporcionados por el usuario. Debe usar la operación módulo.
+11. Diseñe un programa en C que pida dos valores al usuario y realice la operación solicitada que deberá elegir en un menú donde las opciones sean las siguientes:
+1 Suma
+2 Resta
+3 Multiplicación
+4 División
+12. Diseñar un programa en C que solicite un valor al usuario y muestre el siguiente patrón con tantas líneas como el número proporcionado.
+Ejemplo n=5
+*
+**
+***
+****
+*****
+6. Diseñar un programa en C que solicite un valor al usuario y muestre el siguiente patrón con tantas líneas como el número proporcionado.
+Ejemplo n=5
+55555
+4444
+333
+22
+1
+
+
+Ejercicios con Cadenas de Caracteres
+1. Escribir un programa que lea una frase caracteres a carácter utilizando scanf.
+2. Escribir un programa que lea una frase y posteriormente la escriba carácter a carácter utilizando printf.
+3. Leer una frase y mostrarla con un carácter en cada línea.
+4. Escribir un programa que lea una frase y cuente el número de palabras que contiene. Escribir dos versiones del programa:
+• Asumir que cada palabra está separada por un sólo blanco.
+• No se sabe como están separadas las palabras. Pueden estar separadas por mas de un blanco.
+5. Leer una frase y contar el número de vocales (de cada una) que aparecen.
+6. Sustituir todos los espacios en blanco de una frase por un asterisco.
+7. Dado un vector que contiene un texto de tamaño N como máximo, eliminar los espacios en blanco
+(compactar la frase).
+8. Escribir un programa que dada una frase de tamaño máximo N, determine si es un palíndromo o no. Un palíndromo es una frase que, atendiendo sólo a sus letras e ignorando los espacios, acentos, signos de puntuación y tipo de letra (mayúscula o minúscula) expresa lo mismo leída de izquierda a derecha que de derecha a izquierda. “dábale arroz a la zorra el abad”.
+9. Dada una frase comprobar si el balanceo de los paréntesis es correcto. Es decir, “(ccc(ccc)cc((ccc(c))))” es correcto, pero “)ccc(ccc)cc((ccc(c)))(“ no lo es, aunque tenga el mismo número de paréntesis abiertos que cerrados.
+10. Escribir un programa que cuente el número de palabras en un texto, que tengan al menos cuatro vocales diferentes.
+11. Invertir todas las palabras de una frase:
+• Utilizando un vector auxiliar.
+12. Leer el nombre y los dos apellidos de una persona (en tres cadenas de caracteres diferentes) y unirlo en una única cadena.
+13. Leer tres cadenas de caracteres correspondientes, respectivamente, al nombre y los dos apellidos de una persona y crear un nuevo vector que contenga: apellido 1 apellido2, inicial.
+14. Leer una cadena de caracteres, donde en lugar de ñ se han utilizado los caracteres ny. Crear una nueva cadena de caracteres sustituyendo ny por ñ.
+
+
+Ejercicios con matrices 
+1. Escribir un programa que lea una matriz por teclado y muestre su contenido por pantalla bien formateado en filas y columnas.
+2. Escriba un programa que dado una matriz de NxM muestre solo aquellos elementos que sean mayores a 30.
+3. Escribir un programa que rellene una matriz identidad de 4x4 elementos.
+4. Escribir un programa que dadas dos matrices M1 y M2 indique si son iguales.
+5. Escriba un programa que realice la suma de dos matrices de tamaño NxM.
+6. Escriba un programa que realice el producto de dos matrices. En el caso de que el producto no pueda realizarse, deberá indicárselo al usuario.
+7. Escriba un programa que dado una matriz M1 de tamaño NxM, genere otra nueva matriz M2 que se la traspuesta de M1 y muéstrela por pantalla.
+8. Escriba un programa que lea los elementos de una matriz de 4x4 y genere un vector V cuyos elementos sean todos los valores de la matriz menores que 5.
+9. Escriba un programa que dada una matriz de NxM, pida al usuario dos valores A y B. El programa deberá recorrer la matriz y sustituir cada valor A que exista en la misma, por B.
+10. Escriba un programa que dada una matriz de NxM, busque los elementos repetidos y los cambiae por 0. Al final decir los elementos que se repiten y el nº de veces que se repite.
+Primera matriz
+1 2 3 4 
+5 6 7 8 
+3 3 2 1 
+3 4 10 11 
+
+Matriz resultante: 
+0 0 0 0
+5 6 7 8
+0 0 0 0
+0 0 10 11
+
+11. Escriba un programa que dada una matriz de MxN genere un vector con los elementos de la matriz ordenados de menor a mayor. En el vector no deben aparecer elementos repetidos.
+12. Escriba un programa que dada una matriz de MxN muestre la posición del elemento más grande y su valor.
+13. Escriba un programa que dada una matriz de MxN, muestre la suma de todos los elementos positivos y de todos los elementos negativos.
+14. Escriba un programa que dada una matriz que haga el siguiente cambio en una matriz: 
+Primera matriz: 
+4 0 0 0 0 
+1 2 0 0 0 
+3 4 5 0 0 
+6 7 8 4 0 
+9 10 11 12 13 
+
+Matriz final:
+9 6 3 1 4
+10 7 4 2 0
+11 8 5 0 0
+12 4 0 0 0
+13 0 0 0 0
+
+
+15. Escriba un programa que dad dada una matriz MAT de dimensión (MxN) y otra matriz CAT de dimensión (PxQ) encuentre todas las ocurrencias de la matriz CAT en la matriz MAT, escribiendo una lista de las posiciones de MAT donde empieza cada ocurrencia de CAT. El algoritmo debe evitar búsquedas innecesarias.
+Ejemplo: 
+Matriz 1:
+9 3 4 2
+1 3 8 5
+5 1 3 7
+12 5 1 14
+Matriz 2:
+1 3 
+5 1  
+Resultado: (2,1) (3,2)
+
+16. Escriba un programa que dada una matriz MAT de dimensión (MxM) se suponga la existencia de 4 cuadrantes separados por las diagonales. El programa deberá intercambiar los elementos del cuadrante 1 por los del 2 y los del 3 por el cuatro dejando constante las diagonales.
+17. Escriba un programa que dada una matriz de dimensión (MxN) determine si la matriz es estocástica; no tiene valores negativos y las suma de cada columna es 1
+18. Escriba un programa que dada una matriz de dimensión (MxN) calcule la suma de los elementos del contorno (los elementos que están en la primera y última fila y columna)
+19. Escriba un programa que dada una matriz de dimensión (MxN) obtenga un vector con la diagonal secundaria (la que parte de la esquina superior derecha) de una matriz no necesariamente cuadrada.
+20. Escriba un programa que dada una matriz de dimensión (MxN) mostrar el contenido de la matriz y en el lugar ocupado por ceros muestre un espacio.
+
+
+EJERCICIOS DE USO CON ESTRUCTURAS
+1. Desarrolle una estructura que guarde los datos de los n alumnos de la materia programación en Lenguaje C, y los muestres por pantalla, la estructura debe tener (cedula, nombre, apellido, edad, profesión, lugar de nacimiento, dirección y teléfono). 
+2. Escriba un programa que en una estructura guarde los datos de 05 amigos (as) suyos (as) y los muestre por pantalla, utilizando para ello un arreglo de estructura, la misma estructura contendrá (Nombre, Apellido, Edad, Sexo, Dirección, y Teléfono). 
+3. Desarrolle un arreglo de estructura para un programa que lea una lista de alumnos y las notas correspondientes a una determinada asignatura; el resultado será el tanto por ciento (porcentaje) de los alumnos aprobados y reprobados. 
+4. Escriba un programa que en una estructura se lleve el control de un inventario de cintas de una tienda de video. Asegúrese de que la estructura incluya el título de la cinta, la longitud de la cinta, el precio de alquiler, la fecha en que se vendió, y la clasificación de la cinta. 
+5. Desarrolle un programa que lleve el control de los nombres, edades, calificaciones y coeficiente intelectual de 10 estudiantes. Capture los datos desde el teclado utilizando un ciclo for, imprime los datos en la pantalla cuando se termine de capturar los mismos. Emplear Arreglo de Estructuras. 
+6. Desarrolle un programa que en una estructura guarde los datos de los N alumnos de la Asignatura Programación en Lenguaje C; y los imprima, la estructura debe tener (Cedula, nombre, apellido, edad, profesión, lugar de nacimiento, dirección, teléfono). 
+7. Establecer un listado de suscriptores de una revista a través de una estructura, cuyos datos de entrada serán los datos de cada suscriptor (Nombre, Cedula, Mes de Inscripción, Año de Inscripción). 
+8. En una clase, asuma que hay un número de 20 estudiantes. Cada estudiante está registrado en los mismos cursos en un semestre. Al final del semestre, el instructor asigna letras de calificaciones de la A a la E para todos los seis cursos de cada estudiante. Cada uno de los seis cursos es de 3 unidades (horas crédito). El promedio de notas de los estudiantes se calcula en una escala de 10 puntos. Para realizar esto, a continuación, se presenta las notas asociadas con cada una de las calificaciones en letras. 
+9. Establezca una estructura para almacenar datos relativos a los N libros o revistas científicas de una biblioteca. Por cada libro o revista científica, mostrar la siguiente información: a) Numero de referencia. b) Titulo c) Nombre del autor d) Editorial e) Clase de publicación (libro o revista) f) Numero de edición (solo libros) g) Año de publicación (solo libros) h) Nombre de la revista (solo revistas)
+10. Desarrolle un programa que inicialice un arreglo de N enteros, y muestre la cantidad y los elementos negativos que se presenta en el mismo. 11.- Desarrolle un programa que capture tres cadenas, una en mayúscula y las otras en minúscula, luego que la primera cadena la copie al final de la segunda e imprima el resultado, posteriormente mostrar la longitud de la tercera.
+11. Se desea calcular el promedio, mínimo y máximo de una lista de notas correspondientes a un curso. Se recibirá el número de alumnos y la nota correspondiente a c/u, y se entregan los resultados en la pantalla 
+12. Se desea calcular las notas finales de los alumnos de un curso, así como también el promedio, mínimo y máximo de éstas. Se recibirá el número de alumnos y las notas parciales de cada uno de éstos. Las notas parciales corresponden a la I1, I2, T1, T2 y Examen. La nota final se calcula empleando la fórmula: NF = 0.7*NP + 0.3*Ex En donde NP es la nota de presentación calculada como: NP = (I1+I2+T1+T2)/4
+
+
+Ejercicios con Arrays
+1. Escriba un programa que rellene un vector de N elementos con enteros consecutivos de 0 a N ordenados. El tamaño del vector N será proporcionado por el usuario.
+2. Escriba un algoritmo que lea un vector de enteros de N elementos por teclado y un número. A continuación indique si el número se encuentra en el vector y en caso afirmativo, indique en qué posición está.
+3. Escriba un programa que dado un vector de enteros de N elementos, ordene todos sus elementos de menor a mayor. El tamaño del vector N será proporcionado por el usuario.
+4. Escriba un programa que lea un vector de enteros de N elementos y busque la posición del elemento más pequeño. En caso de existir dicho elemento repetido, devolver la primera posición.
+5. Escriba un programa que calcule el nº de elementos negativos, cero y positivos de un vector de 60 elementos.
+6. Escriba un programa que lea un vector de enteros de N elementos por teclado y calcule de forma independiente la suma de los números pares y la suma de los números impares.
+7. Cree un programa que dado un vector V de enteros cope sus elementos a otros tres vectores V1,V2,V3 según el siguiente criterio:
+a. En V1 se almacenarán todos los valores comprendidos entre 0 y 49
+b. En V2 se almacenarán todos los valores comprendidos entre 50 y 99
+c. En V3 se almacenarán todos los valores comprendidos entre 100 y 1499
+8. Escriba un programa que le de la vuelta a los elementos de un vector.
+9. Escriba un programa que dado un vector, V, conteniendo valores enteros y un número natural, N, devuelva el valor qué más veces se repita de los N primeros elementos de V. (si hay variosdevuelva el que primero aparezca en el vector)
+10. Escriba un programa que dado un vector, V, conteniendo valores enteros y un número natural, N, devuelva la media aritmética de los N primeros elementos de V.
+11. Escriba una programa que dado un vector, V, conteniendo valores enteros y dos números enteros, Inicio, Fin, devuelva la suma de los elementos de V comprendidos entre las posiciones Inicio y Fin.
+12. Escriba un programa que dados dos vectores de enteros, V1 y V2, y cuatro valores naturales, Inicio1, Fin1, Inicio2 y Fin2, copie en las posiciones de V2 comprendidas entre Inicio2 y Fin2 los elementos de V1 correspondientes a las posiciones comprendidas entre Inicio1 y Fin1. (Suponga que (Fin1 - Inicio1) = (Fin2 - Inicio2).
+13. Escriba un programa que realice el producto de un escalar, proporcionado por el usuario, por un vector de tamaño N.
+14. Escriba una programa que realice el producto vectorial de dos vectores. Está función tomará dos vectores de enteros y un número natural indicando el número de elementos a considerar.(El producto vectorial de dos vectores, V1 y V2 de N elementos es otro vector, V3 de N elementos tal que para todo valor de i desde [1..N]: V3[i] = V1[i] * V2[i]).
+15. Escriba una programa que obtenga un vector con los elementos negativos de otro vector.
+16. Escriba una programa que calcule el módulo de un vector.
+17. Escriba una programa que intercale un cero entre cada par de elementos de un vector
+18. Escriba una programa que compruebe si un vector es sub-vector de otro.
+19. Escriba una programa que cuente el número de elementos un vector que son mayores que el elemento anterior.
+20. Escriba una programa que cuente los elementos de un vector que hay sumar desde el principio hasta superar un valor por.
+21. Escriba una programa que indique cuál es el primer elemento del vector cuyo cuadrado es mayor que x.
+22. Escriba una programa que indique cuál es el último elemento del vector cuyo cuadrado es menor que el del anterior.
+23. Escriba una programa que indique cuál es la suma de los cuadrados de los elementos de las posiciones pares del vector.
+24. Escriba una programa que indique cuál es el producto de los cuadrados n últimos elementos de las posiciones impares del vector.
+
+
+Ejercicios de Estructuras de Control
+1. Escribir un programa que lea números enteros indefinidamente hasta que llegue el número 0
+2. Escribir un programa que lea exactamente 8 números y luego escriba la suma de todos ellos
+3. Programa que lea una serie de números hasta que el usuario introduzca un 0 por teclado e indique cuál es el mayor
+4. Escribir un programa que lea un número y muestre por pantalla su tabla de multiplicar (desde el 1 hasta el 10).
+5. Mostrar los múltiplos de 3 comprendidos entre los números 1 y 20.
+6. Se teclearán dos números enteros por pantalla hasta que los dos sean menores que 50.
+7. Escriba un programa que lea tres números enteros, y los escriba ordenados de mayor a menor.
+8. Escriba un programa que lea tres números por tecleados he indique si han sido introducidos en orden creciente
+9. Realizar un programa que lea cinco números enteros y escriba los mayores que la media.
+10. Escriba un programa que dado un número positivo, N, escriba todos los números comprendidos entre 1 y N, ambos inclusive.
+11. Escriba un programa que dado un número positivo, N, escriba la suma de los números comprendidos entre 1 y N, ambos inclusive.
+12. Escriba un programa que dado un número positivo, N, escriba la media aritmética de los números comprendidos entre 1 y N, ambos inclusive.
+13. Repita los tres ejercicios anteriores respecto a un rango especificado por dos números a y N, en vez de empezar siempre en 1.
+14. Escribir un programa que calcule el factorial de un número leído por teclado.
+15. Crear el programa tablaMultiplicar que escriba la tabla de multiplicar del 1 hasta el 10.
+16. Escriba un programa que calcule la suma de los n primeros términos de una progresión aritmética. Definición: una progresión aritmética es una secuencia en la que la diferencia entre cada término y el anterior es una constante (d): a, a+d, a+2d, ..., a+(n-1)d, …
+17. Escriba un programa que calcule la suma de los n primeros términos de una progresión geométrica. Definición: una progresión geométrica es una secuencia en la que la relación entre cada término y el anterior es una constante (r): a, ar, ar2, ..., arn-1, …
+18. Realizar un programa que, de los primeros 100 números naturales, escriba por pantalla los pares.
+19. Escribir un programa que lea 5 números
+20. Escribir un programa que lea 5 números y determine el número de ellos que son positivos y negativos.
+21. Pida dos enteros positivos y multiplíquelos utilizando la operación suma.
+22. Realice un programa que lea el mes y nos indique el número de días que tiene el mes.
+23. Realice un procedimiento que intercambie los valores de dos variables enteras pasadas como parámetros.
+24. Escriba un programa que lea tres valores enteros en tres variables enteras x, y, z y los ordene de forma que en x quede el mayor valor, en y el intermedio y en z el menor, mostrando el resultado.
+25. Escriba un programa para calcular el área de un triángulo. (Área es igual a base por altura partido de dos).
+26. Escriba un programa que lea un número y un carácter y actúe de forma que si el carácter vale 'P' interprete que la cantidad está en pulgadas y la pase a centímetros, pero si vale 'C' interprete que está en centímetros y haga la operación inversa.
+27. Escriba un programa que lea un número comprendido entre 1 y 7 y muestre un mensaje indicando el día de la semana al que corresponde.
+28. Escribir un programa que lea 5 números y determine el número de ellos que son positivos y negativos.
+29. Realizar un programa que calcule la suma de los n primeros números naturales
+30. Realice un programa que escriba los n primeros elementos de la serie Fibonacci donde Fi=Fi-1+Fi-2 teniendo en cuenta que F1=F2=1.
+31. Escribir un programa que genere la sucesión 1, 1/2!, 1/3!,1/4!,….,1/n!
+
+
+Programación
+Funciones/Procedimientos
+1. Escribe y prueba una función de para cada uno de los propósitos siguientes:
+    a. Introducir desde teclado un vector de números enteros o reales
+    b. Para calcular el mínimo valor positivo de un vector de números reales.
+    c. Para determinar en qué posición del vector está su máximo valor negativo.
+    d. Para obtener un vector con los elementos negativos de otro vector.
+    e. Determinar el número de los elementos positivos de un vector.
+    f. Cambiar de signo todos los elementos de un vector.
+    g. Calcular la suma de dos vectores.
+    h. Para calcular el producto escalar de dos vectores.
+    i. Para calcular el módulo de un vector.
+    j. Para comprobar si un vector es sub-vector de otro.
+    k. Para contar elementos un vector que son mayores que el elemento anterior.
+    l. La suma de los n primeros elementos del vector.
+    m. El producto de los n últimos elementos del vector.
+    n. Los elementos del vector que hay sumar desde el principio hasta que se supere el valor x.
+    o. El primer elemento del vector cuyo cuadrado es mayor que x.
+    p. El último elemento del vector cuyo cuadrado es menor que el del anterior.
+    q. La suma de los cuadrados de los elementos de las posiciones pares del vector.
+    r. El producto de los cuadrados n últimos elementos de las posiciones impares del vector.
+    s. El vector con los 1+n//2 elementos centrales de otro vector.
+2. Escriba una función que dado un vector, V, conteniendo valores enteros y un número natural, N, devuelva el valor qué más veces se repita de los N primeros elementos de V. (si hay varios devuelva el que primero aparezca en el vector)
+3. Escriba una función que dado un vector, V, conteniendo valores enteros y un número natural, N, devuelva la media aritmética de los N primeros elementos de V.
+4. Escriba una función que dado un vector, V, conteniendo valores enteros y dos números enteros, Inicio, Fin, devuelva la suma de los elementos de V comprendidos entre las posiciones Inicio y Fin.
+5. Escriba un procedimiento que dados dos vectores de enteros, V1 y V2, y cuatro valores naturales, Inicio1, Fin1, Inicio2 y Fin2, copie en las posiciones de V2 comprendidas entre Inicio2 y Fin2 los elementos de V1 correspondientes a las posiciones comprendidas entre Inicio1 y Fin1. (Suponga que (Fin1 - Inicio1) = (Fin2 -Inicio2).
+6. Escriba una función que dado un vector de enteros, V, y dos valores naturales, Inicio y Fin, devuelva otro vector de enteros en el que los 16 elementos que ocupen las posiciones Inicio..Fin sean copia de los correspondientes de V y estén en el mismo orden.
+7. Escriba una función que devuelva el producto vectorial de dos vectores. Está función tomará dos vectores de enteros y un número natural indicando el número de elementos a considerar.(El producto vectorial de dos vectores, V1 y V2 de N elementos es otro vector, V3 de N elementos tal que para todo valor de i desde [1..N]: V3[i] = V1[i] *V2[i]).
+8. Escriba un procedimiento para trasponer una matriz. Los parámetros del procedimiento serán una matriz de enteros y dos números naturales indicando el número de filas y de columnas a considerar.
+9. Escriba una función que determine si una matriz cuadrada es simétrica. La función tendrá como parámetros una matriz de enteros y un número natural indicando su tamaño. (Definición: una matriz cuadrada, M, de NxN elementos es simétrica si ( i,j   0..N-1): M[i,j] = M[j,i]).
+10. Desarrolle una función entera que admita una matriz de enteros de dimensiones MxN que puede contener valores repetidos, y la modifique sustituyendo por cero las apariciones de elementos repetidos, salvo la primera ocurrencia de cada uno (la primera ocurrencia es la que ocupe una posición menor, entendiéndose como menor el menor valor de fila, o, a igualdad de fila, el menor valor de columna). La función debe devolver un valor indicativo de cuantas sustituciones ha realizado.
