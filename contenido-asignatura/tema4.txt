@@ -1,0 +1,94 @@
+
+
+Tema 4: Punteros y vectores
+
+Punteros
+En el lenguaje de programación C, un puntero es un tipo de dato especial que no almacena directamente valores como los enteros o los caracteres, sino que guarda direcciones de memoria. En otras palabras, un puntero es un objeto que apunta a otro objeto. Esto significa que su valor no es un dato tradicional, sino la ubicación en memoria donde se encuentra almacenada otra variable.
+
+Para declarar un puntero, se utiliza la siguiente sintaxis: 
+tipo_de_dato * variable_puntero;. 
+
+Por ejemplo, int *p; declara un puntero que apunta a una variable entera. Es importante saber que un puntero solo puede almacenar direcciones de memoria correspondientes al tipo de datos para el que ha sido declarado. Es decir, un puntero a entero solo puede apuntar a variables enteras.
+
+Variables y punteros
+Cuando se declara una variable en C, el sistema reserva un espacio en memoria para almacenar su valor. Para poder acceder a esa variable, el compilador necesita conocer dos cosas: el número de bytes que ocupa (según su tipo de dato) y la dirección de memoria del primer byte reservado. Esta dirección se puede obtener utilizando el nombre de la variable.
+
+Operadores relacionados con punteros
+En C existen dos operadores clave para trabajar con punteros:
+Operador de dirección (&): permite obtener la dirección de memoria de una variable. Por ejemplo, si tenemos long dato;, al escribir &dato obtendremos la dirección donde se encuentra almacenado el valor de dato.
+long dato;
+printf("%lu", &dato);
+int *p;
+p = &k;
+
+Operador de indirección (*): se utiliza para acceder al contenido de la dirección de memoria apuntada por un puntero. Por ejemplo, si int *p; y p = &x;, entonces *p nos da el valor almacenado en x.
+int *p;
+*p = 3;
+
+Ejemplo manejo punteros
+Este programa muestra cómo modificar valores a través de punteros y cómo intercambiar el contenido de dos variables.
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int x = 4, y = 7, temp;
+    int *px = NULL, *py = NULL; //Declaración de punteros a enteros e inicio
+    printf(" \nx es %d y es %d ",x,y);
+    px = &x; // px apunta a la dirección de la variable x
+    py = &y; // px apunta a la dirección de la variable y
+    printf("\npx contiene la direccion %p, py contiene la direccion %p ", px, py) ;
+    printf( "\nLa direccion de la variable x es %p, la direccion de la variable y es %p", &x , &y) ;
+    *px = *px + 10; //Modificamos el contenido de la dirección de memoria apuntada por px
+    *py = *py + 10; //Modificamos el contenido de la dirección de memoria apuntada por py
+    printf(" \nx es %d y es %d ",x,y) ;
+    // Intercambiando valores
+    temp = *px ;
+    *px = *py ;
+    *py = temp ;
+    printf("\npx contiene %d, py contiene %d ",*px,*py) ;
+    printf(" \nx es %d y es %d ",x,y);
+    system("PAUSE") ;
+    return 0;
+}
+
+Precauciones al usar punteros
+Es fundamental inicializar los punteros antes de usarlos. Acceder al contenido de una dirección de memoria mediante un puntero no inicializado puede provocar errores graves durante la ejecución del programa, como violaciones de segmento. Para evitarlo, se recomienda inicializar los punteros con NULL o con 0 (que equivale a una dirección nula). Así, si se intenta acceder a través de un puntero sin haberle asignado una dirección válida, el error será más fácil de detectar.
+Tipo_de_dato * variable_puntero = 0;
+o bien
+Tipo_de_dato * variable_puntero = NULL;
+
+De esta manera, si se intenta acceder a esta dirección de memoria antes de asignar otro valor se producirá un error fácil de identificar en tiempo de ejecución (violación de segmento).
+
+Tipos de datos estructurados: Arrays unidimensionales estáticos
+Un array (también llamado vector) es una colección de elementos del mismo tipo almacenados de forma contigua en memoria. En C, el tamaño de un array debe conocerse en tiempo de compilación y no puede cambiar durante la ejecución del programa.
+Los arrays tienen dos propiedades importantes:
+El índice del primer elemento siempre es 0, por lo que un array de N elementos va desde el índice 0 hasta N-1. V[0]
+El nombre de un array actúa como un puntero constante que apunta al primer elemento del array. Por esto, no se pueden asignar arrays entre sí directamente.
+Como consecuencia de la segunda propiedad, no es posible asignar directamente un vector a otro.
+
+Arrays unidimensionales
+Declaración: tipoDato nombre_array[N_ELEMENTOS];
+int alturas [40] ;
+float a[20], b[100];
+
+El número de elementos debe ser una expresión constante entera.
+A cada elemento del array se accede a través de un índice. El índice inferior en C es siempre 0 y el superior es N_ELEMENTOS – 1 
+alturas[39]
+
+Sus elementos pueden ser de cualquier tipo básico
+char nombre[10] ;
+
+Es común el uso de macros para acotar el máximo número de elementos a almacenar.
+#define N_ELEMENTOS 40
+char nombre[N_ELEMENTOS] ;
+
+
+Cuestiones sobre los arrays de caracteres: cadenas
+En C, las cadenas son arrays especiales de caracteres, es decir son un tipo particular de vector. Se pueden inicializar con una cadena literal, es decir, una secuencia de caracteres encerrada entre comillas dobles. Estas cadenas terminan automáticamente con el carácter nulo ('\0'), aunque no lo veamos. Por ejemplo, la cadena "Primero" ocupa en realidad 8 caracteres (7 visibles más el '\0'), por lo que necesitaríamos un array de tamaño 8 o superior para almacenarla correctamente. también soporta caracteres especiales mediante secuencias de escape como: \n (nueva línea), \t (tabulación), \b (retroceso), \\ (barra invertida), entre otros.
+
+Tipos de datos estructurados: Arrays multidimensionales
+Las matrices, se representan como arrays de arrays. En C se pueden construir matrices de cualquier dimensión, lo que nos permite representar estructuras como matrices. 
+Para acceder a una posición se escribe el nombre y a continuación el índice entre corchetes para cada dimensión.
+Se declara de la siguiente manera: 
+tipo_Dato nombre[DIM1][DIM2]...[DIMN];
+int matriz[20][10]; /*filas, columnas*/

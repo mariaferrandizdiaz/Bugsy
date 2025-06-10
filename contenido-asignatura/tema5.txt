@@ -1,0 +1,114 @@
+
+
+Tema 5: Funciones y procedimientos
+
+Programación modular
+La programación modular es una técnica que consiste en dividir un programa en subprogramas o módulos independientes que pueden incluso almacenarse en archivos distintos. Esto permite que tareas complejas se descompongan en subproblemas más pequeños, que pueden ser tratados y resueltos de manera aislada. Cada uno de estos subproblemas puede implementarse como una función o procedimiento, lo que favorece la reutilización del código y facilita su comprensión.
+
+Para poder llevar a cabo la programación modular, será necesario modificar el código, tal y como lo hemos visto hasta ahora, para conseguir que se comporte de manera independiente. Para ello, deberán presentar dos características:
+Debe poder ser invocado desde otro algoritmo, lo que se consigue definiendo correctamente su cabecera. 
+Debe poder recibir información del exterior (datos de entrada) y devolver resultados (datos de salida). Esto se consigue mediante la utilización de parámetros formales.
+
+Parámetros formales
+Los parámetros formales son variables que se utilizan para recibir datos que el algoritmo principal pasa al módulo, o para devolver resultados al mismo. Dependiendo de su función, estos parámetros se pueden clasificar en:
+Parámetros de entrada, que reciben valores desde el algoritmo llamador.
+Parámetros de entrada/salida, que reciben datos y también almacenan los resultados para que el algoritmo llamador pueda acceder a ellos.
+
+Además, dentro de una función o procedimiento también se pueden declarar variables locales, que no forman parte de la lista de parámetros y cuya utilidad se limita al funcionamiento interno de la función. Algunas de estas variables locales pueden servir como parámetros de salida, es decir, variables donde se almacenan resultados que serán devueltos al final de la ejecución del módulo.
+
+Variables locales
+Las variables de la función/procedimiento que no figuran en la lista de parámetros, reciben el nombre de variables locales y se utilizan exclusivamente para operaciones internas, sin relación con el algoritmo llamador. El valor de algunas de ellas pueden, almacenar resultados y ser devueltas para que los recoja el llamador. Se conocen como: Parámetros de salida.
+
+Ventajas de la programación modular
+La modularidad tiene múltiples ventajas. Una de las más importantes es que cada módulo puede ser depurado (revisado y corregido) de forma independiente, lo que facilita la localización de errores. Además, permite que un equipo de desarrolladores trabaje simultáneamente, repartiendo los distintos módulos del programa. Otra ventaja clave es la reutilización del código, ya que un módulo bien diseñado puede ser empleado en varios programas sin necesidad de modificarlo.
+
+Definición de funciones
+En el lenguaje C no existen los procedimientos como tal; todas las subrutinas se definen como funciones. Cuando una función no devuelve ningún valor, se utiliza el tipo void, lo que equivale al comportamiento de un procedimiento en otros lenguajes.
+Las funciones se definen indicando primero que tipo de valor devuelven, después el nombre de la función y a continuación los parámetros que acepta encerrados entre paréntesis y separados por comas. Esto conformaría la cabecera de la función.
+El cuerpo de la función, encerrado entre llaves { }, donde se encuentran las instrucciones a ejecutar. 
+tipo_devuelto nombre_función (tipo1 param1, tipo2 param2,...)
+{
+...
+}
+int sumar(int a, int b) {
+    return a + b;
+}
+
+
+Paso de parámetros
+En C, los parámetros se pasan siempre por valor, lo que significa que se copia el contenido de la variable al parámetro de la función. Esto implica que cualquier modificación que se haga dentro de la función no afecta a la variable original.
+Sin embargo, C permite simular el paso por referencia utilizando punteros. En este caso, el parámetro de la función se define como un puntero al tipo correspondiente, y al llamar a la función se pasa la dirección de memoria de la variable. De esta forma, cualquier modificación dentro de la función afectará directamente a la variable original.
+
+Ejemplo de paso por valor (no intercambia los valores de verdad):
+#include <stdio.h>
+#include <stdlib.h>
+void permutar(double x, double y)
+{
+double temp ;
+temp = x ;
+x = y ;
+y = temp ;
+}
+
+int main()
+{
+double a = 1.0, b = 2.0 ;
+printf("\na = %lf , b = %lf", a, b) ;
+permutar(a, b) ;
+printf("\na = %lf , b = %lf", a, b) ;
+system("PAUSE");
+return 0 ;
+}
+
+
+Ejemplo de paso por referencia (sí intercambia los valores):
+#include <stdio.h>
+#include <stdlib.h>
+
+void permutar(double *x, double *y)
+{
+double temp ;
+temp = *x ;
+*x = *y ;
+*y = temp ;
+}
+
+int main()
+{
+double a = 1.0, b = 2.0 ;
+printf("\na = %lf , b = %lf", a, b) ;
+permutar(&a, &b) ;
+printf("\na = %lf , b = %lf", a, b) ;
+system("PAUSE");
+return 0 ;
+}
+
+
+Paso de arrays como parámetros
+El identificador de un array representa la dirección de memoria del primero de sus elementos. Por lo que en realidad se está pasando por referencia (sin necesidad de anteponer el símbolo &) y no por valor. Si se desea que los elementos del array no puedan modificarse, se utiliza el modificador const.
+void por_valor(const float temperaturas[])
+
+
+En el parámetro formal NO se indica el tamaño del array:
+tipo Funcion(int elm[]);
+
+
+Para que la función conozca el tamaño del array que se le pasa, se usa un segundo parámetro.
+tipo funcion(int elm[], int n_elem );
+
+
+Uso del modificador const
+El modificador const se utiliza para indicar que una variable no debe ser modificada. Si se intenta cambiar su valor, el compilador generará un error. Esto es especialmente útil en funciones para garantizar que ciertos parámetros se usan solo como entrada y no se alteran.
+
+Parámetros de entrada/salida
+C, no dispone de parámetros de entrada y salida. La forma de simular estos parámetros es definiéndolos como punteros. Donde el parámetro se define como un puntero al tipo de la variable entrada/salida y en la llamada a la función se pasa la dirección de la variable que se desea modificar.
+
+Definición de funciones
+En C, una función debe estar definida antes de ser utilizada. Si no es posible definirla antes, se debe declarar un prototipo. Un prototipo consiste en la cabecera de la función seguida por un punto y coma ;, sin incluir el cuerpo. Así informamos al compilar que existe una función con ese nombre y que será definida más adelante.
+La forma de realizar el prototipado es similar a la definición pero utilizando solo la cabecera, omitiendo el cuerpo y termiando en “;”
+int sumar(int, int);  // Prototipo
+
+
+La sentencia return
+La sentencia return se usa para devolver un valor desde una función al algoritmo llamador. Esta sentencia puede aparecer en cualquier punto de la función y cuantas veces sea necesaria y su ejecución hace que la función termine inmediatamente. En funciones de tipo void, return se puede usar simplemente para salir de la función sin devolver nada. En el caso de los procedimientos se puede utilizar
+return para abandonarlo en cualquier punto.

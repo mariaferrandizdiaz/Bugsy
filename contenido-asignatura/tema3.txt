@@ -1,0 +1,70 @@
+
+Tema 3: Biblioteca de funciones
+<stdio.h> y <math.h>
+
+En el lenguaje C, no existen instrucciones incorporadas para entrada y salida (E/S) como parte del núcleo del lenguaje. En su lugar, estas operaciones se realizan a través de funciones definidas en bibliotecas estándar, en ese caso, <stdio.h>.  Dos de las bibliotecas más utilizadas para estas tareas son <stdio.h> y <math.h>.
+1. Biblioteca <stdio.h>
+La biblioteca estándar de entrada/salida (<stdio.h>) es fundamental en cualquier programa C. Proporciona las funciones necesarias para mostrar datos por pantalla y para leer datos introducidos por el usuario. Las dos funciones más comunes de esta biblioteca son printf() y scanf(), pero también hay otras funciones que se utilizarán en la asignatura o en las prácticas: 
+getchar lee un carácter
+putchar escribe un carácter
+gets lee una ristra
+puts escribe una ristra
+Teniendo en cuenta esto, se tendrán como más importantes las siguientes: 
+La función printf() se utiliza para mostrar información por pantalla. Su primer argumento es una cadena de caracteres (también llamada ristra), que puede incluir texto literal y especificadores de formato. Estos especificadores, precedidos por el símbolo %, indican cómo deben mostrarse los valores de las variables que se pasan como parámetros. Por ejemplo:
+printf("a = %i, b = %o, c = %x", a, b, c);
+
+
+En este caso, a se imprime en formato decimal, b en octal y c en hexadecimal. Algunos de los formatos más comunes que se pueden usar con printf() son:
+%d o %i: entero decimal
+%o: entero en octal
+%x: entero en hexadecimal
+%u: entero sin signo
+%f: número en coma flotante
+%e: notación científica
+%s: cadena de caracteres
+%c: un solo carácter
+%ld, %lu, %lx: variantes para enteros largos
+También es posible utilizar secuencias de escape en la cadena de formato para imprimir caracteres especiales. Estas secuencias comienzan con \ e incluyen:
+\n: salto de línea
+\t: tabulador horizontal
+\v: tabulador vertical
+\b: retroceso (borra el carácter anterior)
+\r: retorno de carro (vuelve al inicio de la línea)
+\a: alerta sonora
+\': comilla simple
+\": comilla doble
+\\: barra invertida
+\?: signo de interrogación
+\000: carácter cuyo código ASCII está en octal
+\xhh: carácter en hexadecimal (ASCII)
+
+Por otro lado, la función scanf() se emplea para leer datos de entrada introducidos por el usuario. Su uso es muy similar al de printf(), pero en este caso los parámetros deben ser punteros a las variables donde se almacenarán los datos leídos. Por ejemplo:
+scanf("%i", &x);
+
+Aquí, scanf() interpreta la entrada como un número entero y lo almacena en la dirección de memoria de la variable x.
+printf-scanf ejemplos:
+/* Uso de la sentencia scanf() y printf()*/
+
+#include <stdio.h>
+
+main() /* Solicita dos datos */
+{
+	char nombre[10];
+	int edad;
+	printf("Introduce tu nombre: ");
+	scanf("%s",nombre);
+	printf("Introduce tu edad: ");
+	scanf("%d",&edad);
+}
+
+2. Biblioteca <math.h>
+La biblioteca <math.h> proporciona una serie de funciones matemáticas que operan sobre valores reales (tipo double). Estas funciones cubren una amplia gama de cálculos matemáticos, desde funciones trigonométricas hasta logaritmos y raíces. Algunas de las funciones más importantes son:
+double sin(double x), cos(double x), tan(double x): funciones trigonométricas básicas
+double asin(double x), acos(double x), atan(double x): funciones trigonométricas inversas
+double exp(double x): exponencial de x (e^x)
+double log(double x): logaritmo natural
+double log10(double x): logaritmo en base 10
+double pow(double x,double  y): x elevado a la potencia y
+double sqrt(double x): raíz cuadrada de x
+double fabs(double x): valor absoluto de x
+Para utilizar cualquiera de estas funciones, es necesario incluir la cabecera <math.h> y en muchos compiladores también hay que enlazar la biblioteca matemática usando la opción -lm durante la compilación (por ejemplo: gcc programa.c -lm).

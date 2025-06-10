@@ -1,0 +1,56 @@
+Tema 6: Ristras, struct
+
+Ristras de caracteres
+En el lenguaje de programación C no existe un tipo de dato específico para representar cadenas de caracteres, como sucede en otros lenguajes. En su lugar, las ristras (o cadenas de caracteres) se representan como vectores de tipo char, es decir, arrays cuyos elementos son caracteres. Cada uno de los caracteres de la cadena se almacena en una posición del array, y al final de la secuencia de caracteres debe incluirse un carácter especial que indica el final de la ristra: el carácter nulo, representado como '\0'.
+
+La diferencia fundamental entre un simple vector de caracteres y una ristra es precisamente la inclusión de este carácter nulo al final, que permite a funciones del lenguaje como printf, strlen, strcpy, etc., saber cuándo termina la cadena.
+
+Uso de literales de ristras
+Los literales de ristras se definen como secuencias de caracteres encerradas entre comillas dobles, por ejemplo: "Hola mundo". Estos literales, cuando no forman parte de una inicialización directa de un array, son tratados como punteros (char *) a una zona de memoria donde el compilador almacena la cadena. Es importante tener en cuenta que el programador no debe modificar directamente el contenido de estas zonas de memoria, ya que están gestionadas por el compilador.
+
+Por ejemplo, si declaramos un puntero de tipo char *s; y luego asignamos s = "Texto literal";, lo que estamos haciendo es apuntar el puntero s a una zona de memoria donde se almacena esa cadena. En cambio, si declaramos un array como char c[] = "Texto literal";, entonces cada carácter de la cadena (incluido el carácter nulo) se copia dentro del array.
+
+Esto implica que el tamaño del array debe ser igual al número de caracteres de la cadena más uno, para incluir el '\0'.
+
+Estructuras (struct) en C
+Una estructura o struct en C es un tipo de dato compuesto que agrupa varias variables en una sola unidad lógica. Cada una de las variables internas se conoce como campo, y cada campo puede ser de un tipo distinto. Las estructuras permiten organizar datos complejos y relacionados bajo un mismo nombre.
+
+La definición de una estructura se realiza con la palabra clave struct, seguida del nombre de la estructura y de los campos que contiene. Por ejemplo:
+struct InfoPersonal {
+    long DNI;
+    char Nombre[30];
+};
+
+
+Esta estructura representa una persona con dos campos: un número de DNI (long) y un nombre que puede tener hasta 29 caracteres (más el carácter nulo final). Una vez definida, podemos crear variables de este tipo:
+struct InfoPersonal persona;
+struct InfoPersonal lista[20];
+
+
+Para facilitar la declaración, se puede usar un alias de tipo:
+typedef struct {
+    long DNI;
+    char Nombre[30];
+} InfoPersonal;
+
+
+Acceso a los campos de una estructura
+Para acceder a los campos de una estructura se utiliza el operador punto (.). Por ejemplo:
+persona.DNI = 12345678;
+persona.Nombre[0] = 'A';
+
+
+Si se tiene un array de estructuras, se puede acceder a los campos de un elemento específico usando su índice:
+lista[3].DNI = 87654321;
+
+
+Uso de punteros con estructuras y el operador ->
+Cuando se utiliza un puntero a una estructura, hay dos formas de acceder a sus campos:
+Usando el operador * (de indirección) junto con el operador punto ((*puntero).campo)
+(*p).DNI = 45678901;
+
+
+O de manera más habitual, utilizando el operador flecha (->), que es una notación más compacta y legible (puntero->campo).
+p->DNI = 45678901;
+
+Ambas formas son equivalentes, pero la segunda es preferida por su simplicidad. Este uso es fundamental cuando se trabaja con estructuras dinámicas o estructuras pasadas como argumentos a funciones por referencia.

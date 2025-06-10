@@ -1,4 +1,4 @@
-Introducción a la programación en C
+Tema 1: Introducción a la programación en C
 1. Pasos para la resolución de un problema :
 a. Definición o análisis del problema
 b. Diseño del algoritmo
@@ -64,7 +64,6 @@ Se hace antes del bloque de instrucciones ejecutables.
 int A, B, C;
 float R;
 
-
 7. Estructuras de control
 C posee las sentencias de control típicas de los lenguajes de alto nivel.
 Las instrucciones en C pueden ser simples (expresiones o sentencias de control de flujo) o compuestas.
@@ -80,7 +79,6 @@ int main() {
 
       return 0;
 }
-
 
 Tipos de estructuras de control
 Instrucción1;
@@ -109,7 +107,6 @@ Alternativa “While”:
 La sentencia while tiene la forma:
 while (Condición) Acción1;
 
-
 Los paréntesis no son opcionales. Si se cumple la condición se ejecuta la instrucción y se repite el proceso. Un ejemplo con el while sería:
  
 expresión 1;
@@ -117,7 +114,6 @@ while (expresión 2) {
 sentencia
 expresión 3;
 }
-
  
 Tanto el while como el for son muy usados para recorrer arrays y cadenas de caracteres.
 
@@ -125,7 +121,6 @@ Repetitiva con condición final “do-while”:
 do
      Acción1;
 while (Condición);
-
 
 Los paréntesis no son opcionales. Se ejecuta la instrucción y si se cumple la condición se repite el proceso.
 main() {    /* visualizar los números del 0 al 9.*/
@@ -135,7 +130,6 @@ printf("%d ",digito++);
 while (digito<=9);
 }
 /* Visualizará: 0 1 2 3 4 5 6 7 8 9 */
-
 
 8. Estructuras algorítmicas no fundamentales
 Repetitiva for
@@ -189,7 +183,8 @@ int main()
 }
 // fin algoritmo Calculadora
 
-Identificadores, tipos de datos, variables, constantes y operadores
+
+Tema 2: Identificadores, tipos de datos, variables, constantes y operadores
 Introducción
 Programa sencillo escrito en C:
 int main(){
@@ -198,7 +193,6 @@ int main(){
      j= i+012; //se asigna i +012(octal) a j
      k=j*j+0FF //se asigna j*j+0xFF (hexadecimal) a k*/
 }
-
 
 En los programas, la función main es la primera en ejecutarse en C, es una función especial e indica el punto de arranque del programa. A la hora de programar tenemos que tener en cuenta que todas las sentencias terminan en punto y coma (;), que las llaves “{ }” agrupan sentencias que pertenecen a un mismo bloque de código y que las variables deben ser declaradas antes de utilizarse. Se pueden declarar variables en cualquier punto donde se abra un bloque con llaves { }. 
 Por otro lado, los comentarios se pueden introducir añadiendo: /*  */ (barra “/”asterisco “*”) y delimitan los comentarios que ocupan más de una línea. Los comentarios tipo // especifican el comienzo de un comentario que acaba con el final de esa línea, es decir, solo ocupan una línea. 
@@ -225,8 +219,6 @@ int main() {
         printf_s( "Bad file handle\n" );
 }
 
-
-
 A continuación se muestran las palabras reservadas del lenguaje y que por lo tanto no se pueden utilizar como identificadores: auto, double, int, struct, break, else, long, switch, case, enum, register, typedef, char, extern, return, union, const, float, short, unsigned, continue, for, signed, void, default, goto, sizeof, volatile, do, if, static, while. 
 
 2. Tipos de datos, modificadores de tipo y modificadores de acceso
@@ -247,8 +239,6 @@ short: int, Corto
 Así se pueden declarar variables como unsigned char a; long double b; o short int i;
 
 Es posible, además, aplicar dos modificadores seguidos a un mismo tipo de datos, así, es posible definir una variable de tipo unsigned long int (entero largo sin signo). El rango de valores de que permite cada variable depende del sistema operativo sobre el cual se trabaje (MS-DOS, Windows95/98/NT/2000, UNIX/Linux), por lo cual conviene referirse al manual del compilador para conocerlo. De forma general, los sistemas operativos de 16 bits (MS-DOS, Windows 16 bits) poseen un rango y los de 32 bits (Windows 32 bits, UNIX/Linux) otro.
-
-
 
 Rango de valores posibles en (notación matemática)
 Tipo de variable declarada
@@ -300,7 +290,6 @@ Dato
 descartado,
 tipo comodín
 
-
 Ejemplos tipos de datos básicos: 
 int num; // Entero
 int num1; / /Entero
@@ -318,7 +307,6 @@ unsigned long int l3; // Entero Largo sin signo
 float real1; // Real
 double real2; // Real muy largo
 
-
 Además de los modificadores de tipo existen modificadores de acceso. Los modificadores de acceso limitan el uso que puede realizarse de las variables declaradas. Los modificadores de acceso anteceden a la declaración del tipo de dato de la variable y son los siguientes:
 const -> Variable de valor constante 
 volatile -> Variable cuyo valor es modificado externamente
@@ -333,7 +321,6 @@ L3=num; No hay problema, siempre que long tenga tamaño igual o mayor que int.
 c=num; Sí puede generar problemas si num no está dentro del rango de char
 num=real2; Sí puede generar problemas por pérdida de precisión o desbordamiento.
 La conversión se puede controlar utilizando el operador de conversión cast, (tipo) expresión _a_convertir. result=((double)num)/num2
-
 
 3. Declaración de variables y alcance
 En C, las variables pueden ser declaradas en cuatro lugares del módulo del programa:
@@ -366,7 +353,6 @@ int main(void) /*Función principal del programa*/ {
    printf("%d\n",suma);
    return(0);
 }
-
 
 4. Especificadores de almacenamiento de los tipos de datos
 En este punto se explica cómo es posible modificar el alcance del almacenamiento de los datos. Esto es posible realizarlo mediante los especificadores de almacenamiento. Existen cuatro especificadores de almacenamiento. Estos especificadores de almacenamiento, cuando se usan, deben preceder a la declaración del tipo de dato de la variable. 
@@ -619,21 +605,13 @@ int main(){
 
 8. Estilo de programación
 Para desarrollar programas en lenguaje C de manera clara, eficiente y fácil de mantener, es importante seguir un conjunto de convenciones de estilo. Estas buenas prácticas mejoran tanto la comprensión del código como su calidad general.
-
 Comentar el código es fundamental y obligatorio. Siempre se debe explicar qué hace cada parte del programa mediante comentarios adecuados. Es recomendable declarar una sola variable por línea y añadir un comentario que indique su propósito o función en el programa. Esto facilita el mantenimiento y la comprensión del código por parte de otros programadores.
-
 Keep It Simple, Stupid: La simplicidad debe ser una prioridad. Aplicar el principio “Keep It Simple, Stupid” (KISS) implica escribir código directo y sin complicaciones innecesarias. Asimismo, se recomienda seguir la “Ley del mínimo asombro”, que sugiere que el comportamiento del código debe ser lo más predecible posible. El objetivo es que otro programador pueda leer el código y entenderlo sin confusión.
-
 En cuanto al uso de operadores, es aconsejable evitar escribir expresiones complejas que utilicen ++ o --. Lo ideal es emplearlos en líneas independientes para mantener la claridad. También se debe evitar colocar asignaciones (=) dentro de condiciones (if, while, etc.), ya que puede confundirse con el operador de igualdad (==) y provocar errores difíciles de detectar.
-
 Desde el punto de vista de la legibilidad, se deben colocar espacios después de cada coma y punto y coma. Además, se recomienda dejar un espacio en blanco a ambos lados de los operadores binarios como +, -, =, entre otros, para facilitar la lectura del código.
-
 La interfaz con el usuario debe mantenerse lo más simple y clara posible. Es importante que todos los mensajes, especialmente los de error, estén bien identificados y ofrezcan información precisa y útil.
-
 En relación con los identificadores, se deben usar nombres descriptivos que reflejen claramente el propósito de variables y funciones. Evite el uso de nombres genéricos o abreviados sin sentido. Los identificadores de macros y constantes deben escribirse en mayúsculas, mientras que los nombres de variables y funciones deben ir en minúsculas.
-
 Respecto al uso de estructuras de control como switch, es una buena práctica incluir siempre una cláusula default, incluso si no realiza ninguna acción. Todas las opciones del switch deben finalizar con una instrucción break para evitar una ejecución no deseada del siguiente caso. En cuanto a la sintaxis, se recomienda colocar la llave de apertura { al final de la línea de la estructura de control correspondiente, y no en una línea aparte. Asimismo, es esencial aplicar una indentación uniforme y clara en todo el programa, ya sea utilizando espacios o tabulaciones.
-
 Seguir estas pautas no solo mejora la calidad del código, sino que también facilita su revisión, depuración y mantenimiento a largo plazo. Un código bien escrito es una herramienta poderosa y un reflejo del cuidado y profesionalismo del programador.
 #include <stdio.h>
 
@@ -660,9 +638,9 @@ int main() {
 La directiva #include en C indica al preprocesador que incluya el contenido de un archivo específico en el código fuente del programa antes de la compilación. En este ejemplo, #include <stdio.h> indica al preprocesador que incluya el archivo stdio.h, que contiene la declaración de la función printf(). 
 En resumen: #include es una directiva del preprocesador que permite incluir el contenido de un archivo (generalmente un archivo de cabecera) en el código fuente, facilitando la organización, reutilización y modularidad del código en C.
 
-Biblioteca de funciones
-<stdio.h>
-<math.h>
+
+Tema 3: Biblioteca de funciones
+<stdio.h> y <math.h>
 
 En el lenguaje C, no existen instrucciones incorporadas para entrada y salida (E/S) como parte del núcleo del lenguaje. En su lugar, estas operaciones se realizan a través de funciones definidas en bibliotecas estándar, en ese caso, <stdio.h>.  Dos de las bibliotecas más utilizadas para estas tareas son <stdio.h> y <math.h>.
 1. Biblioteca <stdio.h>
@@ -719,8 +697,6 @@ main() /* Solicita dos datos */
 	scanf("%d",&edad);
 }
 
-
-
 2. Biblioteca <math.h>
 La biblioteca <math.h> proporciona una serie de funciones matemáticas que operan sobre valores reales (tipo double). Estas funciones cubren una amplia gama de cálculos matemáticos, desde funciones trigonométricas hasta logaritmos y raíces. Algunas de las funciones más importantes son:
 double sin(double x), cos(double x), tan(double x): funciones trigonométricas básicas
@@ -733,14 +709,15 @@ double sqrt(double x): raíz cuadrada de x
 double fabs(double x): valor absoluto de x
 Para utilizar cualquiera de estas funciones, es necesario incluir la cabecera <math.h> y en muchos compiladores también hay que enlazar la biblioteca matemática usando la opción -lm durante la compilación (por ejemplo: gcc programa.c -lm).
 
-Punteros y vectores
+
+
+Tema 4: Punteros y vectores
 
 Punteros
 En el lenguaje de programación C, un puntero es un tipo de dato especial que no almacena directamente valores como los enteros o los caracteres, sino que guarda direcciones de memoria. En otras palabras, un puntero es un objeto que apunta a otro objeto. Esto significa que su valor no es un dato tradicional, sino la ubicación en memoria donde se encuentra almacenada otra variable.
 
 Para declarar un puntero, se utiliza la siguiente sintaxis: 
 tipo_de_dato * variable_puntero;. 
-
 
 Por ejemplo, int *p; declara un puntero que apunta a una variable entera. Es importante saber que un puntero solo puede almacenar direcciones de memoria correspondientes al tipo de datos para el que ha sido declarado. Es decir, un puntero a entero solo puede apuntar a variables enteras.
 
@@ -755,11 +732,9 @@ printf("%lu", &dato);
 int *p;
 p = &k;
 
-
 Operador de indirección (*): se utiliza para acceder al contenido de la dirección de memoria apuntada por un puntero. Por ejemplo, si int *p; y p = &x;, entonces *p nos da el valor almacenado en x.
 int *p;
 *p = 3;
-
 
 Ejemplo manejo punteros
 Este programa muestra cómo modificar valores a través de punteros y cómo intercambiar el contenido de dos variables.
@@ -786,7 +761,6 @@ int main()
     system("PAUSE") ;
     return 0;
 }
-
 
 Precauciones al usar punteros
 Es fundamental inicializar los punteros antes de usarlos. Acceder al contenido de una dirección de memoria mediante un puntero no inicializado puede provocar errores graves durante la ejecución del programa, como violaciones de segmento. Para evitarlo, se recomienda inicializar los punteros con NULL o con 0 (que equivale a una dirección nula). Así, si se intenta acceder a través de un puntero sin haberle asignado una dirección válida, el error será más fácil de detectar.
@@ -830,7 +804,7 @@ Se declara de la siguiente manera:
 tipo_Dato nombre[DIM1][DIM2]...[DIMN];
 int matriz[20][10]; /*filas, columnas*/
 
-Funciones y procedimientos
+Tema 5: Funciones y procedimientos
 
 Programación modular
 La programación modular es una técnica que consiste en dividir un programa en subprogramas o módulos independientes que pueden incluso almacenarse en archivos distintos. Esto permite que tareas complejas se descompongan en subproblemas más pequeños, que pueden ser tratados y resueltos de manera aislada. Cada uno de estos subproblemas puede implementarse como una función o procedimiento, lo que favorece la reutilización del código y facilita su comprensión.
@@ -943,7 +917,7 @@ La sentencia return
 La sentencia return se usa para devolver un valor desde una función al algoritmo llamador. Esta sentencia puede aparecer en cualquier punto de la función y cuantas veces sea necesaria y su ejecución hace que la función termine inmediatamente. En funciones de tipo void, return se puede usar simplemente para salir de la función sin devolver nada. En el caso de los procedimientos se puede utilizar
 return para abandonarlo en cualquier punto.
 
-Ristras, struct
+Tema 6: Ristras, struct
 
 Ristras de caracteres
 En el lenguaje de programación C no existe un tipo de dato específico para representar cadenas de caracteres, como sucede en otros lenguajes. En su lugar, las ristras (o cadenas de caracteres) se representan como vectores de tipo char, es decir, arrays cuyos elementos son caracteres. Cada uno de los caracteres de la cadena se almacena en una posición del array, y al final de la secuencia de caracteres debe incluirse un carácter especial que indica el final de la ristra: el carácter nulo, representado como '\0'.

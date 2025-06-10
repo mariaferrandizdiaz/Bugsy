@@ -1,0 +1,184 @@
+Tema 1: Introducción a la programación en C
+1. Pasos para la resolución de un problema :
+a. Definición o análisis del problema
+b. Diseño del algoritmo
+c. Transformación del algoritmo en un programa
+d. Ejecución y validación del programa
+Cabe recalcar que un algoritmo es un método para resolver un problema.
+Problema → Algoritmo → Programa
+
+2. Algoritmo
+Un algoritmo se define como una descripción general y no ambigua de los pasos necesarios para resolver cualquier problema de una clase en un tiempo finito.
+Un algoritmo no resuelve ningún problema, sólo indica cómo resolverlos.
+Para resolverlo debe existir un ente, que denominaremos procesador.
+Un algoritmo es una secuencia de sentencias que representan instrucciones para que el procesador realice acciones concretas.
+Cada procesador sólo reconoce un conjunto limitado de instrucciones.
+Para que un algoritmo sea ejecutado por un procesador, debe estar escrito utilizando instrucciones del repertorio de ese procesador.
+2.1. Algoritmos entendibles por humanos:
+Los humanos tienen gran capacidad de desambiguación.
+Los programas informáticos deben escribirse en lenguajes muy restringidos (lenguajes de programación).
+Los algoritmos se escriben en pseudolenguajes similares a los lenguajes de programación, pero más flexibles.
+
+3. Herramientas de Programación
+Diagrama de flujo
+Diagrama N-S (Nassi-Schneiderman)
+Pseudocódigo
+
+4. Elementos de un Diagrama de Flujo
+Proceso
+Entrada/Salida
+Decisión (sí/no, múltiple)
+Conector
+Indicador de dirección
+Línea conectora
+Conector entre páginas
+Proceso predefinido
+Terminal
+Proceso manual
+
+5. Variables
+Las variables son objetos capaces de contener “valores” que son manipulados por un procesador para resolver un problema.
+Variables en memoria según su tamaño.
+Atributos de las variables
+Nombre: permite referenciarla en el programa. (relacionada con la infomación que almacenará)
+Tipo: define el tipo de valor que almacenará
+Valor: valor que almacena en cada momento de la ejecución. La capacidad de cambiar ese valor en cada momento de ejecución es lo que les da el nombre de variables.
+Tipos de Variables
+Numéricos: enteros y reales, permiten operaciones aritméticas y relacionales.
+Alfanuméricos:
+Carácter: 'a', '2', '?', etc. Operaciones: las relacionales basadas en el orden implícito
+Ristra: "hola", "La Laguna", etc. Operaciones: Longitud, Concatenación, Localización de subristras, Extracción de subristras. 
+Lógicos: verdadero/falso. Operaciones: o, y, no.
+6. Asignación y Operaciones de E/S
+Asignación:
+i = 30
+X = i / j
+A = "La Laguna"
+F = Verdadero
+Entrada: Leer i
+Salida: Escribir "El resultado es: ", A
+Declaración de Variables
+Se declara el nombre y tipo de la variable.
+Se hace antes del bloque de instrucciones ejecutables.
+
+int A, B, C;
+float R;
+
+7. Estructuras de control
+C posee las sentencias de control típicas de los lenguajes de alto nivel.
+Las instrucciones en C pueden ser simples (expresiones o sentencias de control de flujo) o compuestas.
+main es una función especial que será la primera en ejecutarse en todo programa en C.
+El cuerpo de la función está encerrado entre llaves {}. Las llaves también determinan un bloque de código a ejecutar como unidad.
+Las variables deben declararse antes de ser utilizadas. En cualquier punto donde se abra un bloque {} se pueden definir variables locales.
+Todas las sentencias deben terminar en punto y coma ;
+Los comentarios se encierran entre /**/ y son ignorados, pudiendo aparecer en cualquier parte del código excepto en medio de un identificador
+Programa sencillo en C:
+int main() {
+	int sum1=3,sum2=5,result; 
+	result=sum1+sum2;
+
+      return 0;
+}
+
+Tipos de estructuras de control
+Instrucción1;
+Instrucción2;
+Instrucción3;
+O bien de manera lineal: 
+Instrucción1; Instrucción2; Instrucción3
+Alternativa “If”: 
+La sentencia if tiene la forma:
+if (Condición) Acción1;
+[else Acción2;]
+
+Los paréntesis () asociados que delimitan la condición no son opcionales. En caso de que la condición sea verdadera se ejecuta la instrucción1; en caso contrario se ejecuta, si existe, la instrucción2;
+
+if (valor%2==0) par=1; /*sentencia simple de If*/
+
+if (a>b) {
+	max=a;
+	cambio=1;
+} else {
+	max=b;
+}
+
+
+Alternativa “While”:
+La sentencia while tiene la forma:
+while (Condición) Acción1;
+
+Los paréntesis no son opcionales. Si se cumple la condición se ejecuta la instrucción y se repite el proceso. Un ejemplo con el while sería:
+ 
+expresión 1;
+while (expresión 2) {
+sentencia
+expresión 3;
+}
+ 
+Tanto el while como el for son muy usados para recorrer arrays y cadenas de caracteres.
+
+Repetitiva con condición final “do-while”:
+do
+     Acción1;
+while (Condición);
+
+Los paréntesis no son opcionales. Se ejecuta la instrucción y si se cumple la condición se repite el proceso.
+main() {    /* visualizar los números del 0 al 9.*/
+int digito=0;
+do
+printf("%d ",digito++);
+while (digito<=9);
+}
+/* Visualizará: 0 1 2 3 4 5 6 7 8 9 */
+
+8. Estructuras algorítmicas no fundamentales
+Repetitiva for
+for ([inicialización];[condición];[expresión])
+{
+     Acción1;
+}
+
+
+Cada una de las partes del for se puede omitir. En el caso de la condición, su omisión equivale a una condición siempre verdadera. Si se desea ejecutar más de una instrucción en una de las expresiones, se puede emplear el operador ,
+
+El funcionamiento de la estructura for es el siguiente:
+Se evalúa la expresión de inicialización.
+Se evalúa la condición. Si el resultado es falso, termina la ejecución de la estructura for. Si es verdadero, sigue por el paso 3.
+Se ejecuta el bloque de instrucciones dentro de la estructura.
+Se evalúa la expresión final, que normalmente altera la variable de control, y se vuelve al paso segundo.
+Proceso por “casos” switch
+La expresión entre paréntesis del switch debe ser entera. Su resultado se comparará con los distintos valores en los case. Si coincide con uno de ellos se pasará la ejecución a la instrucción siguiente al case con dicho valor y se seguirá ejecutando las instrucciones consecutivas hasta encontrar una instrucción break o alcanzar el cierra llaves del switch.
+En caso de que el resultado de la expresión no coincida con ningún valor se pasará la ejecución a la instrucción siguiente a la etiqueta default:, si la hubiera, y se continuará como en un case.En caso de que esta última no exista, continúa con la siguiente sentencia después del switch.
+Los valores en los case pueden ser una expresión constante.
+No puede haber dos case con el mismo valor.
+// Algoritmo Calculadora
+int main()
+{
+    // (1 = suma, 2 = resta, 3 = multiplicación y 4 = división)
+
+    // variables
+    int i, x, y;
+    float z;
+
+    scanf("%d", &i);
+    scanf("%d", &x);
+    scanf("%d", &y);
+
+    switch(i) {
+        case 1:
+            z = x + y;
+            break;
+        case 2:
+            z = x - y;
+            break;
+        case 3:
+            z = x * y;
+            break;
+        case 4:
+            z = (float)x / y;
+            break;
+    }
+
+    printf("%f", z);
+}
+// fin algoritmo Calculadora

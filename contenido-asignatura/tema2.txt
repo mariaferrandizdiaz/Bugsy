@@ -1,0 +1,455 @@
+
+Tema 2: Identificadores, tipos de datos, variables, constantes y operadores
+Introducción
+Programa sencillo escrito en C:
+int main(){
+     int i,j,k; /*declaración de tres variables enteras*/
+     i=13; /*se asigna un 13 (decimal) a I */
+     j= i+012; //se asigna i +012(octal) a j
+     k=j*j+0FF //se asigna j*j+0xFF (hexadecimal) a k*/
+}
+
+En los programas, la función main es la primera en ejecutarse en C, es una función especial e indica el punto de arranque del programa. A la hora de programar tenemos que tener en cuenta que todas las sentencias terminan en punto y coma (;), que las llaves “{ }” agrupan sentencias que pertenecen a un mismo bloque de código y que las variables deben ser declaradas antes de utilizarse. Se pueden declarar variables en cualquier punto donde se abra un bloque con llaves { }. 
+Por otro lado, los comentarios se pueden introducir añadiendo: /*  */ (barra “/”asterisco “*”) y delimitan los comentarios que ocupan más de una línea. Los comentarios tipo // especifican el comienzo de un comentario que acaba con el final de esa línea, es decir, solo ocupan una línea. 
+Es muy importante introducir comentarios en el código fuente ya que tienen como objetivo aclarar cómo está hecho el programa,  facilitando la comprensión del código por parte de los programadores, ya sea para aclarar el funcionamiento de un bloque de código, documentar la lógica o recordar detalles relevantes. Cabe destacar que los comentarios son ignorados por completo por el compilador, por lo que solo ayudan a las personas a entender el código. 
+
+1. Identificadores
+Antes de explicar los identificadores en C, es necesario resaltar que C es un lenguaje sensible al contexto, es decir, C nota diferencia entre mayúsculas y minúsculas, y por tanto, diferencia entre una palabra escrita total o parcialmente en mayúsculas y otra escrita completamente en minúsculas.
+Los "identificadores" o "símbolos" son los nombres que se proporcionan para variables, tipos, funciones y etiquetas del programa. Los nombres de identificadores deben diferir en ortografía y mayúsculas y minúsculas de cualquier palabra clave. No se puede utilizar palabras clave (ya sea de C o de Microsoft) como identificadores; se reservan para uso especial. Para crear un identificador, hay que especificarlo en la declaración de una variable, un tipo o una función. En este ejemplo, result es un identificador para una variable de tipo entero y main y printf son nombres de identificador para funciones.
+Los identificadores y palabras reservadas son aquellas a las que se le asigna el nombre con el que se hace referencia a una función o al contenido de una variable o constante.
+Siguen una serie de reglas: 
+Están formadas por una secuencia de letras y dígitos.
+El carácter subrayado o underscore (_) es una letra más.
+No pueden contener: espacios en blanco, ni *, /,+,-,:, etc.
+No pueden comenzar con un dígito
+El primer carácter debe ser una letra o la barra baja “_”
+Se distingue entre mayúsculas y minúsculas.
+Es aconsejable usar nombres de funciones y variables que indiquen qué representa dicha función, variable o constante.
+
+#include <stdio.h>
+int main() {
+    int result;
+
+    if ( result != 0 )
+        printf_s( "Bad file handle\n" );
+}
+
+A continuación se muestran las palabras reservadas del lenguaje y que por lo tanto no se pueden utilizar como identificadores: auto, double, int, struct, break, else, long, switch, case, enum, register, typedef, char, extern, return, union, const, float, short, unsigned, continue, for, signed, void, default, goto, sizeof, volatile, do, if, static, while. 
+
+2. Tipos de datos, modificadores de tipo y modificadores de acceso
+En C, toda variable, antes de poder ser usada, debe ser declarada, especificando con ello el tipo de dato que almacenará. Toda variable en C se declara de la forma: [, nombre de variable]; 
+En C existen cinco tipos de datos:
+char: Carácter o entero pequeño (byte) 
+int: Entero 
+float: Punto flotante
+double o doble: Punto flotante (mayor rango que float) 
+void: Sin tipo (uso especial) 
+
+Existen, además, cuatro modificadores de tipo, los cuales se aplican sobre los tipos de datos anteriormente citados. Los modificadores de tipo permiten cambiar el tamaño, etc., de los tipos de datos anteriormente especificados. Estos modificadores, que sintácticamente anteceden a la declaración del tipo de dato, son:
+signed: char o int, Con signo (por defecto)
+unsigned: char o int, Sin signo
+long: int o double, Largo
+short: int, Corto
+
+Así se pueden declarar variables como unsigned char a; long double b; o short int i;
+
+Es posible, además, aplicar dos modificadores seguidos a un mismo tipo de datos, así, es posible definir una variable de tipo unsigned long int (entero largo sin signo). El rango de valores de que permite cada variable depende del sistema operativo sobre el cual se trabaje (MS-DOS, Windows95/98/NT/2000, UNIX/Linux), por lo cual conviene referirse al manual del compilador para conocerlo. De forma general, los sistemas operativos de 16 bits (MS-DOS, Windows 16 bits) poseen un rango y los de 32 bits (Windows 32 bits, UNIX/Linux) otro.
+
+Rango de valores posibles en (notación matemática)
+Tipo de variable declarada
+16 bits
+32 bits
+char / signed char
+[-128 , 127] (8 bits)
+[-128 , 127]
+unsigned char 
+[0 , 255]
+[0 , 255]
+int / signed int
+[-32768 , 32767]
+[-2147483647 , 2147483648]
+unsigned int 
+[0 , 65535]
+[0 , 4294967295]
+short int / signed short int
+[-32768 , 32767] (16 bits)
+[-32768 , 32767]
+unsigned short int
+[0 , 65535]
+[0 , 65535]
+long int / signed long int
+[-2147483647 , 2147483648]
+[-2147483647 , 2147483648]
+unsigned long int 
+[0 , 4294967295]
+[0 , 4294967295]
+float
+[-3.4E+38 , -3.4E-38], 0 ,
+[3.4E-38 , 3.4E+38] (32 bits)
+[-3.4E+38 , -3.4E-38], 0 ,
+[3.4E-38 , 3.4E+38]
+double / doble
+[-1.7E+308 , -1.7E-308], 0 ,
+[1.7E-308 , 1.7E+308] (64 bits)
+[-1.7E+308 , -1.7E-308], 0 ,
+[1.7E-308 , 1.7E+308]
+long double / doble
+[-3.4E+4932 , -1.1E-4932], 0 ,
+[3.4E-4932 , 1.1E+4932]
+[-3.4E+4932 , -1.1E-4932], 0 ,
+[3.4E-4932 , 1.1E+4932]
+void
+Dato descartado, tipo
+comodín
+Dato
+descartado,
+tipo comodín
+
+Ejemplos tipos de datos básicos: 
+int num; // Entero
+int num1; / /Entero
+
+short int c3; // Entero corto
+short c1,c2; // Entero corto
+
+char c; // Carácter 
+
+long int l1,l2; // Entero Largo
+long L3; // Entero Largo
+
+unsigned long int l3; // Entero Largo sin signo
+
+float real1; // Real
+double real2; // Real muy largo
+
+Además de los modificadores de tipo existen modificadores de acceso. Los modificadores de acceso limitan el uso que puede realizarse de las variables declaradas. Los modificadores de acceso anteceden a la declaración del tipo de dato de la variable y son los siguientes:
+const -> Variable de valor constante 
+volatile -> Variable cuyo valor es modificado externamente
+
+La declaración de una variable como const permite asegurarse de que su valor no será modificado por el programa, excepto en el momento de su declaración, en el cual debe asignársele un valor inicial. Así, si declaramos la siguiente variable:  const int x=237;
+Cualquier intento posterior de modificar el valor de x, tal como x=x+5;, producirá un error en tiempo de compilación.
+La declaración de una variable como volatile, indica al compilador que dicha variable puede modificarse por un proceso externo al propio programa (tal como la hora del sistema), y por ello, que no trate de optimizar dicha variable suponiéndole un valor constante, etc. Ello fuerza a que cada vez que se usa la variable, se realice una comprobación de su valor.
+Los modificadores const y volatile pueden usarse de forma conjunta en ciertos casos, por lo cual no son excluyentes el uno del otro. Ello es posible si se declara una variable que actualizará el reloj del sistema, (proceso externo al programa), y que no queremos pueda modificarse en el interior del programa. Por ello, podremos declarar: volatile const unsigned long int hora;
+
+Por otro lado, en cuanto a la Conversión entre tipos, C permite convertir valores de distinto tipo de forma automática. El lenguaje garantiza un correcto funcionamiento si el valor a convertir se encuentra dentro del rango del tipo del receptor. En otro caso, no se garantiza un buen funcionamiento.
+L3=num; No hay problema, siempre que long tenga tamaño igual o mayor que int.
+c=num; Sí puede generar problemas si num no está dentro del rango de char
+num=real2; Sí puede generar problemas por pérdida de precisión o desbordamiento.
+La conversión se puede controlar utilizando el operador de conversión cast, (tipo) expresión _a_convertir. result=((double)num)/num2
+
+3. Declaración de variables y alcance
+En C, las variables pueden ser declaradas en cuatro lugares del módulo del programa:
+Fuera de todas las funciones del programa, son las llamadas variables globales, accesibles desde cualquier parte del programa.
+Dentro de una función, son las llamadas variables locales, accesibles tan solo por la función en las que se declaran.
+Como parámetros a la función, accesibles de igual forma que si se declararán dentro de la función.
+Dentro de un bloque de código del programa, accesible tan solo dentro del bloque donde se declara. Esta forma de declaración puede interpretarse como una variable local del bloque donde se declara.
+Para un mejor comprensión, veamos un pequeño programa de C con variables declaradas de las cuatro formas posibles:
+
+#include <stdio.h>
+int sum;  /* Variable global, accesible desde cualquier parte del programa */
+void suma(int x) { /* Variable local declarada como parámetro, accesible solo por la función suma
+   sum=sum+x;
+   return;
+}
+void intercambio(int *a,int *b) {
+   if (*a>*b) {
+      int inter; /* Variable local, accesible solo dentro del bloque donde se declara*/
+      inter=*a;
+      *a=*b;
+      *b=inter;
+   }
+   return;
+}
+int main(void) /*Función principal del programa*/ {
+   int contador,a=9,b=0; /*Variables locales, accesibles solo por main */
+   sum=0;
+   intercambio(&a,&b);
+   for(contador=a;contador<=b;contador++) suma(contador);
+   printf("%d\n",suma);
+   return(0);
+}
+
+4. Especificadores de almacenamiento de los tipos de datos
+En este punto se explica cómo es posible modificar el alcance del almacenamiento de los datos. Esto es posible realizarlo mediante los especificadores de almacenamiento. Existen cuatro especificadores de almacenamiento. Estos especificadores de almacenamiento, cuando se usan, deben preceder a la declaración del tipo de dato de la variable. 
+Estos especificadores de almacenamiento son:
+auto: Variable local (por defecto)
+extern: Variable externa 
+static: Variable estática
+register: Variable registro
+
+El especificador auto se usa para declarar que una variable local existe solamente mientras estemos dentro de la subrutina o bloque de programa donde se declara, pero, dado que por defecto toda variable local es auto, no suele usarse. 
+El especificador extern se usa en el desarrollo de programas compuestos por varios módulos. El modificador extern se usa sobre las variables globales del módulo, de forma que si una variable global se declara como extern, el compilador no crea un almacenamiento para ella en memoria, sino que, tan solo tiene en cuenta que dicha variable ya ha sido declarada en otro modulo del programa y es del tipo de dato que se indica.
+El especificador static actúa según el alcance de la variable: 
+Para variables locales, el especificador static indica que dicha variable local debe almacenarse de forma permanente en memoria, tal y como si fuera una variable global, pero su alcance será el que correspondería a una variable local declarada en la subrutina o bloque. El principal efecto que provoca la declaración como static de una variable local es el hecho de que la variable conserva su valor entre llamadas a la función.
+Para variables globales, el especificador static indica que dicha variable global es local al módulo del programa donde se declara, y, por tanto, no será conocida por ningún otro módulo del programa.
+
+El especificador register se aplica sólo a variables locales de tipo char e int. Dicho especificador indica al compilador que, caso de ser posible, mantenga esa variable en un registro de la CPU y no cree por ello una variable en la memoria. Se pueden declarar como register cuántas variables se deseen, pues el compilador ignorará dicha declaración caso de no poder ser satisfecha. El uso de variables con especificador de almacenamiento register permite colocar en registros de la CPU variables muy frecuentemente usadas, tales como contadores de bucles, etc. 
+Algunos ejemplos de uso de los especificadores de almacenamiento son: register unsigned int a; static float b; extern int c; static const unsigned long int d;
+
+5. Constantes
+En C, las constantes se refieren a los valores fijos que el programa no puede alterar. Algunos ejemplos de constantes de C son:
+char:  ‘a’ ‘9’ 'Q' 
+int: 1 -34 21000
+long int: -34 67856L 456
+short int: 10 -12 1500
+unsigned int: 45600U 345 3
+float: 12.45 4.34e-3 -2.8e9
+double o doble: -34.657 -2.2e-7 1.0e100
+
+Existen, además, algunos tipos de constantes, distintos a los anteriores, que es necesario resaltar de forma particular. Estos tipos de constantes son las constantes hexadecimales y octales, las constantes de cadena, y las constantes de barra invertida. 
+Las constantes hexadecimales y octales son constantes enteras, pero definidas en base 16 (constantes hexadecimales) o en base 8 (constantes octales). Las constantes de tipo hexadecimal comienzan por los caracteres 0x seguidos del número deseado. Las constantes de tipo octal comienzan por un cero (0). Por ejemplo, son constantes hexadecimales 0x34 (52 decimal), 0xFFFF (65535 decimal); y constantes octales 011 (9 decimal), 0173 (123 decimal).
+0x10 => es 16 en hexadecimal
+0XAB => es 171 en hexadecimal
+0x12c => es300 en hexadecimal
+010 =>es 8 en octal
+025 =>es 21 en octal
+
+Las constantes de cadena son conjuntos de caracteres que se encierran entre comillas dobles. Por ejemplo, son constantes de cadena “Esto es una constante de cadena”, “Estos son unos apuntes de C”, etc.
+Las constantes de caracteres de barra invertida se usan para introducir caracteres que es imposible introducir por el teclado (tales como retorno de carro, etc.). Estas constantes son proporcionadas por C para que sea posible introducir dichos caracteres como constantes en los programas en los cuales sea necesario. Estas constantes de caracteres de barra invertida son: 
+\b: Retroceso
+\f: Alimentación de hoja
+\n: Nueva línea, salto de línea
+\r: Retorno de carro
+\t: Tabulador horizontal
+\”: Doble comilla
+\’: Simple comilla
+\0: Carácter Nulo
+\\: Barra invertida: Representa una “\”
+\v: Tabulador vertical
+\a: Alerta
+\o: Constante octal
+\x: Constante hexadecimal
+
+El uso de las constantes de barra invertida es igual que el de cualquier otro carácter, así, si ch es una variable de tipo char, podemos hacer: ch=‘\t’, o ch=‘\x20’ (carácter espacio), etc., de igual forma que realizaríamos con cualquier otra constante de carácter. 
+
+Además, las constantes de barra invertida pueden usarse en el interior de constantes de cadena como un carácter más, por ello, podemos poner escribir la constante de cadena: "Esto es una línea\n".
+6. Operadores
+En el lenguaje de programación C, un operador es un carácter o grupo de caracteres especiales que actúan sobre una, dos o más variables y/o constantes con el fin de obtener un resultado. Los operadores permiten realizar cálculos, comparar valores, manipular bits, entre muchas otras operaciones.
+Los operadores se pueden combinar entre sí para formar expresiones, las cuales siguen unas reglas de precedencia (prioridad) y asociatividad. Es posible utilizar paréntesis para modificar el orden natural de evaluación y asegurar que las operaciones se realicen en el orden deseado
+
+Los operadores se agrupan en cinco grandes categorías:
+Operadores aritméticos:
++: Suma
+-: Resta
+*: Multiplicación
+/: División
+%: Módulo (resto de la división entera o caracteres) 
+#include <stdio.h>
+
+
+int main() {
+    int a = 10, b = 3;
+    printf("Suma: %d\n", a + b);        // 13
+    printf("Resta: %d\n", a - b);       // 7
+    printf("Multiplicación: %d\n", a * b); // 30
+    printf("División: %d\n", a / b);    // 3 (división entera)
+    printf("Módulo: %d\n", a % b);      // 1 (resto de 10 / 3)
+    return 0;
+}
+
+
+Incremento ++, decremento --:
+Estos son operadores unarios que incrementan o disminuyen el valor de la variable en una unidad. Si preceden a la variable (si van antes), ésta se incrementa/decrementa antes de usar el valor de dicha variable.
+n=++b; // El valor original de b se incrementa y luego se asigna a n
+
+
+Si es la variable la que precede al operador, la variable es incrementada/decrementada después de ser usada en la expresión.
+n=b++; // El valor original de b se asigna a n y luego se incrementa b
+
+Ejemplo entero de incremento y decremento: 
+#include <stdio.h>
+
+int main() {
+    int a, b = 0, i;
+    // Primer bucle: imprime los valores de i con i++ (postincremento)
+    for(i = 0; i < 10; i++) {
+        printf("%i,", i);
+    }
+    // SALIDA: 0,1,2,3,4,5,6,7,8,9,
+    printf("-----------\n");
+    // Segundo bucle: imprime los valores de i con ++i (preincremento)
+    for(i = 0; i < 10; ++i) {
+        printf("%i,", i);
+    }
+    // SALIDA: 0,1,2,3,4,5,6,7,8,9,
+    printf("-----------\n");
+    // Tercer bucle: analiza el uso de b++ (postincremento) a toma el valor 
+actual de b, luego b se incrementa
+    for(i = 0; i < 10; ++i) {
+        a = b++;  // primero asigna b a a, luego incrementa b
+        printf("a=%i--", a);
+        printf("b=%i", b);
+        printf("\n");
+    }
+    /*
+    SALIDA:
+    a=0--b=1
+    a=1--b=2
+    a=2--b=3
+    ...
+    */
+    printf("-----------\n");
+    b = 0; // Se reinicia b a 0
+    // Cuarto bucle: analiza el uso de ++b (preincremento) b se incrementa antes de ser asignado a a
+    for(i = 0; i < 10; i++) {
+        a = ++b;  // primero incrementa b, luego lo asigna a a
+        printf("a=%i--", a);
+        printf("b=%i", b);
+        printf("\n");
+    }
+
+    /*
+    SALIDA:
+    a=1--b=1
+    a=2--b=2
+    ...
+    */
+    return 0;
+}
+
+Operadores relacionales:
+Se utilizan para comprobar la veracidad o falsedad de determinadas propuestas de relación (en realidad se trata de respuestas a preguntas). Las expresiones que los contienen se denominan expresiones relacionales. Aceptan diversos tipos de argumentos, y el resultado, que es la respuesta a la pregunta, es siempre del tipo cierto/falso, es decir, producen un resultado booleano. Se utilizan para comparar dos valores. El resultado siempre es verdadero (1) o falso (0). Estos son:
+== Igual a
+!= Distinto de
+> Mayor que
+< Menor que
+>= Mayor o igual que
+<= Menor o igual que
+#include <stdio.h>
+int main() {
+    int x = 5, y = 10;
+    printf("¿x == y? %d\n", x == y); // 0 (falso)
+    printf("¿x != y? %d\n", x != y); // 1 (verdadero)
+    printf("¿x > y? %d\n", x > y);   // 0
+    printf("¿x < y? %d\n", x < y);   // 1
+    printf("¿x >= y? %d\n", x >= y); // 0
+    printf("¿x <= y? %d\n", x <= y); // 1
+    return 0;
+}
+
+
+Operadores lógicos:
+Permiten combinar los resultados de los operadores relacionales. Sus operandos son también valores lógicos o asimilables a ellos (los valores numéricos son asimilados a cierto o falso según su valor sea cero o distinto de cero).
+&& Y lógico (AND)
+|| O lógico (OR)
+! Negación (NOT)
+#include <stdio.h>
+int main() {
+    int a = 1, b = 0;
+    printf("AND lógico: %d\n", a && b); // 0 (1 y 0 = falso)
+    printf("OR lógico: %d\n", a || b);  // 1 (al menos uno es verdadero)
+    printf("NOT lógico: %d\n", !a);     // 0 (negación de verdadero)
+    return 0;
+}
+
+
+Operadores de asignación:
+Atribuyen a una variable el resultado de una expresión o el valor de otra variable.
+Sirven para asignar valores a variables. El más básico es el =, pero también existen combinaciones con operadores aritméticos:
+= Asignación
++=, -=, *=, /=, %= Asignaciones compuestas
+= : a=3; a=b; (a=b=c àa=c:b=c)
++= : a+=5 à a=a+5)
+-= : a-=3*b à a=a-(3*b)/
+*= : a*=2 à a=a*2
+/= : a/=35+b à a=a/(35+b)
+%= : a%5àa=a%5
+
+#include <stdio.h>
+int main() {
+    int a = 5;
+    a += 3; // Equivale a: a = a + 3;
+    printf("a += 3 → %d\n", a); // 8
+    a *= 2; // a = a * 2
+    printf("a *= 2 → %d\n", a); // 16
+    return 0;
+}
+
+
+Tabla de Precedencia y Asociatividad:
+
+Operadores
+Asociatividad
+() [] -> .	
+izquierda a derecha
+! ~ ++ -- + - * & (tipo) sizeof	
+derecha a izquierda
+* / %	
+izquierda a derecha
++ -	
+izquierda a derecha
+<< >>	
+izquierda a derecha
+< <= > >=	
+izquierda a derecha
+== !=	
+izquierda a derecha
+&
+izquierda a derecha
+^
+izquierda a derecha
+|
+izquierda a derecha
+&&
+izquierda a derecha
+||
+izquierda a derecha
+?:
+derecha a izquierda
+= += -= *= /= %= &= ^=	= <<= >>=
+derecha a izquierda (todos juntos)
+,
+izquierda a derecha
+
+
+7. Estructura de un programa 
+/*
+    Nombre del programa y del proyecto.
+    Descripción:
+    Autor y fecha:
+*/
+/* Directivas al preprocesador */
+#include <libreria> // Bloque de librerías
+#define <nombre> <valor> // Bloque de macros
+// Comienzo del cuerpo principal:
+int main(){
+    Bloque de declaración e inicialización de variables <tipo_de_dato> <lista_de_variables> ;
+    Bloque de instrucciones: asignación, lectura, escritura, condicionales, iterativas
+}
+
+
+8. Estilo de programación
+Para desarrollar programas en lenguaje C de manera clara, eficiente y fácil de mantener, es importante seguir un conjunto de convenciones de estilo. Estas buenas prácticas mejoran tanto la comprensión del código como su calidad general.
+Comentar el código es fundamental y obligatorio. Siempre se debe explicar qué hace cada parte del programa mediante comentarios adecuados. Es recomendable declarar una sola variable por línea y añadir un comentario que indique su propósito o función en el programa. Esto facilita el mantenimiento y la comprensión del código por parte de otros programadores.
+Keep It Simple, Stupid: La simplicidad debe ser una prioridad. Aplicar el principio “Keep It Simple, Stupid” (KISS) implica escribir código directo y sin complicaciones innecesarias. Asimismo, se recomienda seguir la “Ley del mínimo asombro”, que sugiere que el comportamiento del código debe ser lo más predecible posible. El objetivo es que otro programador pueda leer el código y entenderlo sin confusión.
+En cuanto al uso de operadores, es aconsejable evitar escribir expresiones complejas que utilicen ++ o --. Lo ideal es emplearlos en líneas independientes para mantener la claridad. También se debe evitar colocar asignaciones (=) dentro de condiciones (if, while, etc.), ya que puede confundirse con el operador de igualdad (==) y provocar errores difíciles de detectar.
+Desde el punto de vista de la legibilidad, se deben colocar espacios después de cada coma y punto y coma. Además, se recomienda dejar un espacio en blanco a ambos lados de los operadores binarios como +, -, =, entre otros, para facilitar la lectura del código.
+La interfaz con el usuario debe mantenerse lo más simple y clara posible. Es importante que todos los mensajes, especialmente los de error, estén bien identificados y ofrezcan información precisa y útil.
+En relación con los identificadores, se deben usar nombres descriptivos que reflejen claramente el propósito de variables y funciones. Evite el uso de nombres genéricos o abreviados sin sentido. Los identificadores de macros y constantes deben escribirse en mayúsculas, mientras que los nombres de variables y funciones deben ir en minúsculas.
+Respecto al uso de estructuras de control como switch, es una buena práctica incluir siempre una cláusula default, incluso si no realiza ninguna acción. Todas las opciones del switch deben finalizar con una instrucción break para evitar una ejecución no deseada del siguiente caso. En cuanto a la sintaxis, se recomienda colocar la llave de apertura { al final de la línea de la estructura de control correspondiente, y no en una línea aparte. Asimismo, es esencial aplicar una indentación uniforme y clara en todo el programa, ya sea utilizando espacios o tabulaciones.
+Seguir estas pautas no solo mejora la calidad del código, sino que también facilita su revisión, depuración y mantenimiento a largo plazo. Un código bien escrito es una herramienta poderosa y un reflejo del cuidado y profesionalismo del programador.
+#include <stdio.h>
+
+int main() {
+    int edad = 0; // Edad del usuario
+    char nombre[50]; // Nombre del usuario
+
+    printf("Ingrese su nombre: ");
+    scanf("%s", nombre);
+
+    printf("Ingrese su edad: ");
+    scanf("%d", &edad);
+
+    if (edad >= 18) {
+        printf("%s es mayor de edad.\n", nombre);
+    } else {
+        printf("%s es menor de edad.\n", nombre);
+    }
+
+    return 0;
+}
+
+
+La directiva #include en C indica al preprocesador que incluya el contenido de un archivo específico en el código fuente del programa antes de la compilación. En este ejemplo, #include <stdio.h> indica al preprocesador que incluya el archivo stdio.h, que contiene la declaración de la función printf(). 
+En resumen: #include es una directiva del preprocesador que permite incluir el contenido de un archivo (generalmente un archivo de cabecera) en el código fuente, facilitando la organización, reutilización y modularidad del código en C.
+
