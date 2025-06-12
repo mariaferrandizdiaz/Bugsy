@@ -1,156 +1,12 @@
 <!DOCTYPE html>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="icon" type="image/png" href="images/icon.png" />
 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Bugsy - Chatbot C</title>
-  <style>
-    body {
-      background-color: #ede5f1;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      padding: 1em;
-      background-color: #fff;
-      border-bottom: 2px solid #ccc;
-    }
-
-    header img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    header h1 {
-      color: #842db4;
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    #chat-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: white;
-      padding: 2em;
-      border-radius: 20px;
-      margin-top: 1em;
-      display: none;
-    }
-
-    .message {
-      display: flex;
-      margin: 1em 0;
-      align-items: flex-end;
-    }
-
-    .user {
-      justify-content: flex-end;
-    }
-
-    .bot {
-      justify-content: flex-start;
-    }
-
-    .message .bubble {
-      max-width: 70%;
-      padding: 1em;
-      border-radius: 15px;
-      position: relative;
-    }
-
-    .user .bubble {
-      background-color: #ddc9e8;
-      margin-right: 10px;
-    }
-
-    .bot .bubble {
-      background-color: #e8ddc9;
-      margin-left: 10px;
-    }
-
-    .bubble pre {
-      background-color: #ffffff;
-      padding: 1em;
-      border-radius: 10px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      font-family: monospace;
-      font-size: 0.95em;
-      line-height: 1.4em;
-    }
-    
-    .bubble code {
-      background-color: #ffffff;
-      padding: 0.2em 0.4em;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-
-    .icon {
-      width: 30px;
-      height: 30px;
-    }
-
-    #input-container {
-      display: flex;
-      align-items: center;
-      background-color: #d9d9d9;
-      border-radius: 20px;
-      padding: 0.5em;
-      margin-top: 1em;
-    }
-
-    #user-input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-size: 1em;
-      padding: 0.5em;
-    }
-
-    #send-btn {
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    #send-btn img {
-      width: 25px;
-      height: 25px;
-    }
-
-    #chat {
-      min-height: 400px;
-      max-height: 500px;
-      overflow-y: auto;
-    }
-
-    #nivel-selector {
-      max-width: 800px;
-      margin: 3em auto;
-      text-align: center;
-    }
-
-    .nivel-btn {
-      background-color: #ddc9e8;
-      border: none;
-      padding: 0.8em 1.5em;
-      margin: 1em;
-      font-size: 1em;
-      font-weight: bold;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .nivel-btn:hover {
-      background-color: #c8aee0;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -230,6 +86,12 @@
         </div>`;
       chat.scrollTop = chat.scrollHeight;
     }
+    document.getElementById("user-input").addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // evita salto de línea
+        sendMessage();
+      }
+    });
   </script>
 
 </body>

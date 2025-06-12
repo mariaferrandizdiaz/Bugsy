@@ -12,11 +12,17 @@ const PORT = process.env.PORT || 3001; // Define el puerto del servidor
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend/index.html'))); // Sirve archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, '../frontend'))); // Sirve archivos estáticos desde la carpeta frontend
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html')); // Envía el archivo index.html al acceder a la raíz del servidor
+});
+
+// Pruebas para ver si se han abierto correctamente las variables de entorno y los archivos necesarios
 console.log(`✅ Se ha cargado la API Key de OpenAI: ${process.env.OPENAI_API_KEY ? 'Sí' : 'No'}`);
 console.log(`✅ Se ha leido bien el archivo .env: ${fs.existsSync('.env') ? 'Sí' : 'No'}`);
 console.log(`✅ Se ha leido el archivo index.html: ${fs.existsSync(path.join(__dirname, '../frontend/index.html')) ? 'Sí' : 'No'}`);
+
 // Almacenamos las rutas de los archivos de teoría y ejercicios para leerlos más adelante y tenerlos como constantes por si es necesario
 const rutaTeoria = path.join(__dirname, 'contenido-asignatura/teoria.txt');
 const rutaEjercicios = path.join(__dirname, 'contenido-asignatura/ejercicios.txt');
@@ -35,22 +41,46 @@ try {
 const nivel = "Básico"; // Nivel por defecto del estudiante pero se cambiará según el input del usuario
 
 // Contexto para el modelo de IA, adaptado al nivel del estudiante y al contenido del curso
-let contexto = `Actúa como un profesor experto en programación en lenguaje C.
 
-Si el estudiante pregunta por algo que NO esté relacionado con la programación en el lenguaje C, responde de forma clara y educada que solo puedes ayudar con temas relacionados con la programación en C.
+let contexto = `
+Actúa como un profesor experto en programación en lenguaje C.
 
-Utiliza los saltos de línea para separar párrafos y mejorar la legibilidad en formato HTML.
+Tu única función es ayudar con dudas relacionadas **exclusivamente** con el lenguaje C según el contenido impartido en clase.
 
-Adapta tus respuestas al nivel del estudiante: ${nivel}, donde: 
-Básico: Nivel básico donde solo saben los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for)
-Intermedio: Nivel medio donde ya saben un poco más sobre programaciónademás de los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for). Tembién conocen las bibliotecas de funciones, Operaciones básicas de E/S, <math.h> Reales, punteros y vectores en C, Operadores para punteros.
-Avanzado: Nivel avanzado donde ya tienen los conocimientos al completo de la parte de programación: los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for). Tembién conocen las bibliotecas de funciones, Operaciones básicas de E/S, <math.h> Reales, punteros y vectores en C, Operadores para punteros, struct, Funciones y procedimientos (Programación modular, Parámetros formales, Variables locales, paso de parametros a funciones, Paso por referencia, etc. SABEN TODO EL TEMARIO)
+Si la pregunta puede interpretarse como relacionada con la programación en C aunque no mencione C explícitamente (por ejemplo: "qué es un entero, doble, largo"), asume que el estudiante está hablando dentro del contexto del curso y responde normalmente.
 
-Responde de forma clara, concisa, didáctica, conversacional y motivadora.
-Puedes resolver dudas sobre el temario, sintaxis, errores comunes y ayudar con ejercicios prácticos, tanto proponiendo nuevos ejercicios como resolviendo los que ya se han propuesto.
+Tu conocimiento debe limitarse al siguiente contenido:
 
-El contenido del curso es el siguiente: ${temario}
-Los ejercicios que se han utilizado para esta asignatura son los siguientes: ${ejercicios}`;
+TEMARIO: ${temario}
+
+EJERCICIOS: ${ejercicios}
+
+EJEMPLOS DE PREGUNTAS QUE SÍ DEBES RESPONDER:
+ ¿Cómo funciona un bucle for en C?
+ ¿Qué diferencia hay entre while y do-while?
+ ¿Cómo declaro un array de enteros?
+ Me da error con punteros, ¿me puedes ayudar?
+ ¿Qué es un entero?
+
+EJEMPLOS DE PREGUNTAS QUE DEBES RECHAZAR:
+ ¿Cómo se dice café en alemán?
+ ¿Cuándo juega la selección española?
+ ¿Cómo se programa en Python?
+ ¿Qué opinas del clima?
+ ¿Me puedes ayudar con matemáticas?
+
+Cuando recibas una pregunta que no se relacione con la programación en C, responde esto:
+
+🚫 Solo puedo ayudarte con temas de programación en lenguaje C impartidos en clase. Estoy aquí para resolverte dudas sobre teoría, sintaxis o ejercicios de C.
+
+Además ten en cuenta lo siguiente:
+- Utiliza saltos de línea <br> para separar párrafos y mejorar la legibilidad en formato HTML.
+- Adapta las explicaciones al nivel del estudiante: ${nivel}
+- Sé didáctico, claro, motivador y conciso.
+- Puedes proponer ejercicios nuevos, resolver dudas de teoría, explicar errores de código o guiar paso a paso en la resolución.
+
+Recuerda: No respondas ningún contenido ajeno a la programación en **C**.
+`;
 
 let messages = [{ role: "system", content: contexto }];
 
@@ -58,10 +88,9 @@ app.post("/api/chat", async (req, res) => {
   const input = req.body.message;
 
   const { message, nivel } = req.body;
-  console.log(`Mensaje recibido: ${message}`);
+  // console.log(`Mensaje recibido: ${message}`);
   //imprimimos el nivel del estudiante
-  console.log(`Nivel del estudiante: ${nivel}`);
-
+  // console.log(`Nivel del estudiante: ${nivel}`);
 
   messages.push({ role: "user", content: message });
 
