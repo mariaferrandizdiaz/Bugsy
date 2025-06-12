@@ -12,8 +12,11 @@ const PORT = process.env.PORT || 3001; // Define el puerto del servidor
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Sirve archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, '../frontend/index.html'))); // Sirve archivos estáticos desde la carpeta 'public'
 
+console.log(`✅ Se ha cargado la API Key de OpenAI: ${process.env.OPENAI_API_KEY ? 'Sí' : 'No'}`);
+console.log(`✅ Se ha leido bien el archivo .env: ${fs.existsSync('.env') ? 'Sí' : 'No'}`);
+console.log(`✅ Se ha leido el archivo index.html: ${fs.existsSync(path.join(__dirname, '../frontend/index.html')) ? 'Sí' : 'No'}`);
 // Almacenamos las rutas de los archivos de teoría y ejercicios para leerlos más adelante y tenerlos como constantes por si es necesario
 const rutaTeoria = path.join(__dirname, 'contenido-asignatura/teoria.txt');
 const rutaEjercicios = path.join(__dirname, 'contenido-asignatura/ejercicios.txt');
