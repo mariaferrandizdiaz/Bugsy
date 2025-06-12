@@ -1,127 +1,85 @@
-require('dotenv').config();   // Cargar variables de entorno desde .env
-const fs = require('fs');     // Módulo para manejar el sistema de archivos
-const path = require('path'); // Módulo para manejar rutas de archivos
-const readline = require('readline-sync'); // Módulo para leer la entrada del usuario desde la consola
-const OpenAI = require("openai");          // Módulo para interactuar con la API de OpenAI
+require('dotenv').config();          // Carga las variables de entorno desde .env (la api key de gpt-4.1-nano)
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const express = require('express');  // Importa las dependencias necesarias
+const cors = require('cors');        // Permite solicitudes CORS para el frontend 
+const fs = require('fs');            // Maneja el sistema de archivos para leer los contenidos
+const path = require('path');        // Maneja las rutas de los archivos
+const OpenAI = require("openai");    // Importa la librería OpenAI para interactuar con la API de OpenAI
 
-// Ruta relativa al archivo
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const app = express();
+const PORT = process.env.PORT || 3001; // Define el puerto del servidor
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public'))); // Sirve archivos estáticos desde la carpeta 'public'
+
+// Almacenamos las rutas de los archivos de teoría y ejercicios para leerlos más adelante y tenerlos como constantes por si es necesario
 const rutaTeoria = path.join(__dirname, 'contenido-asignatura/teoria.txt');
 const rutaEjercicios = path.join(__dirname, 'contenido-asignatura/ejercicios.txt');
 
+// Leemos los contenidos de los archivos de teoría y ejercicios
 let temario = '';
+let ejercicios = '';
 try {
   temario = fs.readFileSync(rutaTeoria, 'utf8');
   ejercicios = fs.readFileSync(rutaEjercicios, 'utf8');
-  // console.log('✅ Archivos leídos correctamente.');
 } catch (err) {
-  console.error('❌ No se pudo leer el archivo temario.txt:', err.message);
-  process.exit(1);
+  console.error('❌ Error cargando archivos de contenido.', err.message);
 }
 
-// 🟢 Mensaje de bienvenida
-console.log(`
-🎉 ¡Hola! Bienvenido/a al Chatbot de C 👨‍🏫👩‍💻
-Estoy aquí para ayudarte a aprender programación en lenguaje C de forma sencilla y entretenida.
-Puedes preguntarme sobre teoría, ejercicios, errores, trucos... ¡lo que necesites!
+// se le pide al usuario el nivel que tiene en programación en C
+const nivel = "Básico"; // Nivel por defecto del estudiante pero se cambiará según el input del usuario
 
-👇 Primero dime cuál es tu nivel para adaptarme mejor a ti:
-`);
-
-const nivel = readline.question("¿Cuál es tu nivel en programación en C? (básico/intermedio/avanzado): ").toLowerCase();
-
+// Contexto para el modelo de IA, adaptado al nivel del estudiante y al contenido del curso
 let contexto = `Actúa como un profesor experto en programación en lenguaje C.
-Adapta tus respuestas al nivel del estudiante: ${nivel}.
-Donde: 
+
+Si el estudiante pregunta por algo que NO esté relacionado con la programación en el lenguaje C, responde de forma clara y educada que solo puedes ayudar con temas relacionados con la programación en C.
+
+Utiliza los saltos de línea para separar párrafos y mejorar la legibilidad en formato HTML.
+
+Adapta tus respuestas al nivel del estudiante: ${nivel}, donde: 
 Básico: Nivel básico donde solo saben los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for)
 Intermedio: Nivel medio donde ya saben un poco más sobre programaciónademás de los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for). Tembién conocen las bibliotecas de funciones, Operaciones básicas de E/S, <math.h> Reales, punteros y vectores en C, Operadores para punteros.
 Avanzado: Nivel avanzado donde ya tienen los conocimientos al completo de la parte de programación: los tipos de datos y variables que existen, los pasos básicos de resolución de un problema, lo que es un algoritmo, estructuras de control en C (como if, do-while, while, switch, for). Tembién conocen las bibliotecas de funciones, Operaciones básicas de E/S, <math.h> Reales, punteros y vectores en C, Operadores para punteros, struct, Funciones y procedimientos (Programación modular, Parámetros formales, Variables locales, paso de parametros a funciones, Paso por referencia, etc. SABEN TODO EL TEMARIO)
-Responde de forma clara, didáctica, conversacional y motivadora.
-Puedes resolver dudas sobre el temario, sintaxis, errores comunes y ayudar con ejercicios prácticos.
-Sé paciente y guía paso a paso si el nivel es bajo.
+
+Responde de forma clara, concisa, didáctica, conversacional y motivadora.
+Puedes resolver dudas sobre el temario, sintaxis, errores comunes y ayudar con ejercicios prácticos, tanto proponiendo nuevos ejercicios como resolviendo los que ya se han propuesto.
+
 El contenido del curso es el siguiente: ${temario}
-Los ejercicios que se pueden realizar son los siguientes: ${ejercicios}
-Si el estudiante pregunta por un ejercicio, proporciona una breve descripción y guía para resolverlo.
-Si el estudiante pregunta por un error, proporciona una breve descripción del error y cómo solucionarlo.
-Si el estudiante pregunta por un truco o consejo, proporciona una breve descripción y cómo aplicarlo.
-Si el estudiante pregunta por un concepto o algo de teoría, proporciona una breve descripción y ejemplos si es necesario.`;
+Los ejercicios que se han utilizado para esta asignatura son los siguientes: ${ejercicios}`;
 
-// Mensaje de contexto para el modelo
-// Este mensaje define el rol del modelo y su enfoque gracias a la variable del contexto
-let messages = [
-  { role: "system", content: contexto }
-];
+let messages = [{ role: "system", content: contexto }];
 
-async function chatLoop() {
-  console.log("\n💬 ¿Con qué puedo ayudarte?. Escribe 'salir' para terminar.\n");
+app.post("/api/chat", async (req, res) => {
+  const input = req.body.message;
 
-  // TODO: REVISAR CON JEZA Y ANDREA
-  // const palabrasClaveC = [
-  //  "c ", "c.", "lenguaje c", "printf", "scanf", "int", "char", "float", "struct",
-  //  "puntero", "punteros", "malloc", "memoria", "compilar", "gcc", "array", "for", "while",
-  //  "switch", "if", "else", "variable", "función", "main", "código", "ejercicio", "programa", 
-  //  "error", "debug", "bucle", "vector", "matriz", "biblioteca", "include", "header",
-  //  "algoritmo", "sintaxis", "compilador", "estructura de control", "tipos de datos",
-  //  "operador", "constante", "cadena", "carácter", "lógica", "condicional", "iteración",
-  //  "recursión", "parámetro", "argumento", "función recursiva", "prototipo", "declaración",
-  //  "definición", "scope", "alcance", "variable local", "variable global", "typedef",
-  //];
+  const { message, nivel } = req.body;
+  console.log(`Mensaje recibido: ${message}`);
+  //imprimimos el nivel del estudiante
+  console.log(`Nivel del estudiante: ${nivel}`);
 
-  while (true) {
-    const input = readline.question("\tTú: ");
-    if (input.toLowerCase() === "salir") break;
 
-    // Verifica si el input parece relevante al lenguaje C
-    // const esRelacionado = palabrasClaveC.some(palabra => input.toLowerCase().includes(palabra));
+  messages.push({ role: "user", content: message });
 
-    // if (!esRelacionado) {
-    //  console.log("\n\t⚠️ Parece que tu mensaje no está relacionado con la programación en C.\n\t¡Recuerda que estoy aquí para ayudarte con ese tema! 😊\n");
-    //  continue;
-    // }
-
-    // Comprobamos con GPT-4 si la duda del usuario está relacionada con el lenguaje C
-    const filtroTematico = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: "Eres un asistente que responde únicamente 'sí' o 'no'." },
-        { role: "user", content: `¿Este mensaje está relacionado con la programación en lenguaje C?: "${input}"` }
-      ]
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4.1-nano",
+      messages: messages,
     });
 
-    const respuestaFiltro = filtroTematico.choices[0].message.content.trim().toLowerCase();
+    const reply = completion.choices[0].message.content.trim();
+    messages.push({ role: "assistant", content: reply });
 
-    if (respuestaFiltro !== "sí") {
-      console.log("\n⚠️ Parece que tu mensaje no está relacionado con la programación en C. ¡Recuerda que estoy aquí para ayudarte con ese tema! 😊\n");
-      continue;
+    if (messages.length > 20) {
+      messages = [messages[0], ...messages.slice(-18)];
     }
-    messages.push({ role: "user", content: input });
 
-    try {
-      // Llamada a la API de OpenAI para obtener una respuesta
-      const chatCompletion = await openai.chat.completions.create({
-        model: "gpt-4.1-mini",
-        messages: messages,
-      });
-
-      // Extrae la respuesta del modelo
-      const reply = chatCompletion.choices[0].message.content.trim();
-      console.log(`\n\tAsistente de C: ${reply}\n`);
-
-      messages.push({ role: "assistant", content: reply });
-
-      // Limita el historial de mensajes a las últimas 20 interacciones para evitar sobrecargar la conversación
-      // Mantiene el contexto relevante sin perder información importante
-      if (messages.length > 20) {
-        messages = [messages[0], ...messages.slice(-18)];
-      }
-
-    } catch (error) {
-      console.error("❌ Error al conectar con la API:", error.message);
-    }
+    res.json({ reply });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ reply: "❌ Error al conectar con la IA." });
   }
-}
+});
 
-chatLoop();
+app.listen(PORT, () => console.log(`✅ Servidor escuchando en http://localhost:${PORT}`));

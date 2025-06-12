@@ -1,7 +1,7 @@
 {
   "name": "borrador",
   "version": "1.0.0",
-  "description": "",
+  "description": "> Chatbot basado en IA generativa y conversacional para que sirva como asistente virtual en los contenidos teóricos y prácticos de la asignatura de Informática en el Grado en Ingeniería Electrónica Industrial y Automática.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,18 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "openai": "^5.3.0",
     "readline-sync": "^1.4.10"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariaferrandizdiaz/Bugsy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mariaferrandizdiaz/Bugsy/issues"
+  },
+  "homepage": "https://github.com/mariaferrandizdiaz/Bugsy#readme"
 }
