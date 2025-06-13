@@ -1,6 +1,6 @@
 # 🤖 TFG. ChatBot con IA generativa 
 
-> Chatbot basado en IA generativa y conversacional para que sirva como asistente virtual en los contenidos teóricos y prácticos de la asignatura de Informática en el Grado en Ingeniería Electrónica Industrial y Automática.
+> El objetivo principal objetivo de este Trabajo de Fin de Grado es la generación de un Chatbot basado en IA generativa y conversacional para que sirva como asistente virtual en los contenidos teóricos y prácticos de la asignatura de Programación en el Grado en Ingeniería Electrónica Industrial y Automática.
 
 ## 📖 Índice
 

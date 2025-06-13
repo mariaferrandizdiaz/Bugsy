@@ -15,48 +15,49 @@
     <h1>Bugsy</h1>
   </header>
 
-  <!-- Selector de nivel -->
-  <div id="nivel-selector">
-    <h2>¿Cuál es tu nivel de programación en C?</h2>
-    <button class="nivel-btn" onclick="setNivel('Básico')">Básico</button>
-    <button class="nivel-btn" onclick="setNivel('Intermedio')">Intermedio</button>
-    <button class="nivel-btn" onclick="setNivel('Avanzado')">Avanzado</button>
+  <!-- Botón flotante del chatbot -->
+  <div id="chat-button" onclick="toggleChat()">
+    <img src="images/bugsy-logo.png" alt="Abrir Chat" />
   </div>
 
-  <!-- Chat -->
+  <!-- Contenedor del chat oculto Chat -->
   <div id="chat-container">
     <div id="chat"></div>
 
     <div id="input-container">
-      <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+      <input type="text" id="user-input" placeholder="Escribe tu pregunta..." />
       <button id="send-btn" onclick="sendMessage()">
-        <img src="images/send-icon.png" alt="Enviar">
+        <img src="images/send-icon.png" alt="Enviar" />
       </button>
     </div>
   </div>
-
+  
   <script>
+    const sessionId = crypto.randomUUID();  // genera un ID único
     let nivelSeleccionado = null;
 
     function setNivel(nivel) {
       nivelSeleccionado = nivel;
-      document.getElementById("nivel-selector").style.display = "none";
-      document.getElementById("chat-container").style.display = "block";
+
+      // Elimina los botones después de la selección
+      const buttonsContainer = document.querySelector(".bubble div[style*='margin-top']");
+      if (buttonsContainer) {
+        buttonsContainer.innerHTML = `<p style="margin-top: 1em;"><strong>Nivel seleccionado: ${nivel}</strong></p>`;
+      }
 
       const chat = document.getElementById("chat");
       chat.innerHTML += `
-        <div class="message bot">
-          <img class="icon" src="images/bot-icon.png" alt="Bot">
-          <div class="bubble">Bienvenido/a a <strong>Bugsy</strong>, tu asistente en la asignatura de Programación👨‍🏫👩‍💻. <br>Estoy aquí para ayudarte a aprender sobre el lenguaje C y los contenidos de este bloque de la asignatura. ¿En qué puedo ayudarte hoy?</div>
-        </div>`;
+      <div class="message bot">
+        <img class="icon" src="images/bot-icon.png" alt="Bot">
+        <div class="bubble">Soy <strong>Bugsy 🤖</strong>, tu asistente de programación en C.<br>¿Con qué te puedo ayudar?</div>
+      </div>`;
     }
 
     async function sendMessage() {
       const input = document.getElementById("user-input");  // Input del usuario
-      
       const chat = document.getElementById("chat");
-
       const userText = input.value.trim();
+
       if (!userText || !nivelSeleccionado) return;
 
       chat.innerHTML += `
@@ -68,31 +69,71 @@
       input.value = "";
       chat.scrollTop = chat.scrollHeight;
 
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: userText,
-          nivel: nivelSeleccionado
-        })
-      });
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: userText,
+            nivel: nivelSeleccionado,
+            sessionId: sessionId // ✅ enviado correctamente
+          })
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
+        chat.innerHTML += `
+          <div class="message bot">
+            <img class="icon" src="images/bot-icon.png" alt="Bot">
+            <div class="bubble">${marked.parse(data.reply)}</div>
+          </div>`;
+        //chat.scrollTop = chat.scrollHeight;
+    } catch (error) {
       chat.innerHTML += `
         <div class="message bot">
           <img class="icon" src="images/bot-icon.png" alt="Bot">
-          <div class="bubble">${marked.parse(data.reply)}</div>
+          <div class="bubble">❌ Error al conectar con el servidor. Intenta de nuevo más tarde.</div>
         </div>`;
-      chat.scrollTop = chat.scrollHeight;
+      console.error("❌ Error en fetch:", error);
     }
-    document.getElementById("user-input").addEventListener("keydown", function (event) {
-      if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault(); // evita salto de línea
-        sendMessage();
-      }
-    });
-  </script>
+    chat.scrollTop = chat.scrollHeight;
+  }
+  document.getElementById("user-input").addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault(); // evita salto de línea
+      sendMessage();
+    }
+  });
+
+  // Muestra u oculta el chat con el botón flotante
+  function toggleChat() {
+    const chatContainer = document.getElementById("chat-container");
+    const chat = document.getElementById("chat");
+
+    if (chatContainer.style.display === "block") {
+      chatContainer.style.display = "none";
+      return;
+    }
+
+    chatContainer.style.display = "block";
+
+    if (!nivelSeleccionado) {
+      chat.innerHTML = `
+        <div class="message bot">
+          <img class="icon" src="images/bot-icon.png" alt="Bot">
+          <div class="bubble">
+            ¡Hola! Antes de comenzar, selecciona tu nivel para adaptar las respuestas:
+<div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
+              <button class="nivel-btn" onclick="setNivel('Básico')">Básico</button>
+              <button class="nivel-btn" onclick="setNivel('Intermedio')">Intermedio</button>
+              <button class="nivel-btn" onclick="setNivel('Avanzado')">Avanzado</button>
+            </div>
+          </div>
+        </div>`;
+    }
+  }
+
+</script>
 
 </body>
 </html>
