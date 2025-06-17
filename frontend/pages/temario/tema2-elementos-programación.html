@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Identificadores, Tipos de Datos y Constantes</title>
+</head>
+<body>
+    <h2>Identificadores, Tipos de Datos, Variables y Constantes</h2>
+
+    <h3>¿Qué es un identificador?</h3>
+    <p>Un identificador es el nombre que damos a cosas como variables, funciones o constantes. Por ejemplo, <code>edad</code> o <code>mostrarMensaje</code> son identificadores.</p>
+    <p>En C, los identificadores:</p>
+    <ul>
+        <li>Distinguen entre mayúsculas y minúsculas (<code>Edad</code> ≠ <code>edad</code>).</li>
+        <li>No pueden comenzar por un número.</li>
+        <li>Solo pueden contener letras, números y guiones bajos (_).</li>
+        <li>No pueden ser palabras reservadas como <code>int</code>, <code>return</code> o <code>while</code>.</li>
+    </ul>
+
+    <h3>Tipos de datos básicos</h3>
+    <p>En C, cada variable debe indicar qué tipo de datos va a guardar. Los principales tipos son:</p>
+    <ul>
+        <li><strong>int</strong>: Números enteros.</li>
+        <li><strong>float</strong>: Números decimales.</li>
+        <li><strong>char</strong>: Caracteres individuales como <code>'A'</code> o <code>'7'</code>.</li>
+        <li><strong>double</strong>: Decimales más precisos que float.</li>
+        <li><strong>void</strong>: Sin tipo (se usa en funciones que no devuelven nada).</li>
+    </ul>
+
+    <h4>Modificadores de tipo</h4>
+    <p>Permiten ajustar el tamaño o el comportamiento del tipo de dato. Ejemplos:</p>
+    <ul>
+        <li><code>unsigned int</code>: Entero sin signo (no admite negativos).</li>
+        <li><code>long double</code>: Número decimal con mucho rango.</li>
+        <li><code>short int</code>: Entero pequeño.</li>
+    </ul>
+
+    <h4>Modificadores de acceso</h4>
+    <ul>
+        <li><code>const</code>: La variable no puede cambiar.</li>
+        <li><code>volatile</code>: La variable puede cambiar desde fuera del programa (ej. reloj del sistema).</li>
+    </ul>
+
+    <h3>¿Dónde se pueden declarar las variables?</h3>
+    <ul>
+        <li><strong>Globales</strong>: Fuera de todas las funciones.</li>
+        <li><strong>Locales</strong>: Dentro de una función.</li>
+        <li><strong>Parámetros</strong>: Dentro de la cabecera de una función.</li>
+        <li><strong>Bloques</strong>: Dentro de un bloque entre llaves <code>{ }</code>.</li>
+    </ul>
+
+    <h3>Especificadores de almacenamiento</h3>
+    <ul>
+        <li><code>auto</code>: Local y temporal (por defecto).</li>
+        <li><code>extern</code>: Variable declarada en otro módulo.</li>
+        <li><code>static</code>: Conserva el valor entre ejecuciones de la función.</li>
+        <li><code>register</code>: Intenta guardar la variable en un registro rápido del procesador.</li>
+    </ul>
+
+    <h3>Constantes</h3>
+    <p>Las constantes son valores que no cambian durante la ejecución del programa. Ejemplos:</p>
+    <ul>
+        <li><code>const int max = 100;</code></li>
+        <li>Constantes octales: <code>012</code>, <code>073</code></li>
+        <li>Constantes hexadecimales: <code>0x1F</code>, <code>0xFF</code></li>
+        <li>Constantes de cadena: <code>"Hola mundo"</code></li>
+        <li>Caracteres especiales como <code>\\n</code> (salto de línea), <code>\\t</code> (tabulación)</li>
+    </ul>
+
+    <h3>Operadores</h3>
+    <p>Los operadores permiten realizar cálculos o comparar valores. Algunos ejemplos:</p>
+    <ul>
+        <li><strong>Aritméticos</strong>: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+        <li><strong>Relacionales</strong>: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code></li>
+        <li><strong>Lógicos</strong>: <code>&&</code>, <code>||</code>, <code>!</code></li>
+        <li><strong>Asignación</strong>: <code>=</code>, <code>+=</code>, <code>*=</code>, etc.</li>
+    </ul>
+
+    <h3>Estructura básica de un programa en C</h3>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    // Declaraciones
+    int edad = 0;
+    char nombre[50];
+
+    // Entrada de datos
+    printf("Introduce tu nombre: ");
+    scanf("%s", nombre);
+
+    printf("Introduce tu edad: ");
+    scanf("%d", &edad);
+
+    // Condicional
+    if (edad >= 18) {
+        printf("%s es mayor de edad.\\n", nombre);
+    } else {
+        printf("%s es menor de edad.\\n", nombre);
+    }
+
+    return 0;
+}
+    </pre>
+
+    <h3>Buenas prácticas y estilo</h3>
+    <ul>
+        <li>Comenta tu código para que otros lo entiendan.</li>
+        <li>Usa nombres de variables claros y significativos.</li>
+        <li>No escribas expresiones demasiado complicadas.</li>
+        <li>Escribe el código de forma ordenada e indentada.</li>
+        <li>Evita errores comunes como confundir <code>=</code> con <code>==</code>.</li>
+    </ul>
+</body>
+</html>

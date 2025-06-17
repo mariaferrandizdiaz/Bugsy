@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tema 3: Biblioteca de funciones en C</title>
+</head>
+<body>
+    <h2>Biblioteca de funciones en C</h2>
+
+    <h3>¿Qué es una biblioteca en C?</h3>
+    <p>En el lenguaje C, una biblioteca es un conjunto de funciones ya escritas y disponibles para que el programador las utilice sin tener que definirlas desde cero. Estas funciones están organizadas por temas o funcionalidades, y se incluyen en los programas mediante la instrucción <code>#include</code>.</p>
+
+    <h3>Biblioteca <code>&lt;stdio.h&gt;</code>: Entrada y salida de datos</h3>
+    <p>La biblioteca estándar de entrada y salida (<code>stdio.h</code>) contiene las funciones necesarias para mostrar datos al usuario (salida) y para recibir datos del usuario (entrada).</p>
+
+    <h4>Funciones principales</h4>
+    <ul>
+        <li><strong>printf()</strong>: muestra información en la consola.</li>
+        <li><strong>scanf()</strong>: lee valores introducidos por el usuario.</li>
+        <li><strong>getchar()</strong>: lee un carácter.</li>
+        <li><strong>putchar()</strong>: escribe un carácter.</li>
+        <li><strong>gets()</strong>: lee una cadena de caracteres (ya no recomendada por seguridad).</li>
+        <li><strong>puts()</strong>: escribe una cadena de caracteres.</li>
+    </ul>
+
+    <h4>Ejemplo con printf y scanf</h4>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    char nombre[20];
+    int edad;
+
+    printf("Introduce tu nombre: ");
+    scanf("%s", nombre);
+
+    printf("Introduce tu edad: ");
+    scanf("%d", &edad);
+
+    printf("Hola %s, tienes %d años.\\n", nombre, edad);
+    return 0;
+}
+    </pre>
+
+    <h4>Formatos más comunes en printf</h4>
+    <ul>
+        <li><code>%d</code> o <code>%i</code>: entero decimal</li>
+        <li><code>%o</code>: entero en octal</li>
+        <li><code>%x</code>: entero en hexadecimal</li>
+        <li><code>%u</code>: entero sin signo</li>
+        <li><code>%f</code>: número con coma flotante</li>
+        <li><code>%e</code>: notación científica</li>
+        <li><code>%s</code>: cadena de caracteres</li>
+        <li><code>%c</code>: un solo carácter</li>
+        <li><code>%%</code>: el carácter % literal</li>
+    </ul>
+
+    <h4>Secuencias de escape útiles</h4>
+    <p>Se utilizan para representar caracteres especiales:</p>
+    <ul>
+        <li><code>\\n</code>: salto de línea</li>
+        <li><code>\\t</code>: tabulador horizontal</li>
+        <li><code>\\b</code>: retroceso</li>
+        <li><code>\\r</code>: retorno de carro</li>
+        <li><code>\\a</code>: alerta sonora</li>
+        <li><code>\\\"</code>: comilla doble</li>
+        <li><code>\\'</code>: comilla simple</li>
+        <li><code>\\\\</code>: barra invertida</li>
+        <li><code>\\?</code>: signo de interrogación</li>
+        <li><code>\\xhh</code>: carácter en hexadecimal</li>
+    </ul>
+
+    <h3>Biblioteca <code>&lt;math.h&gt;</code>: Funciones matemáticas</h3>
+    <p>Contiene funciones para realizar operaciones matemáticas avanzadas. Requiere incluir <code>&lt;math.h&gt;</code> y, en muchos compiladores como GCC, usar <code>-lm</code> al compilar.</p>
+
+    <h4>Funciones frecuentes en <code>math.h</code></h4>
+    <ul>
+        <li><code>double sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code>: trigonométricas básicas</li>
+        <li><code>double asin(x)</code>, <code>acos(x)</code>, <code>atan(x)</code>: trigonométricas inversas</li>
+        <li><code>double exp(x)</code>: exponencial de x</li>
+        <li><code>double log(x)</code>: logaritmo natural</li>
+        <li><code>double log10(x)</code>: logaritmo base 10</li>
+        <li><code>double pow(x, y)</code>: potencia (x^y)</li>
+        <li><code>double sqrt(x)</code>: raíz cuadrada</li>
+        <li><code>double fabs(x)</code>: valor absoluto</li>
+    </ul>
+
+    <h4>Ejemplo de uso de <code>math.h</code></h4>
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double base = 2.0, exponente = 3.0;
+    double resultado = pow(base, exponente);
+
+    printf("2 elevado a 3 es: %f\\n", resultado);
+
+    return 0;
+}
+    </pre>
+
+    <h4>Recomendaciones</h4>
+    <ul>
+        <li>Incluye siempre <code>#include &lt;math.h&gt;</code> si usas funciones matemáticas.</li>
+        <li>Compila con <code>-lm</code> si es necesario (por ejemplo: <code>gcc archivo.c -lm</code>).</li>
+        <li>Recuerda que muchas funciones trabajan con <code>double</code> por defecto.</li>
+    </ul>
+
+    <p>Estas bibliotecas amplían enormemente lo que puedes hacer con C y son fundamentales para desarrollar programas interactivos y con lógica matemática.</p>
+</body>
+</html>

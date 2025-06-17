@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tema 4: Punteros y Vectores (Ampliado)</title>
+</head>
+<body>
+  <h2>Tema 4: Punteros y Vectores</h2>
+
+  <h3>¿Qué es un puntero?</h3>
+  <p>Un puntero en C es una variable que almacena la dirección de memoria de otra variable. En lugar de guardar un valor directamente, guarda dónde está ese valor en la memoria.</p>
+  <p>Esto es útil para manipular directamente la memoria, trabajar con arrays, funciones, estructuras y optimizar el rendimiento.</p>
+
+  <h4>Declaración básica</h4>
+  <pre><code>int *ptr;  // Puntero a un entero</code></pre>
+
+  <p>El operador <code>*</code> indica que se está declarando un puntero, no un valor entero común.</p>
+
+  <h3>¿Cómo funcionan los punteros?</h3>
+  <p>Supón que tienes una variable <code>int x = 5;</code>. Si quieres crear un puntero que apunte a esa variable, usas el operador <code>&</code> para obtener su dirección:</p>
+
+  <pre><code>
+int x = 5;
+int *ptr = &x;  // ptr guarda la dirección de x
+  </code></pre>
+
+  <p>Y si quieres acceder al valor al que apunta el puntero, usas <code>*</code> (operador de desreferenciación):</p>
+
+  <pre><code>
+printf("%d", *ptr);  // imprime el valor de x (5)
+  </code></pre>
+
+  <h3>Precauciones importantes</h3>
+  <ul>
+    <li>No uses punteros sin inicializar: pueden apuntar a zonas de memoria no válidas.</li>
+    <li>Siempre es buena práctica inicializarlos con <code>NULL</code> si aún no tienen destino.</li>
+    <li>Evita modificar punteros con operaciones aritméticas complejas sin entender su efecto.</li>
+  </ul>
+
+  <h3>Ejemplo: intercambio de valores con punteros</h3>
+  <pre><code>
+void intercambiar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    intercambiar(&x, &y);
+    printf("x = %d, y = %d\\n", x, y);  // x = 20, y = 10
+}
+  </code></pre>
+
+  <h3>Vectores (arrays) en C</h3>
+  <p>Un vector es una estructura que permite almacenar múltiples valores del mismo tipo bajo un mismo nombre. Cada valor se accede mediante un índice.</p>
+
+  <pre><code>int notas[5] = {8, 6, 7, 9, 10};</code></pre>
+
+  <p>El primer elemento es <code>notas[0]</code> y el último <code>notas[4]</code>. El índice siempre comienza en 0.</p>
+
+  <h3>Acceso con punteros</h3>
+  <p>El nombre de un vector es en sí mismo un puntero al primer elemento.</p>
+
+  <pre><code>
+int notas[3] = {5, 7, 9};
+int *p = notas;
+printf("%d", *(p + 1));  // imprime 7
+  </code></pre>
+
+  <p>Esto significa que puedes recorrer un array tanto con índices como con punteros:</p>
+
+  <pre><code>
+for (int i = 0; i < 3; i++) {
+    printf("%d ", *(notas + i));
+}
+  </code></pre>
+
+  <h3>Cadenas de caracteres (strings)</h3>
+  <p>Una cadena es un array de caracteres terminado en el carácter nulo <code>'\\0'</code>.</p>
+
+  <pre><code>
+char saludo[] = "Hola";  // equivalente a {'H','o','l','a','\\0'}
+printf("%s", saludo);    // imprime: Hola
+  </code></pre>
+
+  <h3>Arrays multidimensionales</h3>
+  <p>Un array de dos dimensiones se interpreta como una matriz (filas y columnas):</p>
+
+  <pre><code>
+int matriz[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+printf("%d", matriz[1][2]);  // imprime 6
+  </code></pre>
+
+  <h3>Resumen final</h3>
+  <ul>
+    <li>Un puntero guarda una dirección de memoria</li>
+    <li>Se usa <code>*</code> para declarar y acceder al contenido apuntado</li>
+    <li>Los arrays son bloques contiguos de memoria: se acceden con índices o punteros</li>
+    <li>Las cadenas en C terminan con <code>'\\0'</code></li>
+    <li>Con punteros puedes manipular directamente el contenido de variables o recorrer vectores</li>
+  </ul>
+
+  <p>Practicar con punteros ayuda a comprender mejor la gestión de memoria en C y optimizar los programas.</p>
+</body>
+</html>

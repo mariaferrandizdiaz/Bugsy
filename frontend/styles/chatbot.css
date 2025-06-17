@@ -1,10 +1,9 @@
 html, body {
+  background-color: #ede5f1;
+  font-family: Verdana, sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
-  /*overflow: hidden; /* evita scroll */
-  background-color: #f3edf8;
-  font-family: sans-serif;
 }
 
 header {

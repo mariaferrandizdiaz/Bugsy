@@ -1,0 +1,146 @@
+/* ==== ESTILO GENERAL ==== */
+html, body {
+  background-color: #ede5f1;
+  font-family: Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* ==== ENCABEZADO ==== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-bottom: 4px solid #e5e1ec;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo h1, .logo span {
+  margin: 0;
+  color: #5C068C;
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #5C068C;
+}
+
+nav a.selected-btn {
+  color: #C47B00;
+}
+
+/* ==== LAYOUT PRINCIPAL ==== */
+.teoria-layout {
+  display: flex;
+  height: calc(95vh - 100px); /* o ajusta según el alto del header */
+  max-width: 1500px;
+  margin: auto;
+  gap: 2em;
+  padding: 2em 0;
+}
+
+/* ==== MENÚ LATERAL ==== */
+.temario-menu {
+  width: 280px;
+  background-color: #ede5f1;
+  border-radius: 20px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.temario-menu .tema-btn {
+  background-color: #fcf7ff;
+  border: none;
+  padding: 1em;
+  border-radius: 16px;
+  font-weight: bold;
+  color: #5C068C;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+}
+
+.temario-menu .tema-btn:hover,
+.temario-menu .tema-btn.active {
+  background-color: #d7bce7;
+}
+
+/* ==== CONTENIDO DE TEORÍA ==== */
+.teoria-contenido {
+  flex: 1;
+  background-color: white;
+  border-radius: 20px;
+  padding: 2.5em 3em;
+  line-height: 1.75em;
+  letter-spacing: 0.2px;
+  overflow-y: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;        /* 🔥 scroll dentro del bloque blanco */
+  overflow-x: hidden;
+  word-wrap: break-word;
+  scroll-behavior: smooth;
+}
+
+.teoria-contenido h2 {
+  color: #5C068C;
+  font-size: 1.6em;
+  margin-top: 0;
+  text-align: center;
+}
+
+.teoria-contenido h3 {
+  color: #321650;
+  margin-top: 1.5em;
+  font-size: 1.2em;
+}
+
+.teoria-contenido p {
+  font-size: 1em;
+  line-height: 1.6em;
+  margin-bottom: 3em;
+}
+
+.teoria-contenido pre {
+  background-color: #f5f5f5;
+  padding: 1em;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.95em;
+}
+
+
+.teoria-contenido strong {
+  font-weight: bold;
+}
+
+.tema-activo {
+  display: block;
+}
+
+.tema-oculto {
+  display: none;
+}

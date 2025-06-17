@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tema 5: Funciones y Procedimientos</title>
+</head>
+<body>
+  <h2>Funciones y Procedimientos</h2>
+
+  <h3>¿Qué es la programación modular?</h3>
+  <p>La programación modular consiste en dividir un programa grande en partes más pequeñas llamadas <strong>funciones</strong> o <strong>subprogramas</strong>. Estas partes realizan tareas específicas y ayudan a que el código sea más fácil de leer, entender, probar y reutilizar.</p>
+
+  <h3>¿Qué es una función?</h3>
+  <p>Una función es un bloque de código que puede ser llamado (ejecutado) desde otra parte del programa. Puede recibir datos de entrada llamados <strong>parámetros</strong> y puede devolver un valor como resultado.</p>
+
+  <h4>Ejemplo de una función simple:</h4>
+  <pre><code>
+int sumar(int a, int b) {
+    return a + b;
+}
+  </code></pre>
+
+  <h3>Parámetros formales y variables locales</h3>
+  <ul>
+    <li><strong>Parámetros formales</strong>: son los que recibe la función cuando es llamada (por ejemplo <code>a</code> y <code>b</code> en el ejemplo anterior).</li>
+    <li><strong>Variables locales</strong>: son variables que se declaran dentro de la función y solo existen mientras esa función se ejecuta.</li>
+  </ul>
+
+  <h3>Ventajas de la programación modular</h3>
+  <ul>
+    <li>Permite reutilizar código fácilmente.</li>
+    <li>Facilita encontrar y corregir errores.</li>
+    <li>Permite trabajar en equipo: cada persona puede trabajar en una función distinta.</li>
+    <li>Mejora la legibilidad del código.</li>
+  </ul>
+
+  <h3>¿Cómo se pasan los datos a una función?</h3>
+  <p>En C, los datos se pueden pasar de dos formas:</p>
+
+  <h4>1. Paso por valor (por defecto):</h4>
+  <p>Se hace una copia del valor. Si lo cambias dentro de la función, no afecta al original.</p>
+
+  <pre><code>
+void cambiar(int x) {
+    x = 10;
+}
+
+int main() {
+    int valor = 5;
+    cambiar(valor);
+    printf("%d", valor); // Imprime 5, no cambia
+}
+  </code></pre>
+
+  <h4>2. Paso por referencia (con punteros):</h4>
+  <p>Se pasa la dirección de memoria de la variable. Si se cambia dentro de la función, también cambia fuera.</p>
+
+  <pre><code>
+void cambiar(int *x) {
+    *x = 10;
+}
+
+int main() {
+    int valor = 5;
+    cambiar(&valor);
+    printf("%d", valor); // Imprime 10, sí cambia
+}
+  </code></pre>
+
+  <h3>Uso de <code>const</code> en funciones</h3>
+  <p>Cuando quieres asegurarte de que una variable no será modificada dentro de una función, puedes usar <code>const</code>:</p>
+
+  <pre><code>
+void imprimir(const int numero) {
+    printf("%d", numero);  // No puede ser modificado
+}
+  </code></pre>
+
+  <h3>Prototipos de funciones</h3>
+  <p>Cuando defines una función más abajo en el código, necesitas escribir antes su <strong>prototipo</strong>:</p>
+  <pre><code>
+int sumar(int, int);  // Prototipo
+
+int main() {
+    printf("%d", sumar(3, 4));
+}
+
+int sumar(int a, int b) {
+    return a + b;
+}
+  </code></pre>
+
+  <h3>Funciones que no devuelven nada: <code>void</code></h3>
+  <p>Cuando una función no necesita devolver nada, se usa el tipo <code>void</code>:</p>
+  <pre><code>
+void saludar() {
+    printf("¡Hola mundo!");
+}
+  </code></pre>
+
+  <h3>Pasar arrays a funciones</h3>
+  <p>Los arrays se pasan por referencia automáticamente. Si quieres evitar que se modifiquen, usa <code>const</code>.</p>
+
+  <pre><code>
+void imprimirArray(const int datos[], int tam) {
+    for (int i = 0; i < tam; i++) {
+        printf("%d ", datos[i]);
+    }
+}
+  </code></pre>
+
+  <h3>Resumen del paso de parámetros</h3>
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Tipo de parámetro</th>
+        <th>Se modifica dentro de la función</th>
+        <th>Afecta al valor original</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>int x</code></td>
+        <td>Sí</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><code>const int x</code></td>
+        <td>No</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><code>int *x</code></td>
+        <td>Sí</td>
+        <td>Sí</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Comprender cómo funcionan las funciones en C te permitirá escribir programas más limpios, claros y reutilizables.</p>
+</body>
+</html>

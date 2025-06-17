@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bugsy: Teoría de C</title>
+  <link rel="stylesheet" href="../styles/teoria.css">
+  <link rel="icon" href="../images/icon.png" />
+</head>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="../images/bugsy-logo.png" alt="Logo Bugsy" />
+      <h1>Bugsy</h1>
+    </div>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="teoria.html" class="selected-btn">Teoría</a>
+      <a href="practica.html">Ejercicios</a>
+      <a href="chatbot.html">Chatbot</a>
+    </nav>
+  </header>
+
+  <main class="teoria-layout">
+    <!-- Menú lateral -->
+    <aside class="temario-menu">
+      <button class="tema-btn active" data-tema="tema1-introduccion">Introducción a la Programación</button>
+      <button class="tema-btn" data-tema="tema2-elementos-programación">Elementos de la Programación en C</button>
+      <button class="tema-btn" data-tema="tema3-biblioteca-de-funciones">Biblioteca de funciones</button>
+      <button class="tema-btn" data-tema="tema4-punteros-y-vectores">Punteros y vectores</button>
+      <button class="tema-btn" data-tema="tema5-funciones">Funciones y procedimientos</button>
+      <button class="tema-btn" data-tema="resumen">Resumen del temario completo</button>
+    </aside>
+
+    <!-- Contenedor donde se cargará el contenido de la asignatura -->
+    <section class="teoria-contenido" id="contenido-tema">
+      <p>Cargando contenido...</p>
+    </section>
+  </main>
+
+  <script>
+    // Función para cargar el tema HTML
+    async function cargarTema(id) {
+      const contenedor = document.getElementById("contenido-tema");
+      contenedor.innerHTML = "Cargando tema...";
+
+      try {
+        const res = await fetch(`temario/${id}.html`);
+        if (!res.ok) throw new Error("No encontrado");
+        const html = await res.text();
+        contenedor.innerHTML = html;
+      } catch {
+        contenedor.innerHTML = "<p>❌ Error al cargar el contenido del tema.</p>";
+      }
+    }
+
+    // Cambia de tema al hacer clic
+    document.querySelectorAll(".tema-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tema = btn.dataset.tema;
+
+        document.querySelectorAll(".tema-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        cargarTema(tema);
+      });
+    });
+
+    // Carga el primer tema por defecto
+    window.addEventListener("DOMContentLoaded", () => {
+      cargarTema("tema1-introduccion");
+    });
+    
+  </script>
+</body>
+</html>

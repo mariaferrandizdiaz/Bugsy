@@ -301,6 +301,10 @@ nav.main-nav a.active {
   border-bottom: 2px solid #5C068C;
 }
 
+nav a.selected-btn {
+  color: #C47B00;
+}
+
 .home-content {
   max-width: 1000px;
   margin: 0 auto;

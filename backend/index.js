@@ -13,12 +13,18 @@ const cors = require('cors'); // Para permitir peticiones desde el frontend
 const { v4: uuidv4 } = require('uuid'); // Para generar IDs únicos de sesión, en algún momento se podría usar si se quiere persistir el estado de las sesiones
 const OpenAI = require('openai');   // Para manejar las peticiones a la API de OpenAI
 const express = require('express'); // Para crear el servidor web
+const { timeStamp } = require('console');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const Airtable = require('airtable');
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const airtableBase = new Airtable({ 
+  apiKey: process.env.AIRTABLE_API_KEY
+}).base(process.env.AIRTABLE_BASE_ID);
 
 app.use(cors());
 app.use(express.json());
@@ -34,15 +40,18 @@ let temario = '';
 let ejercicios = '';
 try {
   temario = fs.readFileSync(rutaTeoria, 'utf8');
+  console.log('✓ Temario cargado correctamente.');
   ejercicios = fs.readFileSync(rutaEjercicios, 'utf8');
+  console.log('✓ Ejercicios cargados correctamente.');
 } catch (err) {
   console.error('❌ Error cargando archivos de contenido:', err.message);
 }
 
-// ✅ Almacenamiento de sesiones
+// Almacenamiento de sesiones para poder mantener el contexto de la conversación. Usamos un Map para almacenar las sesiones en memoria.
 const sessions = new Map();
 
 app.post("/api/chat", async (req, res) => {
+  console.log(`\t${new Date().toLocaleString()} Nueva petición de chat recibida: ${req.body.message}`);
   const { message, nivel, sessionId } = req.body;
 
   if (!sessionId || !message || !nivel) {
@@ -112,6 +121,37 @@ app.post("/api/chat", async (req, res) => {
       sessions.set(sessionId, [messages[0], ...messages.slice(-18)]);
     }
 
+    const logEntry = {
+      fecha: new Date().toISOString(),
+      sessionId,
+      nivel,
+      pregunta: message,
+      respuesta: reply
+    };
+
+    const rutaLogs = path.join(__dirname, 'logs', 'interacciones.json');
+
+    try {
+      airtableBase(process.env.AIRTABLE_TABLE_NAME).create([
+        {
+          fields: {
+            "Fecha": new Date().toISOString(),
+            "Session ID": sessionId,
+            "Nivel": nivel,
+            "Pregunta": message,
+            "Respuesta": reply
+          }
+        }
+      ], function(err, records) {
+        if (err) {
+          console.error("\t\t✗ Error al registrar en Airtable:", err);
+        } else {
+          console.log("\t\t✓ Registro guardado en Airtable");
+        }
+      });
+    } catch (e) {
+      console.error("❌ Error en la conexión con Airtable:", e.message);
+    }
     res.json({ reply });
   } catch (error) {
     console.error("❌ Error al llamar a OpenAI:", error.message);
@@ -119,7 +159,8 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-// ✅ Iniciar servidor
+// Iniciar servidor para permitir peticiones desde el frontend
 app.listen(PORT, () => {
-  console.log(`✅ Servidor escuchando en http://localhost:${PORT}`);
+  console.log(`\n✅ Servidor escuchando en http://localhost:${PORT}`);
+  console.log('\nInteracciones con la herramienta:');
 });

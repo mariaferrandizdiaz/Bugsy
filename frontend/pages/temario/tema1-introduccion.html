@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Introducción a la Programación en C</title>
+</head>
+<body>
+    <h2>Introducción a la Programación en C</h2>
+
+    <h3>1. ¿Cómo se resuelve un problema con un programa?</h3>
+    <p>Antes de poder escribir código, necesitamos entender el problema que queremos resolver y seguir una serie de pasos:</p>
+    <ol>
+        <li><strong>Definir o analizar el problema</strong>: ¿Qué se necesita resolver?</li>
+        <li><strong>Diseñar un algoritmo</strong>: Plantear una solución paso a paso.</li>
+        <li><strong>Convertir el algoritmo en un programa</strong>: Usar un lenguaje como C.</li>
+        <li><strong>Ejecutar y comprobar que funciona</strong>: Validar que la solución sea correcta.</li>
+    </ol>
+    <p>En resumen: <strong>Problema → Algoritmo → Programa</strong>.</p>
+
+    <h3>2. ¿Qué es un algoritmo?</h3>
+    <p>Un algoritmo es una serie de pasos claros y ordenados para resolver un problema. No lo resuelve por sí mismo, pero indica cómo hacerlo. Solo puede ejecutarse si alguien (un procesador o computadora) entiende sus instrucciones.</p>
+
+    <h4>2.1. ¿Y si el algoritmo es para humanos?</h4>
+    <p>Nosotros podemos entender instrucciones más ambiguas, pero los ordenadores necesitan lenguajes exactos. Por eso usamos <strong>lenguajes de programación</strong> y, antes de eso, a veces <strong>pseudocódigo</strong>, que es como un lenguaje intermedio más fácil de leer.</p>
+
+    <h3>3. Herramientas que nos ayudan a programar</h3>
+    <ul>
+        <li><strong>Diagramas de flujo</strong>: dibujan los pasos como cajas y flechas.</li>
+        <li><strong>Diagramas N-S</strong> (Nassi-Schneiderman): parecidos a los de flujo, pero con otra estructura.</li>
+        <li><strong>Pseudocódigo</strong>: escribir la lógica del programa sin usar un lenguaje formal.</li>
+    </ul>
+
+    <h3>4. ¿Qué contiene un diagrama de flujo?</h3>
+    <ul>
+        <li>Procesos (acciones)</li>
+        <li>Entradas y salidas</li>
+        <li>Decisiones (como preguntas de sí/no)</li>
+        <li>Flechas que conectan los pasos</li>
+        <li>Conectores para seguir en otras páginas</li>
+    </ul>
+
+    <h3>5. ¿Qué es una variable?</h3>
+    <p>Es un espacio en memoria que guarda un dato. Ese dato puede cambiar a lo largo del programa, por eso se llama "variable".</p>
+    <ul>
+        <li><strong>Nombre</strong>: cómo la llamamos en el programa.</li>
+        <li><strong>Tipo</strong>: qué clase de dato guarda (número, texto, etc.).</li>
+        <li><strong>Valor</strong>: el dato que contiene en ese momento.</li>
+    </ul>
+
+    <h4>Tipos de variables comunes:</h4>
+    <ul>
+        <li><strong>Numéricos</strong>: enteros o decimales.</li>
+        <li><strong>Carácter</strong>: un solo símbolo, como 'A' o '9'.</li>
+        <li><strong>Ristras</strong>: cadenas de texto como "Hola Mundo".</li>
+        <li><strong>Lógicos</strong>: verdadero o falso.</li>
+    </ul>
+
+    <h3>6. Cómo guardar y mostrar datos</h3>
+    <p>Algunos ejemplos:</p>
+    <pre>
+i = 30;
+X = i / j;
+A = "La Laguna";
+F = Verdadero;
+Leer i;
+Escribir "El resultado es:", A;
+    </pre>
+    <p>Para declarar variables en C:</p>
+    <pre>
+int A, B, C;
+float R;
+    </pre>
+
+    <h3>7. ¿Cómo toma decisiones un programa?</h3>
+    <p>Con estructuras como:</p>
+
+    <h4><code>if (condición):</code></h4>
+    <pre>
+if (a > b) {
+    max = a;
+} else {
+    max = b;
+}
+    </pre>
+
+    <h4><code>while: mientras se cumpla una condición</code></h4>
+    <pre>
+while (i < 10) {
+    printf("%d", i);
+    i++;
+}
+    </pre>
+
+    <h4><code>do-while: se ejecuta al menos una vez</code></h4>
+    <pre>
+int i = 0;
+do {
+    printf("%d", i);
+    i++;
+} while (i < 10);
+    </pre>
+
+    <h4><code>for: para un número de repeticiones conocido</code></h4>
+    <pre>
+for (int i = 0; i < 10; i++) {
+    printf("%d", i);
+}
+    </pre>
+
+    <h4><code>switch: elegir entre varias opciones</code></h4>
+    <pre>
+switch(opcion) {
+    case 1: z = x + y; break;
+    case 2: z = x - y; break;
+    case 3: z = x * y; break;
+    case 4: z = (float)x / y; break;
+}
+    </pre>
+
+    <p>Estas estructuras son la base para que los programas puedan tomar decisiones y repetir acciones.</p>
+</body>
+</html>

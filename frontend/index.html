@@ -14,28 +14,38 @@
 
 <!-- Body -->
 <body>
-  <div id="header-placeholder"></div>
-
+  <header>
+    <div class="logo">
+      <img src="../images/bugsy-logo.png" alt="Logo Bugsy"/> 
+      <h1>Bugsy</h1>
+    </div>
+    <nav>
+      <a href="#" class="selected-btn"> Inicio</a>
+      <a href="pages/teoria.html">Teoría</a>
+      <a href="pages/ejercicios.html">Ejercicios</a>
+      <a href="pages/chatbot.html">Chatbot</a>
+    </nav>
+  </header>
   <main>
     <h2 onclick="window.location.href='https://www.ull.es/apps/guias/guias/view_guide/39640/'" style="cursor: pointer;">Programación en lenguaje C</h2>
     <!--<p class="subtitle">Consulta teoría paso a paso, resuelve ejercicios mientras estudias y pon a prueba tus conocimientos con retos de examen.</p>-->
 
     <div class="cards">
-      <div class="card">
+      <div class="card" onclick="window.location.href='pages/teoria.html'">
         <h3>Aprende teoría</h3>
         <p><strong>¿Quieres aprender C?</strong><br><br>Lee explicaciones claras y visuales organizadas por temas de la asignatura.</p>
         <a href="pages/teoria.html">Ir a teoría</a>
         <!-- Añadimos una imagen --> <br><br>
         <img src="images/logo-carta-teoria-3.png" alt="Icono de teoría" class="card-icon"> 
       </div>
-      <div class="card">
+      <div class="card" onclick="window.location.href='pages/practica.html'">
         <h3>Practica lo aprendido</h3>
         <p><strong>¿Quieres practicar el temario?</strong><br><br>Resuelve ejercicios guiados por niveles de dificultad en base a los conocimientos que tengas.</p>
         <a href="pages/practica.html">Practicar</a><br><br>
         <img src="images/logo-carta-ejercicios.png" alt="Icono de teoría" class="card-icon"> 
 
       </div>
-      <div class="card">
+      <div class="card" onclick="window.location.href='pages/chatbot.html'">
         <h3>Usa el asistente de Bugsy</h3>
         <p><strong>¿Tienes dudas?</strong><br><br>Pregunta a Bugsy lo que necesites sobre programación en C.</p>
         <a href="pages/chatbot.html">Abrir Chatbot</a><br><br>
