@@ -1,11 +1,18 @@
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
-const OpenAI = require('openai');
+/*
+ * Trabajo de Fin de Grado en Ingeniería Informática
+ * Bugsy - Asistente de Programación en C
+ * Autora: María Ferrándiz Díaz
+ * Licencia: CC BY-NC-SA 4.0
+ */
 
+require('dotenv').config({ path: __dirname + '/.env' });   // Hay que tener un archivo .env con OPENAI_API_KEY dentro del directorio Bugsy/backend
+
+const fs = require('fs');     // Para manejar archivos del sistema
+const path = require('path'); // Para manejar rutas y archivos
+const cors = require('cors'); // Para permitir peticiones desde el frontend
+const { v4: uuidv4 } = require('uuid'); // Para generar IDs únicos de sesión, en algún momento se podría usar si se quiere persistir el estado de las sesiones
+const OpenAI = require('openai');   // Para manejar las peticiones a la API de OpenAI
+const express = require('express'); // Para crear el servidor web
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -49,7 +56,8 @@ app.post("/api/chat", async (req, res) => {
 
     Tu única función es ayudar con dudas relacionadas **exclusivamente** con el lenguaje C según el contenido impartido en clase.
 
-    Si la pregunta puede interpretarse como relacionada con la programación en C aunque no mencione C explícitamente (por ejemplo: "qué es un entero, doble, largo"), asume que el estudiante está hablando dentro del contexto del curso y responde normalmente.
+    Si la pregunta puede interpretarse como relacionada con la programación en C aunque no mencione C explícitamente (por ejemplo: "qué es un entero, doble, largo"), asume que el estudiante está hablando dentro del contexto del curso y responde normalmente. Recibe de manera simpática saludos y agradecimientos.
+    También debes aceptar preguntas formuladas de forma informal o coloquial si pueden estar relacionadas con C. Por ejemplo, si el usuario dice “¿cómo van las funciones?” o “no entiendo eso de los punteros”, asume que se refiere al contenido de C aunque no lo mencione explícitamente.
 
     Tu conocimiento debe limitarse al siguiente contenido:
     TEMARIO: ${temario}

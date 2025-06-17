@@ -1,27 +1,61 @@
 <!DOCTYPE html>
-<link rel="icon" type="image/png" href="images/icon.png" />
+<link rel="icon" type="image/png" href="images/icon.png" /> <!-- Icono de la página que se ve en el buscador -->
 
 <html lang="es">
+<!-- Head -->
 <head>
   <meta charset="UTF-8">
-  <title>Bugsy - Chatbot C</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bugsy: Asistente para C</title>
   <link rel="stylesheet" href="styles/main.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body>
 
-  <header>
-    <img src="images/bugsy-logo.png" alt="Bugsy logo">
-    <h1>Bugsy</h1>
-  </header>
+<!-- Body -->
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <h2 onclick="window.location.href='https://www.ull.es/apps/guias/guias/view_guide/39640/'" style="cursor: pointer;">Programación en lenguaje C</h2>
+    <!--<p class="subtitle">Consulta teoría paso a paso, resuelve ejercicios mientras estudias y pon a prueba tus conocimientos con retos de examen.</p>-->
+
+    <div class="cards">
+      <div class="card">
+        <h3>Aprende teoría</h3>
+        <p><strong>¿Quieres aprender C?</strong><br><br>Lee explicaciones claras y visuales organizadas por temas de la asignatura.</p>
+        <a href="pages/teoria.html">Ir a teoría</a>
+        <!-- Añadimos una imagen --> <br><br>
+        <img src="images/logo-carta-teoria-3.png" alt="Icono de teoría" class="card-icon"> 
+      </div>
+      <div class="card">
+        <h3>Practica lo aprendido</h3>
+        <p><strong>¿Quieres practicar el temario?</strong><br><br>Resuelve ejercicios guiados por niveles de dificultad en base a los conocimientos que tengas.</p>
+        <a href="pages/practica.html">Practicar</a><br><br>
+        <img src="images/logo-carta-ejercicios.png" alt="Icono de teoría" class="card-icon"> 
+
+      </div>
+      <div class="card">
+        <h3>Usa el asistente de Bugsy</h3>
+        <p><strong>¿Tienes dudas?</strong><br><br>Pregunta a Bugsy lo que necesites sobre programación en C.</p>
+        <a href="pages/chatbot.html">Abrir Chatbot</a><br><br>
+        <img src="images/logo-carta-chatbot-2.png" alt="Icono de teoría" class="card-icon"> 
+      </div>
+    </div>
+  </main>
 
   <!-- Botón flotante del chatbot -->
   <div id="chat-button" onclick="toggleChat()">
     <img src="images/bugsy-logo.png" alt="Abrir Chat" />
   </div>
 
-  <!-- Contenedor del chat oculto Chat -->
+  <!-- Contenedor del chat oculto (reutilizable del original) -->
   <div id="chat-container">
+    <button id="chat-close-btn" onclick="toggleChat()">
+      <!-- Icono de cerrar chat pero en pequeño a la derecha -->
+      <img src="images/close-icon-2.png" alt="Cerrar Chat" />
+    </button>
+
     <div id="chat"></div>
 
     <div id="input-container">
@@ -31,8 +65,14 @@
       </button>
     </div>
   </div>
-  
+
   <script>
+    // Cargar header.html dentro del div
+    fetch("components/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header-placeholder").innerHTML = html;
+      });
     const sessionId = crypto.randomUUID();  // genera un ID único
     let nivelSeleccionado = null;
 
@@ -49,7 +89,7 @@
       chat.innerHTML += `
       <div class="message bot">
         <img class="icon" src="images/bot-icon.png" alt="Bot">
-        <div class="bubble">Soy <strong>Bugsy 🤖</strong>, tu asistente de programación en C.<br>¿Con qué te puedo ayudar?</div>
+        <div class="bubble">Soy <strong>Bugsy 🤖</strong>, tu asistente en la asignatura de programación en C.<br>¿Con qué te puedo ayudar?</div>
       </div>`;
     }
 
@@ -69,25 +109,24 @@
       input.value = "";
       chat.scrollTop = chat.scrollHeight;
 
-      try {
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: userText,
-            nivel: nivelSeleccionado,
-            sessionId: sessionId // ✅ enviado correctamente
-          })
-        });
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userText,
+          nivel: nivelSeleccionado,
+          sessionId: sessionId // ✅ enviado correctamente
+        })
+      });
 
-        const data = await response.json();
-
-        chat.innerHTML += `
-          <div class="message bot">
-            <img class="icon" src="images/bot-icon.png" alt="Bot">
-            <div class="bubble">${marked.parse(data.reply)}</div>
-          </div>`;
-        //chat.scrollTop = chat.scrollHeight;
+      const data = await response.json();
+      chat.innerHTML += `
+        <div class="message bot">
+          <img class="icon" src="images/bot-icon.png" alt="Bot">
+          <div class="bubble">${marked.parse(data.reply)}</div>
+        </div>`;
+      //chat.scrollTop = chat.scrollHeight;
     } catch (error) {
       chat.innerHTML += `
         <div class="message bot">
@@ -133,7 +172,7 @@
     }
   }
 
-</script>
+  </script>
 
 </body>
 </html>

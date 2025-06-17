@@ -24,6 +24,18 @@ header h1 {
   margin: 0;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.span-title {
+  color: #842db4;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 #chat-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -253,3 +265,216 @@ header h1 {
   }
 }
 
+#chat-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  z-index: 1001;
+  box-shadow: none;           /* Para quitar sombras de fondo */
+}
+
+#chat-close-btn img {
+  width: 18px;
+  height: 18px;
+  filter: none;               /* por si hereda efectos visuales */
+}
+
+nav.main-nav {
+  background-color: #f0e1ff;
+  text-align: center;
+  padding: 1em 0;
+  margin-bottom: 2em;
+}
+
+nav.main-nav a {
+  margin: 0 1em;
+  color: #5C068C;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav.main-nav a.active {
+  border-bottom: 2px solid #5C068C;
+}
+
+.home-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 1.6em;
+  color: #5C068C;
+  padding: 2em 5em;
+}
+
+.opciones {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.opcion {
+  background-color: #f5edf8;
+  border-radius: 15px;
+  padding: 1.5em;
+  width: 280px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.opcion h3 {
+  color: #842db4;
+}
+
+.opcion .boton {
+  display: inline-block;
+  margin-top: 1em;
+  background-color: #f3bf00;
+  color: black;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 2em;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header h1 {
+  color: #5C068C;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+/* Navegación */
+nav {
+  display: flex;
+  gap: 2em;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #5C068C;
+}
+
+nav a:hover,
+nav a.active {
+  border-bottom: 2px solid #5C068C;
+}
+
+/* Contenido principal */
+main {
+  text-align: center;
+  padding: 0.5em 0.5em;
+}
+
+h2 {
+  font-size: 1.7em;
+  color: #5C068C;
+  margin-block: 2em;
+}
+
+p.subtitle {
+  font-size: 1.1em;
+  margin-bottom: 3em;
+  color: #333;
+}
+
+/* Tarjetas */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 20px;
+  width: 400px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  font-family: 'Verdana', sans-serif;
+  text-align: center;
+}
+.card-icon {
+  width: 300px;
+  margin-bottom: 1em;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  color: #842db4;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.card p {
+  font-size: 0.95em;
+  color: #444;
+}
+
+.card button,
+.card a {
+  margin-top: 1.5em;
+  display: inline-block;
+  padding: 0.8em 2.4em;
+  background-color: #ecdfbb;
+  color: rgb(86, 45, 0);
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.card button:hover,
+.card a:hover {
+  background-color: #efd281;
+}
+
+/* Botón flotante del chatbot */
+#chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5C068C;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#chat-button img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+}

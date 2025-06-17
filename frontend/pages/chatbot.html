@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bugsy Chatbot</title>
+  <link rel="icon" href="../images/icon.png" />
+  <link rel="stylesheet" href="../styles/chatbot.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="../images/bugsy-logo.png" alt="Logo Bugsy"/> 
+      <h1>Bugsy</h1>
+    </div>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="#" class="selected-btn">Chatbot</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="chat-container">
+      <div id="chat">
+        <!-- Mensajes aquí -->
+      </div>
+      <div id="input-container">
+        <input type="text" id="user-input" placeholder="Escribe tu pregunta..." />
+        <button id="send-btn">Enviar</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const sessionId = crypto.randomUUID(); // ID único de sesión
+    let nivelSeleccionado = "Intermedio"; // Puedes hacer que se elija antes si quieres
+
+    document.addEventListener("DOMContentLoaded", () => {
+      appendMessage("bot", "🎉 ¡Hola! Soy Bugsy. ¿En qué puedo ayudarte con C?");
+    });
+
+    function appendMessage(type, text) {
+      const chat = document.getElementById("chat");
+      const isUser = type === "user";
+      const msgHTML = `
+        <div class="message ${type}">
+          ${!isUser ? `<img src="../images/bot-icon.png" class="icon" alt="Bot" />` : ""}
+          <div class="bubble">${text}</div>
+          ${isUser ? `<img src="../images/user-icon.png" class="icon" alt="Usuario" />` : ""}
+        </div>
+      `;
+      chat.insertAdjacentHTML("beforeend", msgHTML);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage("user", text);
+      input.value = "";
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: text,
+            nivel: nivelSeleccionado,
+            sessionId: sessionId 
+          })
+        });
+
+        const data = await response.json();
+        chat.innerHTML += `
+          <div class="message bot">
+            <img class="icon" src="../images/bot-icon.png" alt="Bot">
+            <div class="bubble">${marked.parse(data.reply)}</div>
+          </div>`;
+          //chat.scrollTop = chat.scrollHeight;
+      } catch (error) {
+        chat.innerHTML += `
+        <div class="message bot">
+          <img class="icon" src="../images/bot-icon.png" alt="Bot">
+          <div class="bubble">❌ Error al conectar con el servidor. Intenta de nuevo más tarde.</div>
+        </div>`;
+        console.error("❌ Error en fetch:", error);
+      }
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    document.getElementById("send-btn").addEventListener("click", sendMessage);
+    document.getElementById("user-input").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
