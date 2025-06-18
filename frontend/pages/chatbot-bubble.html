@@ -11,6 +11,7 @@
 
 <body>
   <div id="chat-button" onclick="toggleChat()">
+    <!-- en caso de que se llame a este ficher desde uno dentro de pages, no se pone la ruta de ../images/chatbot-icon.png, solo se pone images/chatbot-icon.png -->
     <img src="../images/chatbot-icon.png" alt="Abrir Chat" />
   </div>
 
@@ -28,7 +29,6 @@
     </button>
   </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -123,7 +123,7 @@
     if (!nivelSeleccionado) {
       chat.innerHTML = `
         <div class="message bot">
-          <img class="icon" src="images/bot-icon.png" alt="Bot">
+          <img class="icon" src="../images/bot-icon.png" alt="Bot">
           <div class="bubble">
             ¡Hola! Antes de comenzar, selecciona tu nivel para adaptar las respuestas:
 <div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
