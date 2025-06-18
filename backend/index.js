@@ -1,6 +1,6 @@
 /*
  * Trabajo de Fin de Grado en Ingeniería Informática
- * Bugsy - Asistente de Programación en C
+ * BugC - Asistente de Programación en C
  * Autora: María Ferrándiz Díaz
  * Licencia: CC BY-NC-SA 4.0
  */
@@ -61,7 +61,7 @@ app.post("/api/chat", async (req, res) => {
   // Inicializar sesión si es nueva
   if (!sessions.has(sessionId)) {
     const contexto = `
-    Actúa como un profesor experto en programación en lenguaje C.
+    Actúa como un profesor experto en programación en lenguaje C en español castellano.
 
     Tu única función es ayudar con dudas relacionadas **exclusivamente** con el lenguaje C según el contenido impartido en clase.
 

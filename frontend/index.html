@@ -1,188 +1,97 @@
 <!DOCTYPE html>
-<link rel="icon" type="image/png" href="images/icon.png" /> <!-- Icono de la página que se ve en el buscador -->
-
 <html lang="es">
-<!-- Head -->
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bugsy: Asistente para C</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BugC: Asistente para C</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="images/icon.png" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
-<!-- Body -->
 <body>
   <header>
     <div class="logo">
-      <img src="../images/bugsy-logo.png" alt="Logo Bugsy"/> 
-      <h1>Bugsy</h1>
+      <img src="images/bugsy-logo.png" alt="Logo BugC" />
+      <h1>BugC</h1>
     </div>
     <nav>
-      <a href="#" class="selected-btn"> Inicio</a>
+      <a href="#" class="selected-btn">Inicio</a>
       <a href="pages/teoria.html">Teoría</a>
       <a href="pages/ejercicios.html">Ejercicios</a>
       <a href="pages/chatbot.html">Chatbot</a>
     </nav>
   </header>
+
   <main>
-    <h2 onclick="window.location.href='https://www.ull.es/apps/guias/guias/view_guide/39640/'" style="cursor: pointer;">Programación en lenguaje C</h2>
-    <!--<p class="subtitle">Consulta teoría paso a paso, resuelve ejercicios mientras estudias y pon a prueba tus conocimientos con retos de examen.</p>-->
+    <h2 onclick="window.location.href='https://www.ull.es/apps/guias/guias/view_guide/39640/'" style="cursor: pointer;">
+      Programación en lenguaje C
+    </h2>
 
     <div class="cards">
       <div class="card" onclick="window.location.href='pages/teoria.html'">
         <h3>Aprende teoría</h3>
         <p><strong>¿Quieres aprender C?</strong><br><br>Lee explicaciones claras y visuales organizadas por temas de la asignatura.</p>
-        <a href="pages/teoria.html">Ir a teoría</a>
-        <!-- Añadimos una imagen --> <br><br>
-        <img src="images/logo-carta-teoria-3.png" alt="Icono de teoría" class="card-icon"> 
+        <a href="pages/teoria.html">Ir a teoría</a><br><br>
+        <img src="images/logo-carta-teoria-3.png" alt="Icono de teoría" class="card-icon" />
       </div>
       <div class="card" onclick="window.location.href='pages/practica.html'">
         <h3>Practica lo aprendido</h3>
         <p><strong>¿Quieres practicar el temario?</strong><br><br>Resuelve ejercicios guiados por niveles de dificultad en base a los conocimientos que tengas.</p>
         <a href="pages/practica.html">Practicar</a><br><br>
-        <img src="images/logo-carta-ejercicios.png" alt="Icono de teoría" class="card-icon"> 
-
+        <img src="images/logo-carta-ejercicios.png" alt="Icono de ejercicios" class="card-icon" />
       </div>
       <div class="card" onclick="window.location.href='pages/chatbot.html'">
-        <h3>Usa el asistente de Bugsy</h3>
-        <p><strong>¿Tienes dudas?</strong><br><br>Pregunta a Bugsy lo que necesites sobre programación en C.</p>
+        <h3>Usa el asistente de BugC</h3>
+        <p><strong>¿Tienes dudas?</strong><br><br>Pregunta a BugC lo que necesites sobre programación en C.</p>
         <a href="pages/chatbot.html">Abrir Chatbot</a><br><br>
-        <img src="images/logo-carta-chatbot-2.png" alt="Icono de teoría" class="card-icon"> 
+        <img src="images/logo-carta-chatbot-2.png" alt="Icono de chatbot" class="card-icon" />
       </div>
     </div>
   </main>
 
-  <!-- Botón flotante del chatbot -->
-  <div id="chat-button" onclick="toggleChat()">
-    <img src="images/bugsy-logo.png" alt="Abrir Chat" />
-  </div>
+  <!-- Chatbot se cargará aquí -->
+  <div id="chatbot-wrapper"></div>
 
-  <!-- Contenedor del chat oculto (reutilizable del original) -->
-  <div id="chat-container">
-    <button id="chat-close-btn" onclick="toggleChat()">
-      <!-- Icono de cerrar chat pero en pequeño a la derecha -->
-      <img src="images/close-icon-2.png" alt="Cerrar Chat" />
-    </button>
+<script>
+  fetch("pages/chatbot-bubble.html")
+    .then(res => res.text())
+    .then(html => {
+      const wrapper = document.getElementById("chatbot-wrapper");
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = html;
 
-    <div id="chat"></div>
+      // Extraer scripts y ejecutar manualmente
+      const scripts = tempDiv.querySelectorAll("script");
+      scripts.forEach(s => s.remove());
+      wrapper.innerHTML = tempDiv.innerHTML;
 
-    <div id="input-container">
-      <input type="text" id="user-input" placeholder="Escribe tu pregunta..." />
-      <button id="send-btn" onclick="sendMessage()">
-        <img src="images/send-icon.png" alt="Enviar" />
-      </button>
-    </div>
-  </div>
-
-  <script>
-    // Cargar header.html dentro del div
-    fetch("components/header.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("header-placeholder").innerHTML = html;
-      });
-    const sessionId = crypto.randomUUID();  // genera un ID único
-    let nivelSeleccionado = null;
-
-    function setNivel(nivel) {
-      nivelSeleccionado = nivel;
-
-      // Elimina los botones después de la selección
-      const buttonsContainer = document.querySelector(".bubble div[style*='margin-top']");
-      if (buttonsContainer) {
-        buttonsContainer.innerHTML = `<p style="margin-top: 1em;"><strong>Nivel seleccionado: ${nivel}</strong></p>`;
-      }
-
-      const chat = document.getElementById("chat");
-      chat.innerHTML += `
-      <div class="message bot">
-        <img class="icon" src="images/bot-icon.png" alt="Bot">
-        <div class="bubble">Soy <strong>Bugsy 🤖</strong>, tu asistente en la asignatura de programación en C.<br>¿Con qué te puedo ayudar?</div>
-      </div>`;
-    }
-
-    async function sendMessage() {
-      const input = document.getElementById("user-input");  // Input del usuario
-      const chat = document.getElementById("chat");
-      const userText = input.value.trim();
-
-      if (!userText || !nivelSeleccionado) return;
-
-      chat.innerHTML += `
-        <div class="message user">
-          <div class="bubble">${userText}</div>
-          <img class="icon" src="images/user-icon.png" alt="Usuario">
-        </div>`;
-
-      input.value = "";
-      chat.scrollTop = chat.scrollHeight;
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: userText,
-          nivel: nivelSeleccionado,
-          sessionId: sessionId // ✅ enviado correctamente
-        })
+      // Ejecutar scripts
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement("script");
+        if (oldScript.src) {
+          newScript.src = oldScript.src;
+        } else {
+          newScript.textContent = oldScript.textContent;
+        }
+        document.body.appendChild(newScript);
       });
 
-      const data = await response.json();
-      chat.innerHTML += `
-        <div class="message bot">
-          <img class="icon" src="images/bot-icon.png" alt="Bot">
-          <div class="bubble">${marked.parse(data.reply)}</div>
-        </div>`;
-      //chat.scrollTop = chat.scrollHeight;
-    } catch (error) {
-      chat.innerHTML += `
-        <div class="message bot">
-          <img class="icon" src="images/bot-icon.png" alt="Bot">
-          <div class="bubble">❌ Error al conectar con el servidor. Intenta de nuevo más tarde.</div>
-        </div>`;
-      console.error("❌ Error en fetch:", error);
-    }
-    chat.scrollTop = chat.scrollHeight;
-  }
-  document.getElementById("user-input").addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault(); // evita salto de línea
-      sendMessage();
-    }
-  });
-
-  // Muestra u oculta el chat con el botón flotante
-  function toggleChat() {
-    const chatContainer = document.getElementById("chat-container");
-    const chat = document.getElementById("chat");
-
-    if (chatContainer.style.display === "block") {
-      chatContainer.style.display = "none";
-      return;
-    }
-
-    chatContainer.style.display = "block";
-
-    if (!nivelSeleccionado) {
-      chat.innerHTML = `
-        <div class="message bot">
-          <img class="icon" src="images/bot-icon.png" alt="Bot">
-          <div class="bubble">
-            ¡Hola! Antes de comenzar, selecciona tu nivel para adaptar las respuestas:
-<div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
-              <button class="nivel-btn" onclick="setNivel('Básico')">Básico</button>
-              <button class="nivel-btn" onclick="setNivel('Intermedio')">Intermedio</button>
-              <button class="nivel-btn" onclick="setNivel('Avanzado')">Avanzado</button>
-            </div>
-          </div>
-        </div>`;
-    }
-  }
-
-  </script>
+      // ⬇️ MUY IMPORTANTE: Esperamos a que el DOM tenga el input
+      setTimeout(() => {
+        const input = document.getElementById("user-input");
+        if (input) {
+          input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+              event.preventDefault();
+              sendMessage();
+            }
+          });
+        }
+      }, 500); // pequeño retraso para asegurar que el input existe
+    });
+</script>
 
 </body>
 </html>
