@@ -5,20 +5,15 @@
   <title>Tema 4: Punteros y Vectores (Ampliado)</title>
 </head>
 <body>
-  <h2>Tema 4: Punteros y Vectores</h2>
-
+  <h2>Punteros y Vectores</h2>
   <h3>¿Qué es un puntero?</h3>
   <p>Un puntero en C es una variable que almacena la dirección de memoria de otra variable. En lugar de guardar un valor directamente, guarda dónde está ese valor en la memoria.</p>
   <p>Esto es útil para manipular directamente la memoria, trabajar con arrays, funciones, estructuras y optimizar el rendimiento.</p>
-
   <h4>Declaración básica</h4>
   <pre><code>int *ptr;  // Puntero a un entero</code></pre>
-
   <p>El operador <code>*</code> indica que se está declarando un puntero, no un valor entero común.</p>
-
   <h3>¿Cómo funcionan los punteros?</h3>
   <p>Supón que tienes una variable <code>int x = 5;</code>. Si quieres crear un puntero que apunte a esa variable, usas el operador <code>&</code> para obtener su dirección:</p>
-
   <pre><code>
 int x = 5;
 int *ptr = &x;  // ptr guarda la dirección de x
