@@ -7,15 +7,16 @@ body {
 
 header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 1em;
-  background-color: #fff;
-  border-bottom: 2px solid #ccc;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-bottom: 4px solid #e5e1ec;
 }
 
 header img {
   height: 40px;
-  margin-right: 10px;
+  width: 40px;
 }
 
 header h1 {
@@ -27,13 +28,14 @@ header h1 {
 .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.span-title {
-  color: #842db4;
+.logo h1, .logo span {
+  margin: 0;
+  color: #5C068C;
   font-size: 1.5em;
   font-weight: bold;
-  margin-left: 10px;
 }
 
 #chat-container {

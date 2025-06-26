@@ -1,0 +1,933 @@
+{
+  "basico": {
+    "variables": [ 
+      {
+        "enunciado": "Declara una variable entera llamada 'edad' e inicialízala con el valor 25.",
+        "regex": "int\\s+edad\\s*=\\s*25\\s*;",
+        "pista": "Recuerda que una variable entera se declara con la palabra clave 'int'.",
+        "solucion": "int edad = 25;"
+      }, 
+      {
+        "enunciado": "Declara una variable float llamada 'altura' con el valor 1.75.",
+        "regex": "float\\s+altura\\s*=\\s*1\\.75\\s*;",
+        "pista": "Usa 'float' para decimales y recuerda el punto en vez de coma.",
+        "solucion": "float altura = 1.75;"
+      },
+      {
+        "enunciado": "Declara una variable de tipo char llamada 'letra' con el valor 'A'.",
+        "regex": "char\\s+letra\\s*=\\s*'A'\\s*;",
+        "pista": "Los caracteres van entre comillas simples.",
+        "solucion": "char letra = 'A';"
+      },
+      {
+        "enunciado": "Declara dos variables enteras usando la menor cantidad de líneas lamadas 'a' y 'b', con los valores 10 y 20 respectivamente.",
+        "regex": "int\\s+a\\s*=\\s*10\\s*,\\s*b\\s*=\\s*20\\s*;",
+        "pista": "Puedes declarar ambas en una línea separadas por coma.",
+        "solucion": "int a = 10, b = 20;"
+      },
+      {
+        "enunciado": "Declara una variable llamada 'precio' de tipo double con el valor 9.99.",
+        "regex": "double\\s+precio\\s*=\\s*9\\.99\\s*;",
+        "pista": "Para mayor precisión, se usa 'double'.",
+        "solucion": "double precio = 9.99;"
+      },
+      {
+        "enunciado": "Declara una variable entera llamada 'contador' sin inicializar, y luego asígnale el valor 0.",
+        "regex": "int\\s+contador\\s*;\\s*contador\\s*=\\s*0\\s*;",
+        "pista": "Primero declara, luego asigna.",
+        "solucion": "int contador;\ncontador = 0;"
+      },
+      {
+        "enunciado": "Declara una constante entera llamada 'MAX' con valor 100.",
+        "regex": "const\\s+int\\s+MAX\\s*=\\s*100\\s*;",
+        "pista": "Usa 'const' antes del tipo para declarar constantes.",
+        "solucion": "const int MAX = 100;"
+      }
+    ],
+    "operadores lógicos": [
+      {
+        "enunciado": "Declara dos variables enteras 'a = 5' y 'b = 3'. Calcula y muestra su suma.",
+        "regex": "int\\s+a\\s*=\\s*5\\s*;\\s*int\\s+b\\s*=\\s*3\\s*;\\s*printf\\s*\\(.*a\\s*\\+\\s*b.*\\)",
+        "pista": "Usa printf con a + b dentro.",
+        "solucion": "int a = 5;\nint b = 3;\nprintf(\"%d\", a + b);"
+      },
+      {
+        "enunciado": "Declara dos enteros 'x = 10' y 'y = 4'. Muestra el resultado de x dividido entre y.",
+        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*int\\s+y\\s*=\\s*4\\s*;\\s*printf\\s*\\(.*x\\s*/\\s*y.*\\)",
+        "pista": "Recuerda que la división de enteros descarta decimales.",
+        "solucion": "int x = 10;\nint y = 4;\nprintf(\"%d\", x / y);"
+      },
+      {
+        "enunciado": "Declara una variable 'resultado' e inicialízala como la multiplicación de 6 y 7.",
+        "regex": "int\\s+resultado\\s*=\\s*6\\s*\\*\\s*7\\s*;",
+        "pista": "Usa el operador '*' para multiplicar.",
+        "solucion": "int resultado = 6 * 7;"
+      },
+      {
+        "enunciado": "Declara una variable 'resto' que guarde el módulo de 15 dividido entre 4.",
+        "regex": "int\\s+resto\\s*=\\s*15\\s*%\\s*4\\s*;",
+        "pista": "El operador % da el resto de una división.",
+        "solucion": "int resto = 15 % 4;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'mayor' que indique si 8 es mayor que 5.",
+        "regex": "#include\\s*<stdbool\\.h>.*bool\\s+mayor\\s*=\\s*8\\s*>\\s*5\\s*;",
+        "pista": "Puedes usar el operador '>' para comparar.",
+        "solucion": "#include <stdbool.h>\nbool mayor = 8 > 5;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'igual' que indique si 10 es igual a 10.",
+        "regex": "#include\\s*<stdbool\\.h>.*bool\\s+igual\\s*=\\s*10\\s*==\\s*10\\s*;",
+        "pista": "La comparación se hace con '==', no con '='.",
+        "solucion": "#include <stdbool.h>\nbool igual = 10 == 10;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'valido' que sea true si 3 < 5 y 7 > 2.",
+        "regex": "#include\\s*<stdbool\\.h>.*bool\\s+valido\\s*=\\s*3\\s*<\\s*5\\s*&&\\s*7\\s*>\\s*2\\s*;",
+        "pista": "Combina ambas condiciones con '&&'.",
+        "solucion": "#include <stdbool.h>\nbool valido = 3 < 5 && 7 > 2;"
+      }
+    ],
+    "estructuras de control": [
+      {
+        "enunciado": "Escribe una estructura if que muestre 'Aprobado' si la variable 'nota' es mayor o igual a 5.",
+        "regex": "if\\s*\\(\\s*nota\\s*>=\\s*5\\s*\\)\\s*\\{?\\s*printf\\s*\\(.*Aprobado.*\\)\\s*;?\\s*\\}?",
+        "pista": "Usa if(nota >= 5) y printf dentro.",
+        "solucion": "if (nota >= 5) {\n  printf(\"Aprobado\");\n}"
+      },
+      {
+        "enunciado": "Escribe una estructura if-else que imprima 'Par' si x es divisible por 2 y 'Impar' si no.",
+        "regex": "if\\s*\\(\\s*x\\s*%\\s*2\\s*==\\s*0\\s*\\)\\s*\\{?\\s*printf\\s*\\(.*Par.*\\)\\s*;?\\s*\\}?\\s*else\\s*\\{?\\s*printf\\s*\\(.*Impar.*\\)\\s*;?\\s*\\}?",
+        "pista": "Usa % para comprobar si x es divisible por 2.",
+        "solucion": "if (x % 2 == 0) {\n  printf(\"Par\");\n} else {\n  printf(\"Impar\");\n}"
+      },
+      {
+        "enunciado": "Crea un bucle while que imprima los números del 1 al 5.",
+        "regex": "int\\s+i\\s*=\\s*1\\s*;\\s*while\\s*\\(\\s*i\\s*<=\\s*5\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*i.*\\)[^}]*i\\+\\+[^}]*\\}",
+        "pista": "Inicializa i en 1 y repite mientras i <= 5.",
+        "solucion": "int i = 1;\nwhile (i <= 5) {\n  printf(\"%d\\n\", i);\n  i++;\n}"
+      },
+      {
+        "enunciado": "Crea un bucle for que imprima los números del 0 al 3.",
+        "regex": "for\\s*\\(\\s*int\\s+i\\s*=\\s*0\\s*;\\s*i\\s*<=\\s*3\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*i.*\\)",
+        "pista": "Usa for (int i = 0; i <= 3; i++)",
+        "solucion": "for (int i = 0; i <= 3; i++) {\n  printf(\"%d\\n\", i);\n}"
+      },
+      {
+        "enunciado": "Escribe una estructura switch que imprima 'Uno' si n es 1, 'Dos' si es 2 y 'Otro' si no.",
+        "regex": "switch\\s*\\(\\s*n\\s*\\)\\s*\\{[^}]*case\\s*1\\s*:\\s*printf\\s*\\(.*Uno.*\\)[^}]*case\\s*2\\s*:\\s*printf\\s*\\(.*Dos.*\\)[^}]*default\\s*:\\s*printf\\s*\\(.*Otro.*\\)",
+        "pista": "Incluye case 1, case 2 y default.",
+        "solucion": "switch (n) {\n  case 1:\n    printf(\"Uno\");\n    break;\n  case 2:\n    printf(\"Dos\");\n    break;\n  default:\n    printf(\"Otro\");\n}"
+      },
+      {
+        "enunciado": "Declara una variable 'edad'. Usa un if para mostrar 'Mayor de edad' si es 18 o más.",
+        "regex": "int\\s+edad\\s*=\\s*\\d+\\s*;\\s*if\\s*\\(\\s*edad\\s*>=\\s*18\\s*\\)\\s*\\{?\\s*printf\\s*\\(.*Mayor de edad.*\\)",
+        "pista": "Declara la variable y haz la comparación con >=.",
+        "solucion": "int edad = 20;\nif (edad >= 18) {\n  printf(\"Mayor de edad\");\n}"
+      },
+      {
+        "enunciado": "Crea un bucle for que sume los números del 1 al 5 en una variable 'suma'.",
+        "regex": "int\\s+suma\\s*=\\s*0\\s*;\\s*for\\s*\\(\\s*int\\s+i\\s*=\\s*1\\s*;\\s*i\\s*<=\\s*5\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{\\s*suma\\s*\\+=\\s*i\\s*;\\s*\\}",
+        "pista": "Inicializa suma = 0 y usa suma += i dentro del bucle.",
+        "solucion": "int suma = 0;\nfor (int i = 1; i <= 5; i++) {\n  suma += i;\n}"
+      }
+    ]
+
+  },
+  "intermedio": {
+    "variables": [
+      {
+        "enunciado": "Declara una variable 'nota' de tipo float, asígnale el valor 7.5 y muestra su valor con printf.",
+        "regex": "float\\s+nota\\s*=\\s*7\\.5\\s*;\\s*printf\\s*\\(.*nota.*\\)",
+        "pista": "Usa printf con %f para imprimir un float.",
+        "solucion": "float nota = 7.5;\nprintf(\"%f\", nota);"
+      },
+      {
+        "enunciado": "Declara una variable entera 'x' con valor 10, y luego incrementa su valor en 1.",
+        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*x\\+\\+\\s*;",
+        "pista": "Puedes usar x++; para aumentar en 1.",
+        "solucion": "int x = 10;\nx++;"
+      },
+      {
+        "enunciado": "Declara una variable 'entero = 10', conviértelo a float y divídelo por 3.",
+        "regex": "int\\s+entero\\s*=\\s*10\\s*;\\s*float\\s+\\w+\\s*=\\s*\\(float\\)\\s*entero\\s*/\\s*3\\s*;",
+        "pista": "Usa (float) para hacer conversión explícita.",
+        "solucion": "int entero = 10;\nfloat resultado = (float)entero / 3;"
+      },
+      {
+        "enunciado": "Declara una variable 'nombre' como un array de 20 caracteres y asígnale el valor \"Juan\".",
+        "regex": "char\\s+nombre\\s*\\[\\s*20\\s*\\]\\s*=\\s*\"Juan\"\\s*;",
+        "pista": "Usa comillas dobles para cadenas de texto.",
+        "solucion": "char nombre[20] = \"Juan\";"
+      },
+      {
+        "enunciado": "Declara una variable 'activo' como booleana y asígnale el valor true (usa stdbool.h).",
+        "regex": "#include\\s*<stdbool\\.h>.*bool\\s+activo\\s*=\\s*true\\s*;",
+        "pista": "Recuerda incluir la librería <stdbool.h>.",
+        "solucion": "#include <stdbool.h>\nbool activo = true;"
+      },
+      {
+        "enunciado": "Declara una variable global 'contador' de tipo int con valor 0.",
+        "regex": "int\\s+contador\\s*=\\s*0\\s*;",
+        "pista": "Las variables globales van fuera de main.",
+        "solucion": "int contador = 0;"
+      },
+      {
+        "enunciado": "Declara una variable 'x' e inicialízala con el valor de otra variable 'y'.",
+        "regex": "int\\s+y\\s*=\\s*\\d+\\s*;\\s*int\\s+x\\s*=\\s*y\\s*;",
+        "pista": "Primero declara y, luego usa su valor para x.",
+        "solucion": "int y = 5;\nint x = y;"
+      }
+    ],
+    "operadores lógicos": [
+      {
+        "enunciado": "Declara dos variables 'a = 12' y 'b = 4'. Calcula su división y guarda el resultado en 'c'.",
+        "regex": "int\\s+a\\s*=\\s*12\\s*;\\s*int\\s+b\\s*=\\s*4\\s*;\\s*int\\s+c\\s*=\\s*a\\s*/\\s*b\\s*;",
+        "pista": "Divide a entre b y guarda el resultado en una nueva variable.",
+        "solucion": "int a = 12;\nint b = 4;\nint c = a / b;"
+      },
+      {
+        "enunciado": "Declara una variable 'resultado' que almacene si 'x = 5' es mayor que 2 o menor que 1.",
+        "regex": "#include\\s*<stdbool\\.h>.*int\\s+x\\s*=\\s*5\\s*;.*bool\\s+resultado\\s*=\\s*x\\s*>\\s*2\\s*\\|\\|\\s*x\\s*<\\s*1\\s*;",
+        "pista": "Usa el operador lógico '||' (OR).",
+        "solucion": "#include <stdbool.h>\nint x = 5;\nbool resultado = x > 2 || x < 1;"
+      },
+      {
+        "enunciado": "Declara una variable 'total = 10' y súmale 5 usando el operador +=.",
+        "regex": "int\\s+total\\s*=\\s*10\\s*;\\s*total\\s*\\+=\\s*5\\s*;",
+        "pista": "El operador += actualiza el valor sumando.",
+        "solucion": "int total = 10;\ntotal += 5;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'activo' que sea true si 'edad = 20' está entre 18 y 30 (ambos inclusive).",
+        "regex": "#include\\s*<stdbool\\.h>.*int\\s+edad\\s*=\\s*20\\s*;.*bool\\s+activo\\s*=\\s*edad\\s*>?=\\s*18\\s*&&\\s*edad\\s*<=\\s*30\\s*;",
+        "pista": "Usa el operador '&&' para combinar dos comparaciones.",
+        "solucion": "#include <stdbool.h>\nint edad = 20;\nbool activo = edad >= 18 && edad <= 30;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'negado' como negación de que 'x = 3' sea mayor que 10.",
+        "regex": "#include\\s*<stdbool\\.h>.*int\\s+x\\s*=\\s*3\\s*;.*bool\\s+negado\\s*=\\s*!\\s*\\(\\s*x\\s*>\\s*10\\s*\\)\\s*;",
+        "pista": "Usa el operador ! con paréntesis para negar la condición.",
+        "solucion": "#include <stdbool.h>\nint x = 3;\nbool negado = !(x > 10);"
+      },
+      {
+        "enunciado": "Declara una variable entera 'resultado' con el valor de (8 + 2) * 3.",
+        "regex": "int\\s+resultado\\s*=\\s*\\(\\s*8\\s*\\+\\s*2\\s*\\)\\s*\\*\\s*3\\s*;",
+        "pista": "Agrupa primero la suma con paréntesis.",
+        "solucion": "int resultado = (8 + 2) * 3;"
+      },
+      {
+        "enunciado": "Declara dos variables 'a = 7' y 'b = 2'. Calcula si su suma es par (usa operador %).",
+        "regex": "int\\s+a\\s*=\\s*7\\s*;\\s*int\\s+b\\s*=\\s*2\\s*;.*bool\\s+esPar\\s*=\\s*\\(a\\s*\\+\\s*b\\)\\s*%\\s*2\\s*==\\s*0\\s*;",
+        "pista": "La suma es par si (a + b) % 2 == 0.",
+        "solucion": "int a = 7;\nint b = 2;\nbool esPar = (a + b) % 2 == 0;"
+      }
+    ], 
+    "estructuras de control": [
+      {
+        "enunciado": "Usa un if-else para mostrar 'Positivo' si un número es mayor que 0, y 'Negativo o cero' en caso contrario.",
+        "regex": "if\\s*\\(\\s*\\w+\\s*>\\s*0\\s*\\)\\s*\\{?\\s*printf\\s*\\(.*Positivo.*\\)\\s*;?\\s*\\}?\\s*else\\s*\\{?\\s*printf\\s*\\(.*Negativo o cero.*\\)\\s*;?\\s*\\}?",
+        "pista": "Evalúa si el número > 0, y muestra un mensaje diferente si no.",
+        "solucion": "if (num > 0) {\n  printf(\"Positivo\");\n} else {\n  printf(\"Negativo o cero\");\n}"
+      },
+      {
+        "enunciado": "Usa un bucle while que imprima los números pares del 2 al 10.",
+        "regex": "int\\s+i\\s*=\\s*2\\s*;\\s*while\\s*\\(\\s*i\\s*<=\\s*10\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*i.*\\)[^}]*i\\s*\\+=\\s*2\\s*;[^}]*\\}",
+        "pista": "Empieza en 2 y usa i += 2.",
+        "solucion": "int i = 2;\nwhile (i <= 10) {\n  printf(\"%d\\n\", i);\n  i += 2;\n}"
+      },
+      {
+        "enunciado": "Escribe un bucle for que imprima los números del 10 al 1 en orden descendente.",
+        "regex": "for\\s*\\(\\s*int\\s+i\\s*=\\s*10\\s*;\\s*i\\s*>=\\s*1\\s*;\\s*i--\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*i.*\\)",
+        "pista": "Usa for (int i = 10; i >= 1; i--)",
+        "solucion": "for (int i = 10; i >= 1; i--) {\n  printf(\"%d\\n\", i);\n}"
+      },
+      {
+        "enunciado": "Escribe una estructura switch para imprimir el nombre del día según un valor de 1 a 3.",
+        "regex": "switch\\s*\\(\\s*dia\\s*\\)\\s*\\{[^}]*case\\s*1\\s*:\\s*printf\\s*\\(.*Lunes.*\\)[^}]*case\\s*2\\s*:\\s*printf\\s*\\(.*Martes.*\\)[^}]*case\\s*3\\s*:\\s*printf\\s*\\(.*Mi[eé]rcoles.*\\)",
+        "pista": "Agrega los case con break para cada día.",
+        "solucion": "switch (dia) {\n  case 1:\n    printf(\"Lunes\");\n    break;\n  case 2:\n    printf(\"Martes\");\n    break;\n  case 3:\n    printf(\"Miércoles\");\n    break;\n}"
+      },
+      {
+        "enunciado": "Escribe un bucle while que sume los números del 1 al 5 en una variable 'suma'.",
+        "regex": "int\\s+i\\s*=\\s*1\\s*;\\s*int\\s+suma\\s*=\\s*0\\s*;\\s*while\\s*\\(\\s*i\\s*<=\\s*5\\s*\\)\\s*\\{[^}]*suma\\s*\\+=\\s*i\\s*;[^}]*i\\+\\+\\s*;[^}]*\\}",
+        "pista": "Inicializa i y suma, incrementa dentro del while.",
+        "solucion": "int i = 1;\nint suma = 0;\nwhile (i <= 5) {\n  suma += i;\n  i++;\n}"
+      },
+      {
+        "enunciado": "Usa un bucle for que imprima los números del 1 al 10, pero omita el 5 usando continue.",
+        "regex": "for\\s*\\(\\s*int\\s+i\\s*=\\s*1\\s*;\\s*i\\s*<=\\s*10\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*i\\s*==\\s*5\\s*\\)\\s*continue\\s*;[^}]*printf\\s*\\(.*i.*\\)",
+        "pista": "Usa if (i == 5) continue; dentro del for.",
+        "solucion": "for (int i = 1; i <= 10; i++) {\n  if (i == 5) continue;\n  printf(\"%d\\n\", i);\n}"
+      },
+      {
+        "enunciado": "Escribe un bucle for que se detenga cuando i sea igual a 4 usando break.",
+        "regex": "for\\s*\\(\\s*int\\s+i\\s*=\\s*0\\s*;\\s*i\\s*<\\s*10\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*i\\s*==\\s*4\\s*\\)\\s*break\\s*;[^}]*\\}",
+        "pista": "Incluye if (i == 4) break; dentro del for.",
+        "solucion": "for (int i = 0; i < 10; i++) {\n  if (i == 4) break;\n  printf(\"%d\\n\", i);\n}"
+      }
+    ], 
+    "funciones": [
+      {
+        "enunciado": "Declara una función llamada 'saludar' que imprima 'Hola, mundo!'.",
+        "regex": "void\\s+saludar\\s*\\(\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*Hola, mundo!.*\\)\\s*;?[^}]*\\}",
+        "pista": "Usa void para funciones sin retorno.",
+        "solucion": "void saludar() {\n  printf(\"Hola, mundo!\");\n}"
+      },
+      {
+        "enunciado": "Declara una función 'sumar' que reciba dos enteros y retorne su suma.",
+        "regex": "int\\s+sumar\\s*\\(\\s*int\\s+a\\s*,\\s*int\\s+b\\s*\\)\\s*\\{[^}]*return\\s+a\\s*\\+\\s*b;[^}]*}",
+        "pista": "Usa return para devolver el resultado.",
+        "solucion": "int sumar(int a, int b) {\n  return a + b;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'esPar' que reciba un entero y retorne true si es par.",
+        "regex": "#include\\s*<stdbool\\.h>.*bool\\s+esPar\\s*\\(\\s*int\\s+n\\s*\\)\\s*\\{[^}]*return\\s*n\\s*%\\s*2\\s*== \\d;[^}]*}",
+        "pista": "Usa % 2 para comprobar si es par.",
+        "solucion": "#include <stdbool.h>\nbool esPar(int n) {\n  return n % 2 == 0;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'maximo' que reciba dos enteros y retorne el mayor.",
+        "regex": "int\\s+maximo\\s*\\(.*int.*a.*int.*b.*)\\.return.*a.*>.*b.*?a:b;",
+        "pista": "Usa un operador ternario para retornar el mayor.",
+        "solucion": "int maximo(int a, int b) {\n  return (a > b) ? a : b;\n}"
+      }, 
+      {
+        "enunciado": "Declara una función llamada 'sumar' que reciba dos enteros y retorne su suma.",
+        "regex": "int\\s+sumar\\s*\\(\\s*int\\s+\\w+\\s*,\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*return\\s+\\w+\\s*\\+\\s*\\w+\\s*;[^}]*\\}",
+        "pista": "La función debe ser int y retornar la suma.",
+        "solucion": "int sumar(int a, int b) {\n  return a + b;\n}"
+      },
+      {
+        "enunciado": "Escribe la definición de la función 'imprimirMensaje' que muestre \"Hola\" por pantalla.",
+        "regex": "void\\s+imprimirMensaje\\s*\\(\\s*void\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*Hola.*\\)[^}]*\\}",
+        "pista": "Debe usar printf(\"Hola\"); dentro del cuerpo.",
+        "solucion": "void imprimirMensaje(void) {\n  printf(\"Hola\");\n}"
+      },
+      {
+        "enunciado": "Llama a la función 'sumar' pasándole 3 y 4 como argumentos y guarda el resultado en 'resultado'.",
+        "regex": "int\\s+resultado\\s*=\\s*sumar\\s*\\(\\s*3\\s*,\\s*4\\s*\\)\\s*;",
+        "pista": "Recuerda declarar la variable e invocar la función.",
+        "solucion": "int resultado = sumar(3, 4);"
+      }
+    ],
+    "punteros": [
+      {
+        "enunciado": "Declara un puntero a entero llamado 'ptr' y haz que apunte a una variable 'x' inicializada con 10.",
+        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*int\\s*\\*ptr\\s*=\\s*&x\\s*;",
+        "pista": "Recuerda usar &x para obtener la dirección de x.",
+        "solucion": "int x = 10;\nint *ptr = &x;"
+      },
+      {
+        "enunciado": "Usa un puntero 'ptr' para modificar el valor de la variable 'x' a 20.",
+        "regex": "int\\s+x\\s*=\\s*\\d+\\s*;\\s*int\\s*\\*ptr\\s*=\\s*&x\\s*;\\s*\\*ptr\\s*=\\s*20\\s*;",
+        "pista": "Modifica el contenido apuntado con *ptr = 20.",
+        "solucion": "int x = 5;\nint *ptr = &x;\n*ptr = 20;"
+      },
+      {
+        "enunciado": "Declara dos punteros a float llamados 'a' y 'b', y asígnales las direcciones de 'x' y 'y'.",
+        "regex": "float\\s+x\\s*=\\s*\\d+\\.?\\d*\\s*;\\s*float\\s+y\\s*=\\s*\\d+\\.?\\d*\\s*;\\s*float\\s*\\*a\\s*=\\s*&x\\s*;\\s*float\\s*\\*b\\s*=\\s*&y\\s*;",
+        "pista": "Declara x, y como float y asigna punteros con &.",
+        "solucion": "float x = 1.5;\nfloat y = 2.5;\nfloat *a = &x;\nfloat *b = &y;"
+      },
+      {
+        "enunciado": "Declara una función 'incrementar' que reciba un puntero a int y aumente su valor en 1.",
+        "regex": "void\\s+incrementar\\s*\\(\\s*int\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*\\*\\w+\\s*\\+=\\s*1\\s*;[^}]*\\}",
+        "pista": "La función debe modificar el valor apuntado.",
+        "solucion": "void incrementar(int *p) {\n  *p += 1;\n}"
+      },
+      {
+        "enunciado": "Declara una variable 'x = 10', llama a la función 'incrementar' pasándole la dirección de x.",
+        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*incrementar\\s*\\(\\s*&x\\s*\\)\\s*;",
+        "pista": "Debes pasar la dirección de x con &x.",
+        "solucion": "int x = 10;\nincrementar(&x);"
+      },
+      {
+        "enunciado": "Declara un puntero a char 'ptr' que apunte a una cadena literal \"Hola\".",
+        "regex": "char\\s*\\*ptr\\s*=\\s*\"Hola\"\\s*;",
+        "pista": "Una cadena literal es un puntero implícito a char.",
+        "solucion": "char *ptr = \"Hola\";"
+      },
+      {
+        "enunciado": "Declara un array de enteros 'valores' de 5 elementos y un puntero que apunte al primer elemento.",
+        "regex": "int\\s+valores\\s*\\[\\s*5\\s*\\]\\s*=\\s*\\{[^}]*\\}\\s*;\\s*int\\s*\\*ptr\\s*=\\s*valores\\s*;",
+        "pista": "El nombre del array apunta al primer elemento.",
+        "solucion": "int valores[5] = {1, 2, 3, 4, 5};\nint *ptr = valores;"
+      }
+    ], 
+    "librerias": [
+      {
+        "enunciado": "Incluye la librería estándar de entrada y salida.",
+        "regex": "#include\\s*<stdio\\.h>",
+        "pista": "Usa <stdio.h> para printf, scanf, etc.",
+        "solucion": "#include <stdio.h>"
+      },
+      {
+        "enunciado": "Incluye la librería matemática necesaria para usar la función 'sqrt'.",
+        "regex": "#include\\s*<math\\.h>",
+        "pista": "sqrt pertenece a la librería matemática.",
+        "solucion": "#include <math.h>"
+      },
+      {
+        "enunciado": "Incluye la librería necesaria para usar funciones como strcpy o strlen.",
+        "regex": "#include\\s*<string\\.h>",
+        "pista": "Las funciones de cadenas están en <string.h>.",
+        "solucion": "#include <string.h>"
+      },
+      {
+        "enunciado": "Incluye la librería que permite el uso del tipo bool y los valores true y false.",
+        "regex": "#include\\s*<stdbool\\.h>",
+        "pista": "Este encabezado define el tipo booleano.",
+        "solucion": "#include <stdbool.h>"
+      },
+      {
+        "enunciado": "Incluye la librería para trabajar con memoria dinámica como malloc y free.",
+        "regex": "#include\\s*<stdlib\\.h>",
+        "pista": "malloc, calloc y free están en <stdlib.h>.",
+        "solucion": "#include <stdlib.h>"
+      },
+      {
+        "enunciado": "Crea un archivo de cabecera llamado 'util.h' que contenga la declaración de una función 'saludar()'.",
+        "regex": "#ifndef\\s+UTIL_H\\s*\\n#define\\s+UTIL_H\\s*\\nvoid\\s+saludar\\s*\\(\\s*void\\s*\\)\\s*;\\s*\\n#endif",
+        "pista": "Usa guardas de inclusión y declara la función.",
+        "solucion": "#ifndef UTIL_H\n#define UTIL_H\nvoid saludar(void);\n#endif"
+      },
+      {
+        "enunciado": "Incluye un archivo de cabecera local llamado 'util.h' dentro de tu archivo principal.",
+        "regex": "#include\\s*\"util\\.h\"",
+        "pista": "Usa comillas dobles para archivos propios.",
+        "solucion": "#include \"util.h\""
+      }
+    ],
+    "struct": [
+      {
+        "enunciado": "Declara una estructura llamada 'Persona' con los campos 'nombre[50]' y 'edad' (entero).",
+        "regex": "struct\\s+Persona\\s*\\{\\s*char\\s+nombre\\s*\\[\\s*50\\s*\\]\\s*;\\s*int\\s+edad\\s*;\\s*\\}\\s*;",
+        "pista": "Usa 'char nombre[50];' y 'int edad;' dentro del struct.",
+        "solucion": "struct Persona {\n  char nombre[50];\n  int edad;\n};"
+      },
+      {
+        "enunciado": "Declara una variable 'alumno' de tipo struct Persona e inicialízala con \"Ana\" y 22.",
+        "regex": "struct\\s+Persona\\s+alumno\\s*=\\s*\\{\\s*\"Ana\"\\s*,\\s*22\\s*\\}\\s*;",
+        "pista": "Usa inicialización compuesta con llaves.",
+        "solucion": "struct Persona alumno = {\"Ana\", 22};"
+      },
+      {
+        "enunciado": "Accede al campo 'edad' del struct 'alumno' y guárdalo en una variable entera 'e'.",
+        "regex": "int\\s+e\\s*=\\s*alumno\\.edad\\s*;",
+        "pista": "Usa el operador punto para acceder a campos.",
+        "solucion": "int e = alumno.edad;"
+      },
+      {
+        "enunciado": "Declara una función 'mostrarPersona' que reciba un struct Persona como parámetro.",
+        "regex": "void\\s+mostrarPersona\\s*\\(\\s*struct\\s+Persona\\s+\\w+\\s*\\)\\s*\\{[^}]*\\}",
+        "pista": "Recuerda especificar 'struct Persona' como tipo de parámetro.",
+        "solucion": "void mostrarPersona(struct Persona p) {\n  // ...\n}"
+      },
+      {
+        "enunciado": "Dentro de la función 'mostrarPersona', muestra el nombre y edad usando printf.",
+        "regex": "printf\\s*\\(\\s*\".*%s.*%d.*\"\\s*,\\s*\\w+\\.nombre\\s*,\\s*\\w+\\.edad\\s*\\)",
+        "pista": "Usa p.nombre y p.edad dentro del printf.",
+        "solucion": "printf(\"Nombre: %s, Edad: %d\", p.nombre, p.edad);"
+      },
+      {
+        "enunciado": "Declara una variable puntero a struct Persona llamada 'ptr' y haz que apunte a 'alumno'.",
+        "regex": "struct\\s+Persona\\s*\\*ptr\\s*=\\s*&alumno\\s*;",
+        "pista": "Usa '&alumno' para obtener la dirección.",
+        "solucion": "struct Persona *ptr = &alumno;"
+      },
+      {
+        "enunciado": "Usa el puntero 'ptr' para modificar la edad de 'alumno' a 25.",
+        "regex": "ptr\\s*->\\s*edad\\s*=\\s*25\\s*;",
+        "pista": "Accede al campo usando ->",
+        "solucion": "ptr->edad = 25;"
+      }
+    ], 
+    "ristras": [
+      {
+        "enunciado": "Declara una cadena llamada 'nombre' capaz de almacenar hasta 20 caracteres e inicialízala con \"Juan\".",
+        "regex": "char\\s+nombre\\s*\\[\\s*20\\s*\\]\\s*=\\s*\"Juan\"\\s*;",
+        "pista": "Recuerda declarar con tamaño y usar comillas dobles.",
+        "solucion": "char nombre[20] = \"Juan\";"
+      },
+      {
+        "enunciado": "Lee una cadena desde teclado usando scanf y guárdala en 'palabra[30]'.",
+        "regex": "char\\s+palabra\\s*\\[\\s*30\\s*\\]\\s*;\\s*scanf\\s*\\(\\s*\"%s\"\\s*,\\s*palabra\\s*\\)",
+        "pista": "scanf no necesita & con cadenas.",
+        "solucion": "char palabra[30];\nscanf(\"%s\", palabra);"
+      },
+      {
+        "enunciado": "Muestra el contenido de la cadena 'mensaje' con printf.",
+        "regex": "printf\\s*\\(\\s*\"%s\"\\s*,\\s*mensaje\\s*\\)",
+        "pista": "Usa %s para imprimir cadenas.",
+        "solucion": "printf(\"%s\", mensaje);"
+      },
+      {
+        "enunciado": "Copia la cadena 'origen' en 'destino' usando strcpy.",
+        "regex": "#include\\s*<string\\.h>.*strcpy\\s*\\(\\s*destino\\s*,\\s*origen\\s*\\)",
+        "pista": "strcpy(destino, origen); requiere string.h.",
+        "solucion": "#include <string.h>\nstrcpy(destino, origen);"
+      },
+      {
+        "enunciado": "Concatena la cadena 'apellido' al final de 'nombreCompleto' usando strcat.",
+        "regex": "strcat\\s*\\(\\s*nombreCompleto\\s*,\\s*apellido\\s*\\)",
+        "pista": "strcat agrega una cadena al final de otra.",
+        "solucion": "strcat(nombreCompleto, apellido);"
+      },
+      {
+        "enunciado": "Compara las cadenas 'a' y 'b' y muestra un mensaje si son iguales.",
+        "regex": "if\\s*\\(\\s*strcmp\\s*\\(\\s*a\\s*,\\s*b\\s*\\)\\s*==\\s*0\\s*\\)\\s*\\{\\s*printf\\s*\\(.*\\)\\s*;\\s*\\}",
+        "pista": "strcmp devuelve 0 si las cadenas son iguales.",
+        "solucion": "if (strcmp(a, b) == 0) {\n  printf(\"Son iguales\");\n}"
+      },
+      {
+        "enunciado": "Declara una cadena vacía llamada 'texto' con capacidad para 100 caracteres y asígnale el valor \"Hola\" con strcpy.",
+        "regex": "char\\s+texto\\s*\\[\\s*100\\s*\\]\\s*;\\s*strcpy\\s*\\(\\s*texto\\s*,\\s*\"Hola\"\\s*\\)",
+        "pista": "La cadena debe tener tamaño suficiente y asignarse con strcpy.",
+        "solucion": "char texto[100];\nstrcpy(texto, \"Hola\");"
+      }
+    ],
+    "archivos": [
+      {
+        "enunciado": "Declara un puntero a archivo llamado 'f' y ábrelo en modo lectura sobre el archivo 'datos.txt'.",
+        "regex": "FILE\\s*\\*f\\s*=\\s*fopen\\s*\\(\\s*\"datos\\.txt\"\\s*,\\s*\"r\"\\s*\\)\\s*;",
+        "pista": "Usa fopen con modo 'r'.",
+        "solucion": "FILE *f = fopen(\"datos.txt\", \"r\");"
+      },
+      {
+        "enunciado": "Verifica si el archivo 'f' se abrió correctamente. Si no, muestra un mensaje de error.",
+        "regex": "if\\s*\\(\\s*f\\s*==\\s*NULL\\s*\\)\\s*\\{\\s*printf\\s*\\(.*\\)\\s*;\\s*\\}",
+        "pista": "Compara el puntero con NULL.",
+        "solucion": "if (f == NULL) {\n  printf(\"No se pudo abrir el archivo\\n\");\n}"
+      },
+      {
+        "enunciado": "Escribe en el archivo 'f' el texto \"Hola archivo\" usando fprintf.",
+        "regex": "fprintf\\s*\\(\\s*f\\s*,\\s*\"Hola archivo\"\\s*\\)",
+        "pista": "fprintf es como printf pero con el archivo como primer parámetro.",
+        "solucion": "fprintf(f, \"Hola archivo\");"
+      },
+      {
+        "enunciado": "Lee un número entero desde el archivo 'f' y guárdalo en la variable 'x' usando fscanf.",
+        "regex": "int\\s+x\\s*;\\s*fscanf\\s*\\(\\s*f\\s*,\\s*\"%d\"\\s*,\\s*&x\\s*\\)",
+        "pista": "Usa el operador & para pasar la dirección.",
+        "solucion": "int x;\nfscanf(f, \"%d\", &x);"
+      },
+      {
+        "enunciado": "Cierra el archivo 'f' usando fclose.",
+        "regex": "fclose\\s*\\(\\s*f\\s*\\)",
+        "pista": "Llama a fclose con el puntero.",
+        "solucion": "fclose(f);"
+      },
+      {
+        "enunciado": "Escribe un bucle que lea enteros desde un archivo hasta llegar al final usando feof.",
+        "regex": "while\\s*\\(\\s*!feof\\s*\\(\\s*f\\s*\\)\\s*\\)\\s*\\{[^}]*fscanf\\s*\\(\\s*f\\s*,\\s*\"%d\"\\s*,\\s*&\\w+\\s*\\)[^}]*\\}",
+        "pista": "Usa !feof(f) como condición del while.",
+        "solucion": "int num;\nwhile (!feof(f)) {\n  fscanf(f, \"%d\", &num);\n}"
+      },
+      {
+        "enunciado": "Declara un archivo llamado 'fich' y ábrelo en modo de escritura, creando el archivo si no existe.",
+        "regex": "FILE\\s*\\*fich\\s*=\\s*fopen\\s*\\(\\s*\"\\w+\\.txt\"\\s*,\\s*\"w\"\\s*\\)\\s*;",
+        "pista": "Modo 'w' crea el archivo si no existe.",
+        "solucion": "FILE *fich = fopen(\"salida.txt\", \"w\");"
+      }
+    ]
+  },
+  "avanzado": {
+    "variables": [
+      {
+        "enunciado": "Declara una variable estática entera llamada 'acumulador' con valor inicial 0.",
+        "regex": "static\\s+int\\s+acumulador\\s*=\\s*0\\s*;",
+        "pista": "Las variables static conservan su valor entre llamadas.",
+        "solucion": "static int acumulador = 0;"
+      },
+      {
+        "enunciado": "Declara una variable global 'contador' como externa, asumiendo que se define en otro archivo.",
+        "regex": "extern\\s+int\\s+contador\\s*;",
+        "pista": "Usa extern sin inicializar.",
+        "solucion": "extern int contador;"
+      },
+      {
+        "enunciado": "Declara una variable de tipo struct 'Persona' con campos 'nombre[50]' y 'edad'.",
+        "regex": "struct\\s+Persona\\s*\\{\\s*char\\s+nombre\\s*\\[\\s*50\\s*\\]\\s*;\\s*int\\s+edad\\s*;\\s*\\}\\s*;",
+        "pista": "Define los campos dentro de las llaves.",
+        "solucion": "struct Persona {\n  char nombre[50];\n  int edad;\n};"
+      },
+      {
+        "enunciado": "Declara una variable de tipo struct 'Persona' llamada 'alumno' e inicialízala con \"Ana\" y 20.",
+        "regex": "struct\\s+Persona\\s+alumno\\s*=\\s*\\{\\s*\"Ana\"\\s*,\\s*20\\s*\\}\\s*;",
+        "pista": "Usa inicialización compuesta entre llaves.",
+        "solucion": "struct Persona alumno = {\"Ana\", 20};"
+      },
+      {
+        "enunciado": "Declara una variable entera 'x' con tipo definido por typedef llamado 'Entero'.",
+        "regex": "typedef\\s+int\\s+Entero\\s*;.*Entero\\s+x\\s*=\\s*\\d+\\s*;",
+        "pista": "Primero define Entero como alias de int.",
+        "solucion": "typedef int Entero;\nEntero x = 5;"
+      },
+      {
+        "enunciado": "Declara una variable de tipo const char* llamada 'mensaje' e inicialízala con \"Hola\".",
+        "regex": "const\\s+char\\s*\\*\\s*mensaje\\s*=\\s*\"Hola\"\\s*;",
+        "pista": "Es un puntero a una cadena constante.",
+        "solucion": "const char *mensaje = \"Hola\";"
+      },
+      {
+        "enunciado": "Declara una variable entera 'dato' con la palabra clave 'volatile'.",
+        "regex": "volatile\\s+int\\s+dato\\s*;",
+        "pista": "Se usa 'volatile' para evitar optimización del compilador.",
+        "solucion": "volatile int dato;"
+      }
+    ], 
+    "operadores lógicos": [
+      {
+        "enunciado": "Declara dos variables 'x = 5' y 'y = 10'. Calcula si x es impar y y es par, usando operadores % y &&.",
+        "regex": "int\\s+x\\s*=\\s*5\\s*;\\s*int\\s+y\\s*=\\s*10\\s*;\\s*bool\\s+resultado\\s*=\\s*\\(x\\s*%\\s*2\\s*!=\\s*0\\)\\s*&&\\s*\\(y\\s*%\\s*2\\s*==\\s*0\\)\\s*;",
+        "pista": "Una variable es impar si % 2 != 0, par si % 2 == 0.",
+        "solucion": "int x = 5;\nint y = 10;\nbool resultado = (x % 2 != 0) && (y % 2 == 0);"
+      },
+      {
+        "enunciado": "Declara una variable 'flag' que sea true si 'a = 3' no es igual a 'b = 7' y a es menor que b.",
+        "regex": "int\\s+a\\s*=\\s*3\\s*;\\s*int\\s+b\\s*=\\s*7\\s*;\\s*bool\\s+flag\\s*=\\s*\\(a\\s*!=\\s*b\\)\\s*&&\\s*\\(a\\s*<\\s*b\\)\\s*;",
+        "pista": "Combina desigualdad y menor que con &&.",
+        "solucion": "int a = 3;\nint b = 7;\nbool flag = (a != b) && (a < b);"
+      },
+      {
+        "enunciado": "Usa el operador ternario para guardar en 'mayor' el valor más alto entre 'a = 8' y 'b = 5'.",
+        "regex": "int\\s+a\\s*=\\s*8\\s*;\\s*int\\s+b\\s*=\\s*5\\s*;\\s*int\\s+mayor\\s*=\\s*a\\s*>\\s*b\\s*\\?\\s*a\\s*:\\s*b\\s*;",
+        "pista": "Usa la sintaxis: condición ? valor_si_verdadero : valor_si_falso;",
+        "solucion": "int a = 8;\nint b = 5;\nint mayor = a > b ? a : b;"
+      },
+      {
+        "enunciado": "Declara una variable 'res' con el resultado de preincrementar 'i = 4'.",
+        "regex": "int\\s+i\\s*=\\s*4\\s*;\\s*int\\s+res\\s*=\\s*\\+\\+i\\s*;",
+        "pista": "El preincremento (++i) aumenta antes de asignar.",
+        "solucion": "int i = 4;\nint res = ++i;"
+      },
+      {
+        "enunciado": "Declara una variable 'res' con el resultado de postincrementar 'j = 6'.",
+        "regex": "int\\s+j\\s*=\\s*6\\s*;\\s*int\\s+res\\s*=\\s*j\\+\\+\\s*;",
+        "pista": "El postincremento (j++) asigna antes de aumentar.",
+        "solucion": "int j = 6;\nint res = j++;"
+      },
+      {
+        "enunciado": "Declara una variable booleana 'resultado' que sea true si x está fuera del rango [10, 20].",
+        "regex": "int\\s+x\\s*=\\s*\\d+\\s*;\\s*bool\\s+resultado\\s*=\\s*x\\s*<\\s*10\\s*\\|\\|\\s*x\\s*>\\s*20\\s*;",
+        "pista": "Está fuera del rango si es menor que 10 o mayor que 20.",
+        "solucion": "int x = 25;\nbool resultado = x < 10 || x > 20;"
+      },
+      {
+        "enunciado": "Declara una variable 'par' que contenga 1 si el valor de 'n = 6' es par, o 0 si es impar.",
+        "regex": "int\\s+n\\s*=\\s*6\\s*;\\s*int\\s+par\\s*=\\s*\\(n\\s*%\\s*2\\s*==\\s*0\\s*\\)\\s*\\?\\s*1\\s*:\\s*0\\s*;",
+        "pista": "Usa el operador ternario con n % 2 == 0.",
+        "solucion": "int n = 6;\nint par = (n % 2 == 0) ? 1 : 0;"
+      }
+    ], 
+    "estructuras de control": [
+      {
+        "enunciado": "Crea una estructura if-else anidada que imprima si un número 'x' es positivo, negativo o cero.",
+        "regex": "if\\s*\\(\\s*x\\s*>\\s*0\\s*\\)\\s*\\{[^}]*\\}.*else\\s*if\\s*\\(\\s*x\\s*<\\s*0\\s*\\)\\s*\\{[^}]*\\}.*else\\s*\\{[^}]*\\}",
+        "pista": "Usa if (x > 0), else if (x < 0), y else final.",
+        "solucion": "if (x > 0) {\n  printf(\"Positivo\");\n} else if (x < 0) {\n  printf(\"Negativo\");\n} else {\n  printf(\"Cero\");\n}"
+      },
+      {
+        "enunciado": "Crea un bucle while infinito que imprima 'Ejecutando' y se detenga si 'x' es igual a 0.",
+        "regex": "while\\s*\\(\\s*1\\s*\\)\\s*\\{[^}]*printf\\s*\\(.*Ejecutando.*\\)[^}]*if\\s*\\(\\s*x\\s*==\\s*0\\s*\\)\\s*break\\s*;[^}]*\\}",
+        "pista": "Usa while(1) y break cuando x == 0.",
+        "solucion": "while (1) {\n  printf(\"Ejecutando\\n\");\n  if (x == 0) break;\n}"
+      },
+      {
+        "enunciado": "Crea un bucle for anidado que imprima una matriz de 3 filas y 2 columnas.",
+        "regex": "for\\s*\\(\\s*int\\s+i\\s*=\\s*0\\s*;\\s*i\\s*<\\s*3\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{[^}]*for\\s*\\(\\s*int\\s+j\\s*=\\s*0\\s*;\\s*j\\s*<\\s*2\\s*;\\s*j\\+\\+\\s*\\)[^}]*printf\\s*\\(.*\\)",
+        "pista": "Usa un for dentro de otro for.",
+        "solucion": "for (int i = 0; i < 3; i++) {\n  for (int j = 0; j < 2; j++) {\n    printf(\"%d,%d\\n\", i, j);\n  }\n}"
+      },
+      {
+        "enunciado": "Escribe un switch que evalúe una variable 'op' con los casos '+', '-', '*' y '/' (tipo char).",
+        "regex": "switch\\s*\\(\\s*op\\s*\\)\\s*\\{[^}]*case\\s*'\\+'\\s*:[^}]*case\\s*'-'\\s*:[^}]*case\\s*'\\*'\\s*:[^}]*case\\s*'/'\\s*:",
+        "pista": "Los casos deben ser de tipo carácter entre comillas simples.",
+        "solucion": "switch (op) {\n  case '+':\n    // suma\n    break;\n  case '-':\n    // resta\n    break;\n  case '*':\n    // multiplicación\n    break;\n  case '/':\n    // división\n    break;\n}"
+      },
+      {
+        "enunciado": "Usa un bucle for que calcule el factorial de un número 'n' en una variable 'fact'.",
+        "regex": "int\\s+fact\\s*=\\s*1\\s*;\\s*for\\s*\\(\\s*int\\s+i\\s*=\\s*1\\s*;\\s*i\\s*<=\\s*n\\s*;\\s*i\\+\\+\\s*\\)\\s*\\{\\s*fact\\s*=\\s*fact\\s*\\*\\s*i\\s*;\\s*\\}",
+        "pista": "Inicializa fact en 1 y multiplícalo por i en cada iteración.",
+        "solucion": "int fact = 1;\nfor (int i = 1; i <= n; i++) {\n  fact = fact * i;\n}"
+      },
+      {
+        "enunciado": "Crea un bucle while que ignore los números impares del 1 al 10 usando continue.",
+        "regex": "int\\s+i\\s*=\\s*1\\s*;\\s*while\\s*\\(\\s*i\\s*<=\\s*10\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*i\\s*%\\s*2\\s*!=\\s*0\\s*\\)\\s*\\{\\s*i\\+\\+\\s*;\\s*continue\\s*;\\s*\\}[^}]*printf\\s*\\(.*i.*\\)[^}]*i\\+\\+\\s*;",
+        "pista": "Usa continue cuando i % 2 != 0.",
+        "solucion": "int i = 1;\nwhile (i <= 10) {\n  if (i % 2 != 0) {\n    i++;\n    continue;\n  }\n  printf(\"%d\\n\", i);\n  i++;\n}"
+      },
+      {
+        "enunciado": "Usa if anidados para verificar si un número es positivo y par.",
+        "regex": "if\\s*\\(\\s*\\w+\\s*>\\s*0\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*\\w+\\s*%\\s*2\\s*==\\s*0\\s*\\)\\s*\\{[^}]*\\}",
+        "pista": "Haz un if dentro de otro.",
+        "solucion": "if (num > 0) {\n  if (num % 2 == 0) {\n    printf(\"Positivo y par\");\n  }\n}"
+      }
+    ],
+    "funciones": [
+      {
+        "enunciado": "Declara una función recursiva llamada 'factorial' que devuelva el factorial de un entero positivo.",
+        "regex": "int\\s+factorial\\s*\\(\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*\\w+\\s*==\\s*0\\s*\\)\\s*return\\s*1\\s*;[^}]*return\\s+\\w+\\s*\\*\\s*factorial\\s*\\(\\s*\\w+\\s*-\\s*1\\s*\\)",
+        "pista": "Usa una condición base y llamada recursiva con n * factorial(n - 1).",
+        "solucion": "int factorial(int n) {\n  if (n == 0) return 1;\n  return n * factorial(n - 1);\n}"
+      },
+      {
+        "enunciado": "Declara una función 'intercambiar' que reciba dos punteros a int y los intercambie.",
+        "regex": "void\\s+intercambiar\\s*\\(\\s*int\\s*\\*\\w+\\s*,\\s*int\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*int\\s+temp\\s*=\\s*\\*\\w+\\s*;[^}]*\\*\\w+\\s*=\\s*\\*\\w+\\s*;[^}]*\\*\\w+\\s*=\\s*temp\\s*;[^}]*\\}",
+        "pista": "Usa punteros y variables temporales con el operador *.",
+        "solucion": "void intercambiar(int *a, int *b) {\n  int temp = *a;\n  *a = *b;\n  *b = temp;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'maximo' que reciba un array de enteros y su tamaño, y devuelva el mayor valor.",
+        "regex": "int\\s+maximo\\s*\\(\\s*int\\s+\\w+\\[\\s*\\]\\s*,\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*int\\s+max\\s*=\\s*\\w+\\[0\\]\\s*;[^}]*for\\s*\\(.*\\)\\s*\\{[^}]*if\\s*\\(\\s*\\w+\\[i\\]\\s*>\\s*max\\s*\\)[^}]*max\\s*=\\s*\\w+\\[i\\]\\s*;[^}]*\\}[^}]*return\\s+max\\s*;",
+        "pista": "Recorre el array comparando cada valor con el máximo actual.",
+        "solucion": "int maximo(int arr[], int n) {\n  int max = arr[0];\n  for (int i = 1; i < n; i++) {\n    if (arr[i] > max) max = arr[i];\n  }\n  return max;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'sumaPunteros' que reciba dos punteros a float y devuelva la suma.",
+        "regex": "float\\s+sumaPunteros\\s*\\(\\s*float\\s*\\*\\w+\\s*,\\s*float\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*return\\s+\\*\\w+\\s*\\+\\s*\\*\\w+\\s*;[^}]*\\}",
+        "pista": "Usa float* como parámetros y retorna *a + *b.",
+        "solucion": "float sumaPunteros(float *a, float *b) {\n  return *a + *b;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'longitudCadena' que reciba un puntero a char y devuelva su longitud sin usar strlen.",
+        "regex": "int\\s+longitudCadena\\s*\\(\\s*char\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*int\\s+cont\\s*=\\s*0\\s*;[^}]*while\\s*\\(\\s*\\*\\w+\\s*!=\\s*'\\\\0'\\s*\\)\\s*\\{[^}]*cont\\+\\+\\s*;[^}]*\\w+\\+\\+\\s*;[^}]*\\}[^}]*return\\s+cont\\s*;",
+        "pista": "Recorre el puntero hasta '\\0' con while.",
+        "solucion": "int longitudCadena(char *cad) {\n  int cont = 0;\n  while (*cad != '\\0') {\n    cont++;\n    cad++;\n  }\n  return cont;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'media' que reciba un array de float y su tamaño, y devuelva la media.",
+        "regex": "float\\s+media\\s*\\(\\s*float\\s+\\w+\\[\\s*\\]\\s*,\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*float\\s+suma\\s*=\\s*0\\s*;[^}]*for\\s*\\(.*\\)\\s*\\{[^}]*suma\\s*\\+=\\s*\\w+\\[i\\]\\s*;[^}]*\\}[^}]*return\\s+suma\\s*/\\s*\\w+\\s*;",
+        "pista": "Suma todos los elementos y divide por el tamaño.",
+        "solucion": "float media(float arr[], int n) {\n  float suma = 0;\n  for (int i = 0; i < n; i++) {\n    suma += arr[i];\n  }\n  return suma / n;\n}"
+      },
+      {
+        "enunciado": "Declara una función 'mostrar' que reciba un array de int y su tamaño, y muestre sus valores.",
+        "regex": "void\\s+mostrar\\s*\\(\\s*int\\s+\\w+\\[\\s*\\]\\s*,\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*for\\s*\\(.*\\)\\s*\\{[^}]*printf\\s*\\(.*\\w+\\[i\\].*\\)[^}]*\\}[^}]*\\}",
+        "pista": "Usa printf dentro del bucle para mostrar los elementos.",
+        "solucion": "void mostrar(int v[], int n) {\n  for (int i = 0; i < n; i++) {\n    printf(\"%d \", v[i]);\n  }\n}"
+      }
+    ],
+    "punteros": [
+      {
+        "enunciado": "Declara un puntero doble 'ptr' que apunte a un puntero que a su vez apunta a un entero 'x'.",
+        "regex": "int\\s+x\\s*=\\s*\\d+\\s*;\\s*int\\s*\\*p\\s*=\\s*&x\\s*;\\s*int\\s*\\*\\*ptr\\s*=\\s*&p\\s*;",
+        "pista": "Usa int**, y referencia al puntero con &p.",
+        "solucion": "int x = 10;\nint *p = &x;\nint **ptr = &p;"
+      },
+      {
+        "enunciado": "Declara una función 'operar' que reciba un puntero a función que toma dos enteros y retorna un entero.",
+        "regex": "void\\s+operar\\s*\\(\\s*int\\s*\\(\\s*\\*\\w+\\s*\\)\\s*\\(\\s*int\\s*,\\s*int\\s*\\)\\s*\\)\\s*\\{[^}]*\\}",
+        "pista": "La función recibe como parámetro un puntero a función.",
+        "solucion": "void operar(int (*f)(int, int)) {\n  // llamada interna a f()\n}"
+      },
+      {
+        "enunciado": "Usa malloc para reservar memoria para un array de 10 enteros apuntado por 'arr'.",
+        "regex": "int\\s*\\*arr\\s*=\\s*\\(int\\s*\\*\\)\\s*malloc\\s*\\(\\s*10\\s*\\*\\s*sizeof\\s*\\(int\\)\\s*\\)\\s*;",
+        "pista": "Usa malloc y sizeof para reservar memoria.",
+        "solucion": "int *arr = (int *)malloc(10 * sizeof(int));"
+      },
+      {
+        "enunciado": "Libera la memoria reservada por 'arr' usando free.",
+        "regex": "free\\s*\\(\\s*arr\\s*\\)\\s*;",
+        "pista": "free(arr); libera la memoria.",
+        "solucion": "free(arr);"
+      },
+      {
+        "enunciado": "Declara una estructura 'Persona' con nombre y edad, y un puntero a ella.",
+        "regex": "struct\\s+Persona\\s*\\{\\s*char\\s+nombre\\s*\\[\\d+\\]\\s*;\\s*int\\s+edad\\s*;\\s*\\}\\s*;\\s*struct\\s+Persona\\s*\\*p\\s*;",
+        "pista": "Define la struct y luego declara el puntero.",
+        "solucion": "struct Persona {\n  char nombre[50];\n  int edad;\n};\nstruct Persona *p;"
+      },
+      {
+        "enunciado": "Accede al campo 'edad' de un puntero a estructura 'p' de tipo Persona.",
+        "regex": "p\\s*->\\s*edad",
+        "pista": "Usa -> para acceder a miembros vía puntero.",
+        "solucion": "p->edad = 30;"
+      },
+      {
+        "enunciado": "Declara un array de 3 punteros a int y haz que cada uno apunte a una variable distinta.",
+        "regex": "int\\s+a\\s*=\\s*\\d+\\s*;\\s*int\\s+b\\s*=\\s*\\d+\\s*;\\s*int\\s+c\\s*=\\s*\\d+\\s*;\\s*int\\s*\\*arr\\s*\\[\\s*3\\s*\\]\\s*=\\s*\\{\\s*&a\\s*,\\s*&b\\s*,\\s*&c\\s*\\}\\s*;",
+        "pista": "Un array de punteros se define como int *arr[3].",
+        "solucion": "int a = 1, b = 2, c = 3;\nint *arr[3] = {&a, &b, &c};"
+      }
+    ],
+    "librerias": [
+      {
+        "enunciado": "Incluye la librería que contiene la función 'pow' y úsala para calcular 2 elevado a 3.",
+        "regex": "#include\\s*<math\\.h>.*pow\\s*\\(\\s*2\\s*,\\s*3\\s*\\)",
+        "pista": "Recuerda incluir math.h y usar pow(2, 3).",
+        "solucion": "#include <math.h>\ndouble resultado = pow(2, 3);"
+      },
+      {
+        "enunciado": "Incluye la librería necesaria para usar printf y muestra el número 3.14 con dos decimales.",
+        "regex": "#include\\s*<stdio\\.h>.*printf\\s*\\(\\s*\"%\\.2f\"\\s*,\\s*3\\.14\\s*\\)",
+        "pista": "printf con formato %.2f imprime dos decimales.",
+        "solucion": "#include <stdio.h>\nprintf(\"%.2f\", 3.14);"
+      },
+      {
+        "enunciado": "Declara un prototipo de función llamada 'areaCirculo' que recibe un float y devuelve un float.",
+        "regex": "float\\s+areaCirculo\\s*\\(\\s*float\\s+\\w+\\s*\\)\\s*;",
+        "pista": "Debes declarar tipo de retorno, nombre y parámetro.",
+        "solucion": "float areaCirculo(float radio);"
+      },
+      {
+        "enunciado": "Define la función 'areaCirculo' que calcule el área con pi = 3.14 y use pow para elevar al cuadrado.",
+        "regex": "float\\s+areaCirculo\\s*\\(\\s*float\\s+\\w+\\s*\\)\\s*\\{[^}]*return\\s+3\\.14\\s*\\*\\s*pow\\s*\\(\\s*\\w+\\s*,\\s*2\\s*\\)[^}]*\\}",
+        "pista": "Usa pow(radio, 2) para el cuadrado.",
+        "solucion": "float areaCirculo(float radio) {\n  return 3.14 * pow(radio, 2);\n}"
+      },
+      {
+        "enunciado": "Crea un archivo de cabecera llamado 'calculos.h' que contenga el prototipo de 'areaCirculo'.",
+        "regex": "#ifndef\\s+CALCULOS_H\\s*\\n#define\\s+CALCULOS_H\\s*\\nfloat\\s+areaCirculo\\s*\\(\\s*float\\s+\\w+\\s*\\)\\s*;\\s*\\n#endif",
+        "pista": "Usa guardas de inclusión (#ifndef) y declara el prototipo.",
+        "solucion": "#ifndef CALCULOS_H\n#define CALCULOS_H\nfloat areaCirculo(float r);\n#endif"
+      },
+      {
+        "enunciado": "Incluye tu cabecera 'calculos.h' en el archivo principal y llama a 'areaCirculo' pasando 5 como argumento.",
+        "regex": "#include\\s*\"calculos\\.h\".*areaCirculo\\s*\\(\\s*5\\s*\\)",
+        "pista": "Incluye entre comillas y usa areaCirculo(5).",
+        "solucion": "#include \"calculos.h\"\nfloat resultado = areaCirculo(5);"
+      },
+      {
+        "enunciado": "Incluye <math.h> y muestra la raíz cuadrada de 81 con printf.",
+        "regex": "#include\\s*<math\\.h>.*#include\\s*<stdio\\.h>.*printf\\s*\\(.*sqrt\\s*\\(\\s*81\\s*\\)\\s*\\)",
+        "pista": "Usa sqrt(81) dentro de printf.",
+        "solucion": "#include <math.h>\n#include <stdio.h>\nprintf(\"%.0f\", sqrt(81));"
+      }
+    ], 
+    "struct": [
+      {
+        "enunciado": "Crea un alias 'Estudiante' usando typedef a una estructura con campos 'nombre[50]' y 'nota'.",
+        "regex": "typedef\\s+struct\\s*\\{\\s*char\\s+nombre\\s*\\[50\\]\\s*;\\s*float\\s+nota\\s*;\\s*\\}\\s*Estudiante\\s*;",
+        "pista": "Usa typedef struct { ... } Nombre;",
+        "solucion": "typedef struct {\n  char nombre[50];\n  float nota;\n} Estudiante;"
+      },
+      {
+        "enunciado": "Declara una función que reciba un puntero a Estudiante y modifique su nota.",
+        "regex": "void\\s+modificarNota\\s*\\(\\s*Estudiante\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*\\*\\w+\\.nota\\s*=\\s*\\d+(\\.\\d+)?\\s*;[^}]*\\}",
+        "pista": "Recuerda acceder con -> si es puntero.",
+        "solucion": "void modificarNota(Estudiante *e) {\n  e->nota = 10.0;\n}"
+      },
+      {
+        "enunciado": "Declara un array de 3 estructuras Estudiante e inicialízalas con nombres y notas.",
+        "regex": "Estudiante\\s+grupo\\[3\\]\\s*=\\s*\\{\\s*\\{\\s*\"\\w+\"\\s*,\\s*\\d+(\\.\\d+)?\\s*\\}\\s*,\\s*\\{\\s*\"\\w+\"\\s*,\\s*\\d+(\\.\\d+)?\\s*\\}\\s*,\\s*\\{\\s*\"\\w+\"\\s*,\\s*\\d+(\\.\\d+)?\\s*\\}\\s*\\}\\s*;",
+        "pista": "Cada elemento se inicializa con {\"Nombre\", nota}.",
+        "solucion": "Estudiante grupo[3] = {\n  {\"Ana\", 7.5},\n  {\"Luis\", 8.0},\n  {\"Eva\", 9.2}\n};"
+      },
+      {
+        "enunciado": "Escribe una función que reciba un array de Estudiante y su tamaño, e imprima sus datos.",
+        "regex": "void\\s+mostrarGrupo\\s*\\(\\s*Estudiante\\s+\\w+\\[\\]\\s*,\\s*int\\s+\\w+\\s*\\)\\s*\\{[^}]*for\\s*\\(.*\\)\\s*\\{[^}]*printf\\s*\\(.*\\w+\\[i\\]\\.nombre.*\\w+\\[i\\]\\.nota.*\\)",
+        "pista": "Accede a los campos con grupo[i].nombre y grupo[i].nota.",
+        "solucion": "void mostrarGrupo(Estudiante grupo[], int n) {\n  for (int i = 0; i < n; i++) {\n    printf(\"%s - %.1f\\n\", grupo[i].nombre, grupo[i].nota);\n  }\n}"
+      },
+      {
+        "enunciado": "Crea una estructura 'Direccion' con campos 'calle[50]' y 'numero', e inclúyela dentro de 'Persona'.",
+        "regex": "struct\\s+Direccion\\s*\\{[^}]*char\\s+calle\\s*\\[50\\]\\s*;\\s*int\\s+numero\\s*;[^}]*\\}\\s*;.*struct\\s+Persona\\s*\\{[^}]*struct\\s+Direccion\\s+direccion\\s*;[^}]*\\}",
+        "pista": "Una estructura anidada contiene otra como campo.",
+        "solucion": "struct Direccion {\n  char calle[50];\n  int numero;\n};\n\nstruct Persona {\n  char nombre[50];\n  struct Direccion direccion;\n};"
+      },
+      {
+        "enunciado": "Accede al campo 'numero' dentro del campo 'direccion' de una estructura Persona 'p'.",
+        "regex": "p\\.direccion\\.numero\\s*=\\s*\\d+\\s*;",
+        "pista": "Encadena con punto: p.direccion.numero",
+        "solucion": "p.direccion.numero = 42;"
+      },
+      {
+        "enunciado": "Declara un puntero a struct Estudiante llamado 'ptr' y haz que apunte a 'grupo[0]'.",
+        "regex": "Estudiante\\s*\\*ptr\\s*=\\s*&grupo\\[0\\]\\s*;",
+        "pista": "El acceso a un elemento de array se hace con &grupo[0].",
+        "solucion": "Estudiante *ptr = &grupo[0];"
+      }
+    ], 
+    "ristras": [
+      {
+        "enunciado": "Declara dos cadenas 'a' y 'b', copia el contenido de 'b' en 'a' usando strcpy.",
+        "regex": "#include\\s*<string\\.h>.*char\\s+a\\s*\\[\\s*\\d+\\s*\\]\\s*=\\s*\"\"\\s*;\\s*char\\s+b\\s*\\[\\s*\\d+\\s*\\]\\s*=\\s*\"[^\"]+\"\\s*;\\s*strcpy\\s*\\(\\s*a\\s*,\\s*b\\s*\\)",
+        "pista": "Recuerda incluir <string.h> y usar strcpy(a, b);",
+        "solucion": "#include <string.h>\nchar a[20] = \"\";\nchar b[20] = \"Hola\";\nstrcpy(a, b);"
+      },
+      {
+        "enunciado": "Concatena la cadena 'b' al final de 'a' usando strcat.",
+        "regex": "#include\\s*<string\\.h>.*strcat\\s*\\(\\s*a\\s*,\\s*b\\s*\\)",
+        "pista": "Asegúrate de que 'a' tenga espacio suficiente.",
+        "solucion": "#include <string.h>\nstrcat(a, b);"
+      },
+      {
+        "enunciado": "Compara dos cadenas 'a' y 'b' y guarda el resultado en una variable entera.",
+        "regex": "int\\s+res\\s*=\\s*strcmp\\s*\\(\\s*a\\s*,\\s*b\\s*\\)\\s*;",
+        "pista": "strcmp devuelve 0 si son iguales.",
+        "solucion": "int res = strcmp(a, b);"
+      },
+      {
+        "enunciado": "Crea una función 'contarVocales' que reciba una cadena y devuelva el número de vocales.",
+        "regex": "int\\s+contarVocales\\s*\\(\\s*char\\s*\\*\\w+\\s*\\)\\s*\\{[^}]*int\\s+cont\\s*=\\s*0\\s*;[^}]*while\\s*\\(\\s*\\*\\w+\\s*!=\\s*'\\\\0'\\s*\\)[^}]*if\\s*\\(.*\\*\\w+.*[aeiouAEIOU].*\\)[^}]*cont\\+\\+",
+        "pista": "Recorre la cadena con puntero y compara vocales.",
+        "solucion": "int contarVocales(char *s) {\n  int cont = 0;\n  while (*s != '\\0') {\n    if (*s == 'a' || *s == 'e' || *s == 'i' || *s == 'o' || *s == 'u') cont++;\n    s++;\n  }\n  return cont;\n}"
+      },
+      {
+        "enunciado": "Declara una cadena con espacios y elimina los espacios usando un segundo índice.",
+        "regex": "char\\s+\\w+\\[\\d+\\]\\s*=\\s*\"[^\"]*\"\\s*;\\s*int\\s+i\\s*=\\s*0\\s*;\\s*int\\s+j\\s*=\\s*0\\s*;\\s*while\\s*\\(.*\\)\\s*\\{[^}]*if\\s*\\(\\s*\\w+\\[i\\]\\s*!=\\s*' '\\s*\\)\\s*\\w+\\[j\\+\\+\\]\\s*=\\s*\\w+\\[i\\]\\s*;[^}]*i\\+\\+",
+        "pista": "Usa dos índices para sobrescribir caracteres sin espacios.",
+        "solucion": "char str[50] = \"Hola mundo\";\nint i = 0, j = 0;\nwhile (str[i]) {\n  if (str[i] != ' ') str[j++] = str[i];\n  i++;\n}\nstr[j] = '\\0';"
+      },
+      {
+        "enunciado": "Cuenta cuántas veces aparece el carácter 'a' en una cadena usando puntero.",
+        "regex": "int\\s+cont\\s*=\\s*0\\s*;\\s*char\\s*\\*p\\s*=\\s*\\w+\\s*;\\s*while\\s*\\(\\s*\\*p\\s*!=\\s*'\\\\0'\\s*\\)\\s*\\{[^}]*if\\s*\\(\\s*\\*p\\s*==\\s*'a'\\s*\\)\\s*cont\\+\\+\\s*;\\s*p\\+\\+\\s*;\\s*\\}",
+        "pista": "Usa *p para recorrer y comparar.",
+        "solucion": "int cont = 0;\nchar *p = str;\nwhile (*p != '\\0') {\n  if (*p == 'a') cont++;\n  p++;\n}"
+      },
+      {
+        "enunciado": "Declara un array de punteros a cadena y recorre cada elemento para imprimirlo.",
+        "regex": "char\\s*\\*frases\\[\\s*3\\s*\\]\\s*=\\s*\\{\\s*\"[^\"]+\"\\s*,\\s*\"[^\"]+\"\\s*,\\s*\"[^\"]+\"\\s*\\}\\s*;\\s*for\\s*\\(int\\s+i\\s*=\\s*0\\s*;\\s*i\\s*<\\s*3\\s*;\\s*i\\+\\+\\)\\s*\\{\\s*printf\\s*\\(.*frases\\[i\\].*\\)",
+        "pista": "Array de punteros: char *frases[3] = {\"...\", ...}",
+        "solucion": "char *frases[3] = {\"Hola\", \"Adiós\", \"Gracias\"};\nfor (int i = 0; i < 3; i++) {\n  printf(\"%s\\n\", frases[i]);\n}"
+      }
+    ],
+    "archivos": [
+      {
+        "enunciado": "Lee carácter por carácter desde un archivo 'f' usando fgetc hasta EOF.",
+        "regex": "char\\s+c\\s*;\\s*while\\s*\\(\\s*\\(c\\s*=\\s*fgetc\\s*\\(\\s*f\\s*\\)\\)\\s*!=\\s*EOF\\s*\\)\\s*\\{[^}]*\\}",
+        "pista": "Usa while con fgetc() != EOF.",
+        "solucion": "char c;\nwhile ((c = fgetc(f)) != EOF) {\n  // ...\n}"
+      },
+      {
+        "enunciado": "Escribe una línea de texto en un archivo 'f' usando fputs.",
+        "regex": "fputs\\s*\\(\\s*\".*\"\\s*,\\s*f\\s*\\)",
+        "pista": "fputs no agrega salto de línea automático.",
+        "solucion": "fputs(\"Esta es una línea.\", f);"
+      },
+      {
+        "enunciado": "Lee una línea de hasta 80 caracteres de un archivo 'f' usando fgets.",
+        "regex": "char\\s+linea\\s*\\[\\s*81\\s*\\]\\s*;\\s*fgets\\s*\\(\\s*linea\\s*,\\s*80\\s*,\\s*f\\s*\\)",
+        "pista": "fgets incluye el salto de línea si hay espacio.",
+        "solucion": "char linea[81];\nfgets(linea, 80, f);"
+      },
+      {
+        "enunciado": "Escribe un carácter 'x' en un archivo usando fputc.",
+        "regex": "fputc\\s*\\(\\s*'x'\\s*,\\s*f\\s*\\)",
+        "pista": "fputc escribe un solo carácter.",
+        "solucion": "fputc('x', f);"
+      },
+      {
+        "enunciado": "Lee registros de tipo struct desde un archivo binario usando fread.",
+        "regex": "fread\\s*\\(\\s*&\\w+\\s*,\\s*sizeof\\s*\\(\\s*\\w+\\s*\\)\\s*,\\s*\\d+\\s*,\\s*f\\s*\\)",
+        "pista": "Usa fread con puntero, tamaño, cantidad y archivo.",
+        "solucion": "fread(&persona, sizeof(Persona), 1, f);"
+      },
+      {
+        "enunciado": "Escribe una estructura 'persona' en un archivo binario usando fwrite.",
+        "regex": "fwrite\\s*\\(\\s*&\\w+\\s*,\\s*sizeof\\s*\\(\\s*\\w+\\s*\\)\\s*,\\s*\\d+\\s*,\\s*f\\s*\\)",
+        "pista": "La escritura binaria usa fwrite con puntero.",
+        "solucion": "fwrite(&persona, sizeof(Persona), 1, f);"
+      },
+      {
+        "enunciado": "Reinicia el puntero de lectura de un archivo al inicio usando rewind.",
+        "regex": "rewind\\s*\\(\\s*f\\s*\\)",
+        "pista": "rewind(f); posiciona al principio del archivo.",
+        "solucion": "rewind(f);"
+      }
+    ]
+  }
+}

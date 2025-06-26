@@ -36,10 +36,10 @@
         <a href="pages/teoria.html">Ir a teoría</a><br><br>
         <img src="images/logo-carta-teoria-3.png" alt="Icono de teoría" class="card-icon" />
       </div>
-      <div class="card" onclick="window.location.href='pages/practica.html'">
+      <div class="card" onclick="window.location.href='pages/ejercicios.html'">
         <h3>Practica lo aprendido</h3>
         <p><strong>¿Quieres practicar el temario?</strong><br><br>Resuelve ejercicios guiados por niveles de dificultad en base a los conocimientos que tengas.</p>
-        <a href="pages/practica.html">Practicar</a><br><br>
+        <a href="pages/ejercicios.html">Practicar</a><br><br>
         <img src="images/logo-carta-ejercicios.png" alt="Icono de ejercicios" class="card-icon" />
       </div>
       <div class="card" onclick="window.location.href='pages/chatbot.html'">
@@ -54,7 +54,7 @@
   <!-- Chatbot se cargará aquí -->
   <div id="chatbot-wrapper"></div>
 
-<script>
+  <script>
   fetch("pages/chatbot-bubble.html")
     .then(res => res.text())
     .then(html => {
@@ -91,7 +91,7 @@
         }
       }, 500); // pequeño retraso para asegurar que el input existe
     });
-</script>
+  </script>
 
 </body>
 </html>

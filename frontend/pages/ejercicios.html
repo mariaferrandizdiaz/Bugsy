@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BugC: Ejercicios</title>
+  <link rel="stylesheet" href="../styles/ejercicios.css" />
+  <link rel="stylesheet" href="../styles/chatbot-bubble.css" />
+  <link rel="icon" href="../images/icon.png" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+  const ejerciciosPorNivel = {}; /* Estructura para almacenar ejercicios por nivel, vacía por defecto */
+
+  function cargarEjercicios() {
+    const nivel = document.getElementById('nivel').value;
+    const container = document.querySelector('.ejercicio-container');
+    container.innerHTML = `<h2>Ejercicios - Nivel ${nivel.charAt(0).toUpperCase() + nivel.slice(1)}</h2>`;
+
+    if (!nivel || !ejerciciosPorNivel[nivel]) return;
+
+    ejerciciosPorNivel[nivel].forEach((ej, i) => {
+      container.innerHTML += `
+        <div class="ejercicio">
+          <p>${ej.enunciado}</p>
+          <textarea id="ej${i}" rows="3"></textarea>
+        
+          <div class="acciones-ayuda">
+            <button id="pistaBtn${i}" class="btn-pista" onclick="mostrarPista(${i})">Ver pista</button>
+            <button id="solucionBtn${i}" class="btn-solucion" onclick="mostrarSolucion(${i})">Ver solución</button>
+          </div>
+        
+          <p class="pista" id="pista${i}" style="display:none;">${ej.pista || 'No hay pista disponible.'}</p>
+          <pre class="solucion" id="solucion${i}" style="display:none;">${ej.solucion || 'No hay solución disponible.'}</pre>
+        
+          <p class="feedback" id="f${i}"></p>
+        </div>
+      `;
+    });
+
+    container.innerHTML += `<button onclick="corregir('${nivel}')">Corregir</button>`;
+  }
+
+  /*
+    * Muestra u oculta la pista del ejercicio.
+    * @param {number} i - Índice del ejercicio.
+    * Si la pista está oculta, la muestra; si está visible, la oculta.
+    * Utiliza el ID 'pista' seguido del índice del ejercicio para identificar el elemento.
+    */
+  function mostrarPista(i) {
+    const pista = document.getElementById(`pista${i}`);
+    if (pista.style.display === "none") {
+      pista.style.display = "block";
+      /*que el botón ponga: ocultar pista*/
+      const pistaBtn = document.getElementById(`pistaBtn${i}`);
+      pistaBtn.textContent = "Ocultar pista";
+    } else {
+      pista.style.display = "none";
+      /*que el botón ponga: ver pista*/
+      const pistaBtn = document.getElementById(`pistaBtn${i}`);
+      pistaBtn.textContent = "Ver pista";
+    }
+  }
+
+  /* sol.style.display = sol.style.display === "none" ? "block" : "none";
+
+   * Muestra u oculta la solución del ejercicio.
+   * @param {number} i - Índice del ejercicio.
+   * Si la solución está oculta, la muestra; si está visible, la oculta.
+   * Utiliza el ID 'solucion' seguido del índice del ejercicio para identificar el elemento.
+  */
+  function mostrarSolucion(i) {
+    const sol = document.getElementById(`solucion${i}`);
+    if (sol.style.display === "none") {
+      sol.style.display = "block";
+      /* que el botón ponga: ocultar solución */
+      const solBtn = document.getElementById(`solucionBtn${i}`);
+      solBtn.textContent = "Ocultar solución";
+    } else {
+      sol.style.display = "none";
+      /* que el botón ponga: ver solución */
+      const solBtn = document.getElementById(`solucionBtn${i}`);
+      solBtn.textContent = "Ver solución";
+    }
+  }
+
+</script>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="../images/bugsy-logo.png" alt="Bugsy Logo"/>
+      <h1>BugC</h1>
+    </div>
+    <nav class="ejercicios-nav">
+      <a href="../index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="#" class="selected-btn">Ejercicios</a>
+      <a href="chatbot.html">Chatbot</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel-ejercicios">
+      <div class="columna-lateral">
+        <select id="nivel" onchange="seleccionarNivel()">
+          <option value="">Selecciona tu nivel</option>
+          <option value="basico">Básico</option>
+          <option value="intermedio">Intermedio</option>
+          <option value="avanzado">Avanzado</option>
+        </select>
+        <div id="temas"></div>
+      </div>
+
+      <div class="contenido-ejercicios">
+        <h2 id="titulo-ejercicios">Ejercicios</h2>
+        <section class="ejercicio-container">
+          <p>Selecciona un nivel y un tema para comenzar.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let ejerciciosData = {};
+    let nivelSeleccionado = "";
+    let temaSeleccionado = "";
+    let jsonCargado = false;
+
+    // Cargar JSON
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('ejercicios/ejercicios.json');
+        ejerciciosData = await res.json();
+        jsonCargado = true;
+        console.log("✅ JSON cargado correctamente");
+      } catch (e) {
+        console.error('No se pudo cargar el JSON:', e);
+      }
+    });
+
+
+    // Al cambiar el nivel
+    function seleccionarNivel() {
+      if (!jsonCargado) {
+        alert("Por favor espera a que se cargue el contenido.");
+        return;
+      }
+      nivelSeleccionado = document.getElementById('nivel').value;
+      const temas = ejerciciosData[nivelSeleccionado];
+      const temasContainer = document.getElementById('temas');
+      temasContainer.innerHTML = '';
+
+      if (!temas) return;
+    
+      Object.keys(temas).forEach(tema => {
+        const btn = document.createElement('button');
+        btn.textContent = capitalizar(tema);
+        btn.className = 'tema-btn';
+        btn.onclick = () => cargarEjercicios(nivelSeleccionado, tema);
+        temasContainer.appendChild(btn);
+      });
+    }
+
+    // Cargar ejercicios
+    function cargarEjercicios(nivel, tema) {
+      temaSeleccionado = tema;
+      const container = document.querySelector('.ejercicio-container');
+      const titulo = document.getElementById('titulo-ejercicios');
+      const ejercicios = ejerciciosData[nivel][tema];
+    
+      titulo.textContent = `Ejercicios: ${capitalizar(tema)} (${capitalizar(nivel)})`;
+      container.innerHTML = '';
+    
+      ejercicios.forEach((ej, i) => {
+        container.innerHTML += `
+        <div class="ejercicio">
+          <p>${ej.enunciado}</p>
+          <textarea id="ej${i}" rows="3"></textarea>
+        
+          <div class="acciones-ayuda">
+            <button id="pistaBtn${i}" class="btn-pista" onclick="mostrarPista(${i})">Ver pista</button>
+            <button id="solucionBtn${i}" class="btn-solucion" onclick="mostrarSolucion(${i})">Ver solución</button>
+          </div>
+        
+          <p class="pista" id="pista${i}" style="display:none;">${ej.pista || 'No hay pista disponible.'}</p>
+          <pre class="solucion" id="solucion${i}" style="display:none;">${ej.solucion || 'No hay solución disponible.'}</pre>
+        
+          <p class="feedback" id="f${i}"></p>
+        </div>
+        `;
+      });
+    
+      container.innerHTML += `
+        <div class="centrar-boton">
+        <button id="btn-correccion">Corregir</button>
+        </div>
+      `;
+      document.getElementById("btn-correccion").addEventListener("click", () => {
+        corregir(nivel, tema);
+      });    
+    }
+
+    // Corregir entradas
+    function corregir(nivel, tema) {
+      const ejercicios = ejerciciosData[nivel][tema];
+      let correctas = 0;
+        
+      ejercicios.forEach((ej, i) => {
+        const input = document.getElementById(`ej${i}`).value.trim();
+        const feedback = document.getElementById(`f${i}`);
+        const pista = document.getElementById(`pista${i}`);
+        const solucion = document.getElementById(`solucion${i}`);
+        const pistaBtn = document.getElementById(`pistaBtn${i}`);
+        const solucionBtn = document.getElementById(`solucionBtn${i}`);
+        const pattern = new RegExp(ej.regex, 'i');
+      
+        if (pattern.test(input)) {
+          feedback.textContent = "Correcto";
+          feedback.className = "feedback green";
+        
+          correctas++;
+
+          if (pistaBtn) pistaBtn.style.display = "none";
+          if (solucionBtn) solucionBtn.style.display = "none";
+          if (pista) pista.style.display = "none";
+          if (solucion) solucion.style.display = "none";
+        } else {
+          feedback.textContent = "Incorrecto";
+          feedback.className = "feedback red";
+
+          if (pistaBtn) pistaBtn.style.display = "inline-block";
+          if (solucionBtn) solucionBtn.style.display = "inline-block";
+          if (pista) pista.style.display = "none";
+          if (solucion) solucion.style.display = "none";
+        }
+      });
+      alert(`Has respondido correctamente ${correctas} de ${ejercicios.length} ejercicios del nivel ${capitalizar(nivel)} y tema ${capitalizar(tema)}.`);
+    }
+
+
+    function capitalizar(texto) {
+      return texto.charAt(0).toUpperCase() + texto.slice(1);
+    }
+
+    const sessionId = sessionStorage.getItem("sessionId") || crypto.randomUUID();
+  sessionStorage.setItem("sessionId", sessionId);
+  let nivelSeleccionadoChatbot = null;
+
+  function setNivel(nivel) {
+    nivelSeleccionadoChatbot = nivel;
+    const buttonsContainer = document.querySelector(".bubble div[style*='margin-top']");
+    if (buttonsContainer) {
+      buttonsContainer.innerHTML = `<p style="margin-top: 1em;"><strong>Nivel seleccionado: ${nivel}</strong></p>`;
+    }
+    const chat = document.getElementById("chat");
+    chat.innerHTML += `
+      <div class="message bot">
+        <img class="icon" src="../images/bot-icon.png" alt="Bot">
+        <div class="bubble">Soy <strong>BugC 🤖</strong>, tu asistente en la asignatura de programación en C.<br>¿Con qué te puedo ayudar?</div>
+      </div>`;
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chat = document.getElementById("chat");
+    const userText = input.value.trim();
+
+    if (!userText || !nivelSeleccionadoChatbot) return;
+
+    chat.innerHTML += `
+      <div class="message user">
+        <div class="bubble">${userText}</div>
+        <img class="icon" src="../images/user-icon.png" alt="Usuario">
+      </div>`;
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userText,
+          nivel: nivelSeleccionadoChatbot,
+          sessionId
+        })
+      });
+      const data = await response.json();
+      chat.innerHTML += `
+        <div class="message bot">
+          <img class="icon" src="../images/bot-icon.png" alt="Bot">
+          <div class="bubble">${marked.parse(data.reply)}</div>
+        </div>`;
+    } catch (error) {
+      chat.innerHTML += `
+        <div class="message bot">
+          <img class="icon" src="../images/bot-icon.png" alt="Bot">
+          <div class="bubble">❌ Error al conectar con el servidor. Intenta de nuevo más tarde.</div>
+        </div>`;
+      console.error("❌ Error en fetch:", error);
+    }
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function attachEnterHandler() {
+    const input = document.getElementById("user-input");
+    if (!input) return;
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+  
+    function toggleChat() {
+      const chatContainer = document.getElementById("chat-container");
+      const chat = document.getElementById("chat");
+    
+      if (chatContainer.style.display === "block") {
+        chatContainer.style.display = "none";
+        return;
+      }
+    
+      chatContainer.style.display = "block";
+    
+      if (!nivelSeleccionadoChatbot) {
+        chat.innerHTML = `
+          <div class="message bot">
+            <img class="icon" src="../images/bot-icon.png" alt="Bot">
+            <div class="bubble">
+              ¡Hola! Antes de comenzar, selecciona tu nivel para adaptar las respuestas:
+              <div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
+                <button class="nivel-btn" onclick="setNivel('Básico')">Básico</button>
+                <button class="nivel-btn" onclick="setNivel('Intermedio')">Intermedio</button>
+                <button class="nivel-btn" onclick="setNivel('Avanzado')">Avanzado</button>
+              </div>
+            </div>
+          </div>`;
+      }
+      attachEnterHandler();
+    }
+    </script>
+
+    <!-- Chatbot Flotante -->
+    <div id="chat-button" onclick="toggleChat()">
+      <img src="../images/chatbot-icon.png" alt="Abrir Chat" />
+    </div>
+
+    <div id="chat-container" style="display: none;">
+      <button id="chat-close-btn" onclick="toggleChat()">
+        <img src="../images/close-icon-2.png" alt="Cerrar Chat" />
+      </button>
+    
+      <div id="chat"></div>
+    
+      <div id="input-container">
+        <input type="text" id="user-input" placeholder="Escribe tu pregunta..." />
+        <button id="send-btn" onclick="sendMessage()">
+          <img src="../images/send-icon.png" alt="Enviar" />
+        </button>
+      </div>
+    </div> 
+</body>
+</html>

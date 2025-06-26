@@ -43,6 +43,12 @@ nav a.selected-btn {
   color: #C47B00;
 }
 
+nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: #5c068c; /* Asegura que el subrayado sea morado */
+  text-underline-offset: 4px;     /* Espacio entre texto y subrayado */
+}
+
 #chat-container {
   display: flex;
   flex-direction: column;
