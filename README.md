@@ -19,7 +19,6 @@ BugC es una plataforma interactiva diseñada para acompañar al alumnado de titu
 - [Licencia](#-licencia)
 
 
-
 ## 📚 Características principales
 
 El sistema ofrece un conjunto completo de funcionalidades para facilitar la experiencia de estudio y aprendizaje del alumnado de reciente ingreso. Entre ellas se encuentran: 
@@ -111,7 +110,7 @@ BugC/
 
 ``` 
 
-## 🚀 Pasos para ejecutar el proyecto
+## 🚀 Pasos para ejecutar el proyecto de manera local
 
 1. Clonar el repositorio
 ``` bash
@@ -123,8 +122,9 @@ cd Bugsy
 ``` bash
 npm install 
 ```
+3. Crear un .env como queda el .env.example y sustituir con las credenciales y keys necesarias
 
-3. Lanzar el servidor
+4. Lanzar el servidor
 ``` bash
 npm start
 ``` 
