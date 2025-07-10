@@ -190,7 +190,7 @@
         "enunciado": "Declara una variable 'resultado' que almacene si 'x = 5' es mayor que 2 o menor que 1.",
         "regex": "#include\\s*<stdbool\\.h>.*int\\s+x\\s*=\\s*5\\s*;.*bool\\s+resultado\\s*=\\s*x\\s*>\\s*2\\s*\\|\\|\\s*x\\s*<\\s*1\\s*;",
         "pista": "Usa el operador lógico '||' (OR).",
-        "solucion": "#include <stdbool.h>\nint x = 5;\nbool resultado = x > 2 || x < 1;"
+        "solucion": "#include stdbool.h\nint x = 5;\nbool resultado = x > 2 || x < 1;"
       },
       {
         "enunciado": "Declara una variable 'total = 10' y súmale 5 usando el operador +=.",
@@ -397,138 +397,6 @@
         "regex": "#include\\s*\"util\\.h\"",
         "pista": "Usa comillas dobles para archivos propios.",
         "solucion": "#include \"util.h\""
-      }
-    ],
-    "struct": [
-      {
-        "enunciado": "Declara una estructura llamada 'Persona' con los campos 'nombre[50]' y 'edad' (entero).",
-        "regex": "struct\\s+Persona\\s*\\{\\s*char\\s+nombre\\s*\\[\\s*50\\s*\\]\\s*;\\s*int\\s+edad\\s*;\\s*\\}\\s*;",
-        "pista": "Usa 'char nombre[50];' y 'int edad;' dentro del struct.",
-        "solucion": "struct Persona {\n  char nombre[50];\n  int edad;\n};"
-      },
-      {
-        "enunciado": "Declara una variable 'alumno' de tipo struct Persona e inicialízala con \"Ana\" y 22.",
-        "regex": "struct\\s+Persona\\s+alumno\\s*=\\s*\\{\\s*\"Ana\"\\s*,\\s*22\\s*\\}\\s*;",
-        "pista": "Usa inicialización compuesta con llaves.",
-        "solucion": "struct Persona alumno = {\"Ana\", 22};"
-      },
-      {
-        "enunciado": "Accede al campo 'edad' del struct 'alumno' y guárdalo en una variable entera 'e'.",
-        "regex": "int\\s+e\\s*=\\s*alumno\\.edad\\s*;",
-        "pista": "Usa el operador punto para acceder a campos.",
-        "solucion": "int e = alumno.edad;"
-      },
-      {
-        "enunciado": "Declara una función 'mostrarPersona' que reciba un struct Persona como parámetro.",
-        "regex": "void\\s+mostrarPersona\\s*\\(\\s*struct\\s+Persona\\s+\\w+\\s*\\)\\s*\\{[^}]*\\}",
-        "pista": "Recuerda especificar 'struct Persona' como tipo de parámetro.",
-        "solucion": "void mostrarPersona(struct Persona p) {\n  // ...\n}"
-      },
-      {
-        "enunciado": "Dentro de la función 'mostrarPersona', muestra el nombre y edad usando printf.",
-        "regex": "printf\\s*\\(\\s*\".*%s.*%d.*\"\\s*,\\s*\\w+\\.nombre\\s*,\\s*\\w+\\.edad\\s*\\)",
-        "pista": "Usa p.nombre y p.edad dentro del printf.",
-        "solucion": "printf(\"Nombre: %s, Edad: %d\", p.nombre, p.edad);"
-      },
-      {
-        "enunciado": "Declara una variable puntero a struct Persona llamada 'ptr' y haz que apunte a 'alumno'.",
-        "regex": "struct\\s+Persona\\s*\\*ptr\\s*=\\s*&alumno\\s*;",
-        "pista": "Usa '&alumno' para obtener la dirección.",
-        "solucion": "struct Persona *ptr = &alumno;"
-      },
-      {
-        "enunciado": "Usa el puntero 'ptr' para modificar la edad de 'alumno' a 25.",
-        "regex": "ptr\\s*->\\s*edad\\s*=\\s*25\\s*;",
-        "pista": "Accede al campo usando ->",
-        "solucion": "ptr->edad = 25;"
-      }
-    ], 
-    "ristras": [
-      {
-        "enunciado": "Declara una cadena llamada 'nombre' capaz de almacenar hasta 20 caracteres e inicialízala con \"Juan\".",
-        "regex": "char\\s+nombre\\s*\\[\\s*20\\s*\\]\\s*=\\s*\"Juan\"\\s*;",
-        "pista": "Recuerda declarar con tamaño y usar comillas dobles.",
-        "solucion": "char nombre[20] = \"Juan\";"
-      },
-      {
-        "enunciado": "Lee una cadena desde teclado usando scanf y guárdala en 'palabra[30]'.",
-        "regex": "char\\s+palabra\\s*\\[\\s*30\\s*\\]\\s*;\\s*scanf\\s*\\(\\s*\"%s\"\\s*,\\s*palabra\\s*\\)",
-        "pista": "scanf no necesita & con cadenas.",
-        "solucion": "char palabra[30];\nscanf(\"%s\", palabra);"
-      },
-      {
-        "enunciado": "Muestra el contenido de la cadena 'mensaje' con printf.",
-        "regex": "printf\\s*\\(\\s*\"%s\"\\s*,\\s*mensaje\\s*\\)",
-        "pista": "Usa %s para imprimir cadenas.",
-        "solucion": "printf(\"%s\", mensaje);"
-      },
-      {
-        "enunciado": "Copia la cadena 'origen' en 'destino' usando strcpy.",
-        "regex": "#include\\s*<string\\.h>.*strcpy\\s*\\(\\s*destino\\s*,\\s*origen\\s*\\)",
-        "pista": "strcpy(destino, origen); requiere string.h.",
-        "solucion": "#include <string.h>\nstrcpy(destino, origen);"
-      },
-      {
-        "enunciado": "Concatena la cadena 'apellido' al final de 'nombreCompleto' usando strcat.",
-        "regex": "strcat\\s*\\(\\s*nombreCompleto\\s*,\\s*apellido\\s*\\)",
-        "pista": "strcat agrega una cadena al final de otra.",
-        "solucion": "strcat(nombreCompleto, apellido);"
-      },
-      {
-        "enunciado": "Compara las cadenas 'a' y 'b' y muestra un mensaje si son iguales.",
-        "regex": "if\\s*\\(\\s*strcmp\\s*\\(\\s*a\\s*,\\s*b\\s*\\)\\s*==\\s*0\\s*\\)\\s*\\{\\s*printf\\s*\\(.*\\)\\s*;\\s*\\}",
-        "pista": "strcmp devuelve 0 si las cadenas son iguales.",
-        "solucion": "if (strcmp(a, b) == 0) {\n  printf(\"Son iguales\");\n}"
-      },
-      {
-        "enunciado": "Declara una cadena vacía llamada 'texto' con capacidad para 100 caracteres y asígnale el valor \"Hola\" con strcpy.",
-        "regex": "char\\s+texto\\s*\\[\\s*100\\s*\\]\\s*;\\s*strcpy\\s*\\(\\s*texto\\s*,\\s*\"Hola\"\\s*\\)",
-        "pista": "La cadena debe tener tamaño suficiente y asignarse con strcpy.",
-        "solucion": "char texto[100];\nstrcpy(texto, \"Hola\");"
-      }
-    ],
-    "archivos": [
-      {
-        "enunciado": "Declara un puntero a archivo llamado 'f' y ábrelo en modo lectura sobre el archivo 'datos.txt'.",
-        "regex": "FILE\\s*\\*f\\s*=\\s*fopen\\s*\\(\\s*\"datos\\.txt\"\\s*,\\s*\"r\"\\s*\\)\\s*;",
-        "pista": "Usa fopen con modo 'r'.",
-        "solucion": "FILE *f = fopen(\"datos.txt\", \"r\");"
-      },
-      {
-        "enunciado": "Verifica si el archivo 'f' se abrió correctamente. Si no, muestra un mensaje de error.",
-        "regex": "if\\s*\\(\\s*f\\s*==\\s*NULL\\s*\\)\\s*\\{\\s*printf\\s*\\(.*\\)\\s*;\\s*\\}",
-        "pista": "Compara el puntero con NULL.",
-        "solucion": "if (f == NULL) {\n  printf(\"No se pudo abrir el archivo\\n\");\n}"
-      },
-      {
-        "enunciado": "Escribe en el archivo 'f' el texto \"Hola archivo\" usando fprintf.",
-        "regex": "fprintf\\s*\\(\\s*f\\s*,\\s*\"Hola archivo\"\\s*\\)",
-        "pista": "fprintf es como printf pero con el archivo como primer parámetro.",
-        "solucion": "fprintf(f, \"Hola archivo\");"
-      },
-      {
-        "enunciado": "Lee un número entero desde el archivo 'f' y guárdalo en la variable 'x' usando fscanf.",
-        "regex": "int\\s+x\\s*;\\s*fscanf\\s*\\(\\s*f\\s*,\\s*\"%d\"\\s*,\\s*&x\\s*\\)",
-        "pista": "Usa el operador & para pasar la dirección.",
-        "solucion": "int x;\nfscanf(f, \"%d\", &x);"
-      },
-      {
-        "enunciado": "Cierra el archivo 'f' usando fclose.",
-        "regex": "fclose\\s*\\(\\s*f\\s*\\)",
-        "pista": "Llama a fclose con el puntero.",
-        "solucion": "fclose(f);"
-      },
-      {
-        "enunciado": "Escribe un bucle que lea enteros desde un archivo hasta llegar al final usando feof.",
-        "regex": "while\\s*\\(\\s*!feof\\s*\\(\\s*f\\s*\\)\\s*\\)\\s*\\{[^}]*fscanf\\s*\\(\\s*f\\s*,\\s*\"%d\"\\s*,\\s*&\\w+\\s*\\)[^}]*\\}",
-        "pista": "Usa !feof(f) como condición del while.",
-        "solucion": "int num;\nwhile (!feof(f)) {\n  fscanf(f, \"%d\", &num);\n}"
-      },
-      {
-        "enunciado": "Declara un archivo llamado 'fich' y ábrelo en modo de escritura, creando el archivo si no existe.",
-        "regex": "FILE\\s*\\*fich\\s*=\\s*fopen\\s*\\(\\s*\"\\w+\\.txt\"\\s*,\\s*\"w\"\\s*\\)\\s*;",
-        "pista": "Modo 'w' crea el archivo si no existe.",
-        "solucion": "FILE *fich = fopen(\"salida.txt\", \"w\");"
       }
     ]
   },

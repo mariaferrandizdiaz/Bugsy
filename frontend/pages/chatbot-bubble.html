@@ -93,7 +93,8 @@
     }
     chat.scrollTop = chat.scrollHeight;
   }
-
+ 
+  // Esta función se llama al cargar la página para adjuntar el manejador de eventos al input
   function attachEnterHandler() {
     const input = document.getElementById("user-input");
     if (!input) return;
@@ -106,11 +107,9 @@
     });
   }
 
-
-  // Muestra u oculta el chat con el botón flotante
   // Muestra u oculta el chat con el botón flotante
   function toggleChat() {
-    const chatContainer = document.getElementById("chat-container");
+    const chatContainer = document.getElementById("chat-container"); // contenedor del chat
     const chat = document.getElementById("chat");
 
     if (chatContainer.style.display === "block") {
@@ -119,14 +118,13 @@
     }
 
     chatContainer.style.display = "block";
-
     if (!nivelSeleccionado) {
       chat.innerHTML = `
         <div class="message bot">
           <img class="icon" src="../images/bot-icon.png" alt="Bot">
           <div class="bubble">
             ¡Hola! Antes de comenzar, selecciona tu nivel para adaptar las respuestas:
-<div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
+            <div style="margin-top: 1em; display: flex; flex-direction: column; align-items: center; gap: 0.1em;">
               <button class="nivel-btn" onclick="setNivel('Básico')">Básico</button>
               <button class="nivel-btn" onclick="setNivel('Intermedio')">Intermedio</button>
               <button class="nivel-btn" onclick="setNivel('Avanzado')">Avanzado</button>
