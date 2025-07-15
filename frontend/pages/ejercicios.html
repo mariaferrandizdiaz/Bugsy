@@ -223,7 +223,10 @@
         
           correctas++;
 
-          if (pistaBtn) pistaBtn.style.display = "none";
+          if (pistaBtn) {
+            pistaBtn.style.display = "none";
+            pistaBtn.textContent = "Ver pista"; // << CORRECCIÓN AQUÍ
+          }
           if (solucionBtn) solucionBtn.style.display = "none";
           if (pista) pista.style.display = "none";
           if (solucion) solucion.style.display = "none";
@@ -231,8 +234,14 @@
           feedback.textContent = "Incorrecto";
           feedback.className = "feedback red";
 
-          if (pistaBtn) pistaBtn.style.display = "inline-block";
-          if (solucionBtn) solucionBtn.style.display = "inline-block";
+          if (pistaBtn) {
+            pistaBtn.style.display = "inline-block";
+            pistaBtn.textContent = "Ver pista"; // << CORRECCIÓN AQUÍ TAMBIÉN
+          }
+          if (solucionBtn) {
+            solucionBtn.style.display = "inline-block";
+            solucionBtn.textContent = "Ver solución"; // (opcional)
+          }
           if (pista) pista.style.display = "none";
           if (solucion) solucion.style.display = "none";
         }
