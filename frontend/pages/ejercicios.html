@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-  const ejerciciosPorNivel = {}; /* Estructura para almacenar ejercicios por nivel, vacía por defecto */
+  const ejerciciosPorNivel = {}; /* Estructura para almacenar ejercicios por nivel, vacía por defecto, ya se rellenará */
 
   function cargarEjercicios() {
     const nivel = document.getElementById('nivel').value;
@@ -225,7 +225,7 @@
 
           if (pistaBtn) {
             pistaBtn.style.display = "none";
-            pistaBtn.textContent = "Ver pista"; // << CORRECCIÓN AQUÍ
+            pistaBtn.textContent = "Ver pista";
           }
           if (solucionBtn) solucionBtn.style.display = "none";
           if (pista) pista.style.display = "none";
@@ -236,11 +236,11 @@
 
           if (pistaBtn) {
             pistaBtn.style.display = "inline-block";
-            pistaBtn.textContent = "Ver pista"; // << CORRECCIÓN AQUÍ TAMBIÉN
+            pistaBtn.textContent = "Ver pista";
           }
           if (solucionBtn) {
             solucionBtn.style.display = "inline-block";
-            solucionBtn.textContent = "Ver solución"; // (opcional)
+            solucionBtn.textContent = "Ver solución";
           }
           if (pista) pista.style.display = "none";
           if (solucion) solucion.style.display = "none";
