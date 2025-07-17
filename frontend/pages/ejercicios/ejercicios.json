@@ -52,10 +52,10 @@
         "solucion": "int a = 5;\nint b = 3;\nprintf(\"%d\", a + b);"
       },
       {
-        "enunciado": "Declara dos enteros 'x = 10' y 'y = 4'. Muestra el resultado de x dividido entre y.",
-        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*int\\s+y\\s*=\\s*4\\s*;\\s*printf\\s*\\(.*x\\s*/\\s*y.*\\)",
+        "enunciado": "Declara dos enteros 'x = 10' y 'y = 2'. Muestra el resultado de x dividido entre y.",
+        "regex": "int\\s+x\\s*=\\s*10\\s*;\\s*int\\s+y\\s*=\\s*2\\s*;\\s*printf\\s*\\(.*x\\s*/\\s*y.*\\)",
         "pista": "Recuerda que la división de enteros descarta decimales.",
-        "solucion": "int x = 10;\nint y = 4;\nprintf(\"%d\", x / y);"
+        "solucion": "int x = 10;\nint y = 2;\nprintf(\"%d\", x / y);"
       },
       {
         "enunciado": "Declara una variable 'resultado' e inicialízala como la multiplicación de 6 y 7.",
